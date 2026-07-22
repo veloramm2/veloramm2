@@ -845,7 +845,7 @@ img{max-width:100%;display:block;}
         <div class="input">
           <label>Promo Code</label>
           <div class="discount">
-            <input id="promo" placeholder="VELORA10">
+            <input id="promo" placeholder="Code Here">
             <button class="apply" onclick="applyPromo()">Apply</button>
           </div>
         </div>
@@ -948,7 +948,7 @@ img{max-width:100%;display:block;}
 <div class="drawer" id="cartDrawer">
   <div class="drawerHead">
     <h3>Your Basket</h3>
-    <button class="drawerClose" onclick="closeCart()">?</button>
+    <button class="drawerClose" onclick="closeCart()">x</button>
   </div>
   <div class="drawerItems" id="drawerItems"></div>
   <div class="drawerFooter">
@@ -1543,7 +1543,7 @@ function applyPromo(){
   if(code === "") return;
 
 
-  const knownCodes = { "VELORA10": 1, "WELCOME5": 0.05 };
+  const knownCodes = { "SILENT10": 0.1, "WELCOME5": 0.05, "AXEL5": 0.05, "DELY5": 0.05 };
   if(!(code in knownCodes)){ showNotification("Invalid promo code.","invalid"); return; }
 
   const discountRate = Math.min(knownCodes[code], 1); 
