@@ -3,8 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VeloraMM2 — Shop</title>
+<title>VeloraMM2 â€” Shop</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+(function loadEmailJs(){
+  var s = document.createElement("script");
+  s.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+  s.onload = function(){
+    emailjs.init("cCIV8ycmmrKV9RENJ");
+    window.emailjsReady = true;
+    console.log("EmailJS library loaded and initialized.");
+  };
+  s.onerror = function(){
+    console.error("EmailJS library failed to load from CDN.");
+  };
+  document.head.appendChild(s);
+})();
+</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 :root{
@@ -78,7 +93,7 @@ img{max-width:100%;display:block;}
   display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px;
 }
 .card{
-  border:1px solid var(--border);border-radius:18px;overflow:hidden;background:#fff;cursor:pointer;
+  border:1px solid var(--border);border-radius:0;overflow:hidden;background:#fff;cursor:pointer;
   transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease, border-color .3s ease;
 }
 .card:hover{
@@ -88,7 +103,7 @@ img{max-width:100%;display:block;}
 }
 .card:hover .cardImgWrap img{transform:scale(1.06);}
 .cardImgWrap img{transition:transform .4s ease;}
-.cardImgWrap{position:relative;aspect-ratio:1/1;overflow:hidden;background:#f7f7f7;}
+.cardImgWrap{position:relative;aspect-ratio:1/1;overflow:hidden;background:#f7f7f7;border-radius:0;}
 .cardImgWrap img{width:100%;height:100%;object-fit:cover;}
 .saveBadge{
   position:absolute;top:12px;left:12px;background:var(--save);color:#fff;
@@ -192,9 +207,9 @@ img{max-width:100%;display:block;}
   font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--sub);margin-bottom:14px;
 }
 .bundleGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px;}
-.bundleItem{text-align:center;background:#fafafa;border:1px solid var(--border);border-radius:12px;padding:18px 12px;transition:.2s;}
+.bundleItem{text-align:center;background:#fafafa;border:1px solid var(--border);border-radius:0;padding:18px 12px;transition:.2s;}
 .bundleItem:hover{border-color:var(--pink2);background:#fff;}
-.bundleItem img{width:100%;max-width:100px;height:80px;object-fit:contain;margin:0 auto 8px;}
+.bundleItem img{width:100%;max-width:100px;height:80px;object-fit:contain;margin:0 auto 8px;border-radius:0;}
 .bundleItem span{display:block;font-size:14px;font-weight:700;color:var(--dark);}
 .bundleFooter{
   margin-top:28px;padding-top:24px;border-top:1px solid var(--border);
@@ -290,7 +305,7 @@ img{max-width:100%;display:block;}
 .drawerHead h3{font-size:18px;font-weight:800;}
 .drawerClose{background:none;border:none;font-size:20px;cursor:pointer;}
 .drawerItems{flex:1;overflow:auto;padding:16px 20px;}
-.drawerItem img{width:48px;height:48px;object-fit:cover;background:#faf4f7;border-radius:10px;}
+.drawerItem img{width:48px;height:48px;object-fit:cover;background:#faf4f7;border-radius:0;}
 .drawerItem .info{flex:1;}
 .drawerItem .info .n{font-weight:700;font-size:14px;}
 .drawerItem .info .p{color:var(--pink);font-weight:700;font-size:13px;}
@@ -383,7 +398,7 @@ img{max-width:100%;display:block;}
   background:linear-gradient(180deg,#fff,#fff9fd);border:1px solid #f4d8e9;
   border-radius:22px;padding:25px;text-align:center;
 }
-.checkoutProduct img{width:180px;transition:.35s;margin:0 auto;}
+.checkoutProduct img{width:180px;transition:.35s;margin:0 auto;border-radius:0;}
 .checkoutProduct img:hover{transform:scale(1.05);}
 .checkoutProduct h2{font-size:26px;font-weight:800;margin-top:15px;}
 .checkoutPrice{margin-top:10px;font-size:22px;font-weight:700;color:var(--pink);}
@@ -416,7 +431,7 @@ img{max-width:100%;display:block;}
 
 .summary-card{padding:22px;border:1px solid #ececec;border-radius:20px;background:#fff;}
 .summary-product{display:flex;align-items:center;gap:18px;margin-bottom:14px;}
-.summary-product img{width:56px;height:56px;object-fit:cover;border-radius:10px;}
+.summary-product img{width:56px;height:56px;object-fit:cover;border-radius:0;}
 .summary-info{flex:1;}
 .summary-info h4{font-size:16px;margin-bottom:2px;}
 .summary-info p{font-size:13px;color:#888;}
@@ -499,6 +514,13 @@ img{max-width:100%;display:block;}
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
 .pendingStatus{margin-top:25px;padding:18px;border-radius:15px;background:#FFF6D7;border:1px solid #FFD248;font-weight:700;font-size:17px;}
+.pendingMedia{margin-bottom:22px;border-radius:0;overflow:hidden;border:1px solid #f4d8e9;box-shadow:0 10px 25px rgba(255,77,166,.15);}
+.pendingMedia img,.pendingMedia iframe{width:100%;display:block;}
+.videoThumbWrap{position:relative;cursor:pointer;}
+.playButtonOverlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;transition:.2s;}
+.videoThumbWrap:hover .playButtonOverlay{background:var(--pink);transform:translate(-50%,-50%) scale(1.08);}
+.pendingMedia iframe{aspect-ratio:16/9;border:0;}
+.pendingMediaCaption{margin-top:10px;font-size:13px;color:var(--sub);}
 .pendingSteps{
   margin-top:18px;text-align:left;font-size:13px;line-height:1.7;color:#555;
   background:#fafafa;border:1px solid var(--border);border-radius:14px;padding:16px 18px;
@@ -538,7 +560,7 @@ img{max-width:100%;display:block;}
     </div>
     <div class="navActions">
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();document.getElementById('grid').scrollIntoView({behavior:'smooth'});">Shop Now</a>
-      <button class="cartToggle" onclick="openCart()">🛒<span class="cartCount" id="cartCount">0</span></button>
+      <button class="cartToggle" onclick="openCart()">ðŸ›’<span class="cartCount" id="cartCount">0</span></button>
     </div>
   </div>
 
@@ -553,7 +575,7 @@ img{max-width:100%;display:block;}
 
   <div class="toolbar">
     <div class="searchBox">
-      <span class="searchIcon">🔍</span>
+      <span class="searchIcon">ðŸ”</span>
       <input id="searchInput" type="text" placeholder="Search weapons..." oninput="render()">
     </div>
     <select class="sortSelect" id="sortSelect" onchange="render()">
@@ -570,7 +592,7 @@ img{max-width:100%;display:block;}
     <div class="pageFooterInner">
       <div class="pageFooterBrand">
         <h4>VeloraMM2</h4>
-        <p>VeloraMM2 is an MM2 item store — cheap prices, rapid delivery, and reliable service.</p>
+        <p>VeloraMM2 is an MM2 item store â€” cheap prices, rapid delivery, and reliable service.</p>
       </div>
       <div class="pageFooterCol">
         <h4>Shop</h4>
@@ -587,7 +609,7 @@ img{max-width:100%;display:block;}
       </div>
     </div>
     <div class="pageFooterBottom">
-      <div>© 2026 VeloraMM2. All rights reserved.</div>
+      <div>Â© 2026 VeloraMM2. All rights reserved.</div>
       <div class="pageFooterBadges">
         <span>Visa</span><span>Mastercard</span><span>PayPal</span>
       </div>
@@ -611,7 +633,7 @@ img{max-width:100%;display:block;}
     </div>
     <div class="navActions">
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();showProduct();">Shop Now</a>
-      <button class="cartToggle" onclick="openCart()">🛒<span class="cartCount" id="cartCountDetail">0</span></button>
+      <button class="cartToggle" onclick="openCart()">ðŸ›’<span class="cartCount" id="cartCountDetail">0</span></button>
     </div>
   </div>
 
@@ -653,10 +675,10 @@ img{max-width:100%;display:block;}
       <p class="pdDescription" id="pdDesc"></p>
 
       <div class="trustRow">
-        <div class="trustItem">🌸 Fast Delivery</div>
-        <div class="trustItem">💗 Trusted Seller</div>
-        <div class="trustItem">👚 Secure Payment</div>
-        <div class="trustItem">🍷 24/7 Support</div>
+        <div class="trustItem">ðŸŒ¸ Fast Delivery</div>
+        <div class="trustItem">ðŸ’— Trusted Seller</div>
+        <div class="trustItem">ðŸ‘š Secure Payment</div>
+        <div class="trustItem">ðŸ· 24/7 Support</div>
       </div>
     </div>
   </div>
@@ -691,7 +713,7 @@ img{max-width:100%;display:block;}
     <div class="pageFooterInner">
       <div class="pageFooterBrand">
         <h4>VeloraMM2</h4>
-        <p>VeloraMM2 is an MM2 item store — cheap prices, rapid delivery, and reliable service.</p>
+        <p>VeloraMM2 is an MM2 item store â€” cheap prices, rapid delivery, and reliable service.</p>
       </div>
       <div class="pageFooterCol">
         <h4>Shop</h4>
@@ -705,7 +727,7 @@ img{max-width:100%;display:block;}
       </div>
     </div>
     <div class="pageFooterBottom">
-      <div>© 2026 VeloraMM2. All rights reserved.</div>
+      <div>Â© 2026 VeloraMM2. All rights reserved.</div>
       <div class="pageFooterBadges">
         <span>Visa</span><span>Mastercard</span><span>PayPal</span>
       </div>
@@ -729,7 +751,7 @@ img{max-width:100%;display:block;}
     </div>
     <div class="navActions">
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();showProduct();">Shop Now</a>
-      <button class="cartToggle" onclick="openCart()">🛒<span class="cartCount" id="cartCountCheckout">0</span></button>
+      <button class="cartToggle" onclick="openCart()">ðŸ›’<span class="cartCount" id="cartCountCheckout">0</span></button>
     </div>
   </div>
 
@@ -737,16 +759,16 @@ img{max-width:100%;display:block;}
 
   <div class="checkoutInner">
   <div class="petals">
-    <span><span class="pinkEmoji">🌸</span></span><span><span class="pinkEmoji">🌸</span></span>
-    <span><span class="pinkEmoji">🌸</span></span><span><span class="pinkEmoji">🌸</span></span>
-    <span><span class="pinkEmoji">🌸</span></span><span><span class="pinkEmoji">🌸</span></span>
-    <span><span class="pinkEmoji">🌸</span></span><span><span class="pinkEmoji">🌸</span></span>
+    <span><span class="pinkEmoji">ðŸŒ¸</span></span><span><span class="pinkEmoji">ðŸŒ¸</span></span>
+    <span><span class="pinkEmoji">ðŸŒ¸</span></span><span><span class="pinkEmoji">ðŸŒ¸</span></span>
+    <span><span class="pinkEmoji">ðŸŒ¸</span></span><span><span class="pinkEmoji">ðŸŒ¸</span></span>
+    <span><span class="pinkEmoji">ðŸŒ¸</span></span><span><span class="pinkEmoji">ðŸŒ¸</span></span>
   </div>
 
   <div class="wrapper">
 
     <div class="checkoutLeft ckCard">
-      <a class="backLink" onclick="showProduct()">← Back to shop</a>
+      <a class="backLink" onclick="showProduct()">â† Back to shop</a>
 
       <div class="checkoutLogo">
         <div class="cartTitle">Your Basket</div>
@@ -755,10 +777,10 @@ img{max-width:100%;display:block;}
       <div class="checkoutProduct" id="checkoutProductArea"></div>
 
       <div class="secure">
-        <h3><span class="pinkEmoji">🔒</span> Secure Checkout</h3>
+        <h3><span class="pinkEmoji">ðŸ”’</span> Secure Checkout</h3>
         <p>
           Payment is made directly via PayPal or Card. Orders are marked <strong>Awaiting Verification</strong>
-          until a staff member manually confirms your payment has arrived — this is not automatic,
+          until a staff member manually confirms your payment has arrived â€” this is not automatic,
           so please allow a short wait after paying.
         </p>
       </div>
@@ -793,11 +815,11 @@ img{max-width:100%;display:block;}
         <div class="summary-card">
           <div id="summaryItemsArea"></div>
           <hr>
-          <div class="summary-row"><span>Subtotal</span><span id="subtotalPrice">£0.00</span></div>
-          <div class="summary-row"><span>Fees</span><span>£0.00</span></div>
-          <div class="summary-row"><span>Discount</span><span id="discountAmount">- £0.00</span></div>
+          <div class="summary-row"><span>Subtotal</span><span id="subtotalPrice">Â£0.00</span></div>
+          <div class="summary-row"><span>Fees</span><span>Â£0.00</span></div>
+          <div class="summary-row"><span>Discount</span><span id="discountAmount">- Â£0.00</span></div>
           <hr>
-          <div class="summary-total"><span>Total</span><span id="totalPrice">£0.00</span></div>
+          <div class="summary-total"><span>Total</span><span id="totalPrice">Â£0.00</span></div>
         </div>
       </div>
 
@@ -806,14 +828,14 @@ img{max-width:100%;display:block;}
         <div class="payment-list">
           <div class="payment-option active" onclick="selectPayment('paypal',this)">
             <div class="payment-left">
-              <div class="payment-logo paypalLogo"><span class="pinkEmoji">🟦</span></div>
+              <div class="payment-logo paypalLogo"><span class="pinkEmoji">ðŸŸ¦</span></div>
               <div><h4>PayPal</h4><p>Send payment directly via your PayPal.Me link</p></div>
             </div>
             <div class="radio"></div>
           </div>
           <div class="payment-option" onclick="selectPayment('revolut',this)">
             <div class="payment-left">
-              <div class="payment-logo cardLogo"><span class="pinkEmoji">💳</span></div>
+              <div class="payment-logo cardLogo"><span class="pinkEmoji">ðŸ’³</span></div>
               <div><h4>Card</h4><p>Send payment directly via your Credit/Debit card</p></div>
             </div>
             <div class="radio"></div>
@@ -824,19 +846,19 @@ img{max-width:100%;display:block;}
 
       <div class="trustSection">
         <div class="trustGrid">
-          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">⚡</span></div>
+          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">âš¡</span></div>
             <div><h4>Fast Verification</h4><p>Most payments are checked and delivered same-day.</p></div></div>
-          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">🛡️</span></div>
+          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">ðŸ›¡ï¸</span></div>
             <div><h4>Trusted Seller</h4><p>Fast support through Discord.</p></div></div>
-          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">🔒</span></div>
+          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">ðŸ”’</span></div>
             <div><h4>Manual Verification</h4><p>A real person checks every payment before delivery.</p></div></div>
-          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">💬</span></div>
+          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">ðŸ’¬</span></div>
             <div><h4>24/7 Support</h4><p>Need help? Open a support ticket.</p></div></div>
         </div>
       </div>
 
       <footer class="checkoutFooter">
-        <div class="footerLeft">© 2026 VeloraMM2</div>
+        <div class="footerLeft">Â© 2026 VeloraMM2</div>
         <div class="footerRight"><span>PayPal</span><span>Card</span></div>
       </footer>
 
@@ -856,16 +878,23 @@ img{max-width:100%;display:block;}
   <!-- PENDING / AWAITING VERIFICATION SCREEN -->
   <div id="pendingScreen" class="overlay" style="display:none;">
     <div class="pendingCard">
-      <div class="pendingIcon"><span class="pinkEmoji">⏳</span></div>
+      <div class="pendingMedia" id="claimVideoArea">
+        <div class="videoThumbWrap" onclick="playClaimVideo()">
+          <img src="https://img.youtube.com/vi/c7fcnwd1WJg/hqdefault.jpg" alt="How to claim your item">
+          <div class="playButtonOverlay">&#9654;</div>
+        </div>
+      </div>
+      <div class="pendingMediaCaption">How to claim your item — tap to watch</div>
+      <div class="pendingIcon"><span class="pinkEmoji">â³</span></div>
       <h2 class="confirmHeading">Order Created</h2>
       <p>Order #: <strong id="orderNumberText"></strong></p>
       <div class="pendingStatus">Status: <strong>Awaiting Verification</strong></div>
       <div class="pendingSteps">
         <b>What happens next:</b><br>
-        1. Send £<span id="pendingAmount"></span> using the <span id="pendingMethodName"></span> tab that just opened.<br>
+        1. Send Â£<span id="pendingAmount"></span> using the <span id="pendingMethodName"></span> tab that just opened.<br>
         2. Join the Discord and open a ticket with your order number.<br>
         3. A staff member will check the payment and mark your order as paid.<br>
-        4. Your item is delivered once payment is confirmed — nothing is sent automatically.
+        4. Your item is delivered once payment is confirmed â€” nothing is sent automatically.
       </div>
       <a href="https://discord.gg/veloramm2" target="_blank" class="discordButton">Join Discord</a>
       <button class="backButton" onclick="location.reload()">Return to Shop</button>
@@ -878,23 +907,27 @@ img{max-width:100%;display:block;}
 <div class="drawer" id="cartDrawer">
   <div class="drawerHead">
     <h3>Your Basket</h3>
-    <button class="drawerClose" onclick="closeCart()">✕</button>
+    <button class="drawerClose" onclick="closeCart()">âœ•</button>
   </div>
   <div class="drawerItems" id="drawerItems"></div>
   <div class="drawerFooter">
     <button class="removeAllBtn" id="removeAllBtn" onclick="removeAllFromCart()">Remove All</button>
-    <div class="drawerTotalRow"><span>Total</span><span id="drawerTotal">£0.00</span></div>
+    <div class="drawerTotalRow"><span>Total</span><span id="drawerTotal">Â£0.00</span></div>
     <button class="drawerCheckoutBtn" id="drawerCheckoutBtn" onclick="showCheckout()">Checkout</button>
   </div>
 </div>
 
 <script>
 /* ============ PRODUCT DATA ============ */
-/* Bundle data lives directly on each product that belongs to one — see e.g. "shadow" below. */
+/* Bundle data lives directly on each product that belongs to one â€” see e.g. "shadow" below. */
+function playClaimVideo(){
+  const area = document.getElementById("claimVideoArea");
+  area.innerHTML = '<iframe src="https://www.youtube.com/embed/c7fcnwd1WJg?autoplay=1" title="VeloraMM2 Claiming Tutorial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+}
 const vintageBundle = {
   id:"vintage-bundle",
-  name:"Vintage Bundle — All 5 Knives",
-  blurb:"Own the complete Vintage Knive collection in one purchase — all five colourways, bundled at a reduced price.",
+  name:"Vintage Bundle â€” All 5 Knives",
+  blurb:"Own the complete Vintage Knive collection in one purchase â€” all five colourways, bundled at a reduced price.",
   price:0.59,
   original:0.99,
   itemIds:["splitter","ghost","prince","shadow","blood"]
@@ -932,7 +965,7 @@ const categories = {
       { id:"heartblade", name:"Heartblade", price:1.41, original:2.07, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
         image:"https://i.ibb.co/qF3zGkRB/Shadow.png",
         desc:"A Godly-tier sword with a heart-shaped hilt and shimmering pink blade. One of the most recognisable Godly weapons in MM2."
-        /* no bundle field — Godly items don't currently have a bundle */ },
+        /* no bundle field â€” Godly items don't currently have a bundle */ },
     ]
   },
   Chroma: { blurb: "Colour-shifting weapons with animated shine effects.", items: [] },
@@ -950,7 +983,7 @@ function findItem(id){
   }
   return null;
 }
-function starString(rating){ return "★".repeat(rating) + "☆".repeat(5-rating); }
+function starString(rating){ return "â˜…".repeat(rating) + "â˜†".repeat(5-rating); }
 
 /* ============ GRID / TABS ============ */
 function renderTabs(){
@@ -986,7 +1019,6 @@ function render(){
   }else if(sortMode === "newest"){
     items.sort((a,b)=>new Date(b.dateAdded) - new Date(a.dateAdded));
   }
-  // "relevance" keeps original order (or search-match order)
 
   const grid = document.getElementById("grid");
   grid.innerHTML = "";
@@ -1000,14 +1032,14 @@ function render(){
     card.className = "card";
     card.innerHTML = `
       <div class="cardImgWrap">
-        ${savings>0 ? `<div class="saveBadge">Save £${savings.toFixed(2)}</div>` : ""}
+        ${savings>0 ? `<div class="saveBadge">Save Â£${savings.toFixed(2)}</div>` : ""}
         <img src="${it.image}" alt="${it.name}">
       </div>
       <div class="cardBody">
         <div class="cardName">${it.name}</div>
         <div class="cardPriceRow">
-          <span class="cardPrice">£${it.price.toFixed(2)}</span>
-          ${it.original ? `<span class="cardOldPrice">£${it.original.toFixed(2)}</span>` : ""}
+          <span class="cardPrice">Â£${it.price.toFixed(2)}</span>
+          ${it.original ? `<span class="cardOldPrice">Â£${it.original.toFixed(2)}</span>` : ""}
         </div>
       </div>`;
     card.addEventListener("click", ()=>openProductDetail(it.id));
@@ -1015,7 +1047,6 @@ function render(){
   });
 }
 
-/* ============ PRODUCT DETAIL (full page) ============ */
 function openProductDetail(id){
   const it = findItem(id);
   if(!it) return;
@@ -1026,9 +1057,9 @@ function openProductDetail(id){
   document.getElementById("pdBreadcrumbCat").textContent = activeCategory;
   document.getElementById("pdBreadcrumbName").textContent = it.name;
   document.getElementById("pdName").textContent = it.name;
-  document.getElementById("pdTagline").textContent = activeCategory + " Weapon • Murder Mystery 2";
-  document.getElementById("pdPrice").textContent = "£"+it.price.toFixed(2);
-  document.getElementById("pdOldPrice").textContent = it.original ? "£"+it.original.toFixed(2) : "";
+  document.getElementById("pdTagline").textContent = activeCategory + " Weapon â€¢ Murder Mystery 2";
+  document.getElementById("pdPrice").textContent = "Â£"+it.price.toFixed(2);
+  document.getElementById("pdOldPrice").textContent = it.original ? "Â£"+it.original.toFixed(2) : "";
   document.getElementById("pdStatRarity").textContent = activeCategory;
   document.getElementById("pdStatDelivery").textContent = it.delivery;
   document.getElementById("pdDesc").textContent = it.desc;
@@ -1048,9 +1079,9 @@ function renderBundleSection(item){
   section.style.display = "block";
   document.getElementById("bundleTitle").textContent = bundle.name;
   document.getElementById("bundleBlurb").textContent = bundle.blurb;
-  document.getElementById("bundleSaveBadge").textContent = "Save £" + (bundle.original - bundle.price).toFixed(2);
-  document.getElementById("bundleOriginalPrice").textContent = "£" + bundle.original.toFixed(2);
-  document.getElementById("bundlePrice").textContent = "£" + bundle.price.toFixed(2);
+  document.getElementById("bundleSaveBadge").textContent = "Save Â£" + (bundle.original - bundle.price).toFixed(2);
+  document.getElementById("bundleOriginalPrice").textContent = "Â£" + bundle.original.toFixed(2);
+  document.getElementById("bundlePrice").textContent = "Â£" + bundle.price.toFixed(2);
 
   const grid = document.getElementById("bundleGrid");
   grid.innerHTML = bundle.itemIds.map(id=>{
@@ -1063,7 +1094,6 @@ function pdBuyBundle(){
   const bundle = it ? it.bundle : null;
   if(!bundle) return;
   const bundleKey = "bundle:" + bundle.id;
-  // Buy Now / Buy Bundle checks out just this item — clear anything already in the basket first.
   cart = {};
   cart[bundleKey] = {
     item: { id: bundleKey, name: bundle.name, price: bundle.price, image: findItem(bundle.itemIds[0]).image },
@@ -1074,7 +1104,6 @@ function pdBuyBundle(){
 }
 function pdAddToCart(){ addToCart(activeItemId); }
 function pdBuyNow(){
-  // Buy Now checks out just this item — clear anything already in the basket first.
   cart = {};
   addToCart(activeItemId, { silent:true });
   showCheckout();
@@ -1082,7 +1111,6 @@ function pdBuyNow(){
 function addToCart(id, opts={}){
   const it = findItem(id);
   if(!it) return;
-  const isNew = !cart[id];
   if(cart[id]) cart[id].qty += 1;
   else cart[id] = { item: it, qty: 1 };
   updateCartUI();
@@ -1136,7 +1164,7 @@ function updateCartUI(){
         <img src="${c.item.image}">
         <div class="info">
           <div class="n">${c.item.name}</div>
-          <div class="p">£${(c.item.price*c.qty).toFixed(2)}</div>
+          <div class="p">Â£${(c.item.price*c.qty).toFixed(2)}</div>
           <div class="qtyRow">
             <button onclick="changeQty('${id}',-1)">-</button>
             <span>${c.qty}</span>
@@ -1148,12 +1176,11 @@ function updateCartUI(){
     document.getElementById("drawerCheckoutBtn").disabled = false;
     document.getElementById("removeAllBtn").style.display = "block";
   }
-  document.getElementById("drawerTotal").textContent = "£"+cartTotal().toFixed(2);
+  document.getElementById("drawerTotal").textContent = "Â£"+cartTotal().toFixed(2);
 }
 function openCart(){ document.getElementById("cartDrawer").classList.add("open"); }
 function closeCart(){ document.getElementById("cartDrawer").classList.remove("open"); }
 
-/* ============ VIEW SWITCHING ============ */
 function showCheckout(){
   if(cartCount()===0) return;
   closeCart();
@@ -1167,24 +1194,24 @@ function showCheckout(){
     productArea.innerHTML = `
       <img src="${c.item.image}">
       <h2>${c.item.name}${c.qty>1 ? " x"+c.qty : ""}</h2>
-      <div class="checkoutPrice">£${(c.item.price*c.qty).toFixed(2)}</div>`;
+      <div class="checkoutPrice">Â£${(c.item.price*c.qty).toFixed(2)}</div>`;
   }else{
-    productArea.innerHTML = `<h2>${cartCount()} items</h2><div class="checkoutPrice">£${cartTotal().toFixed(2)}</div>`;
+    productArea.innerHTML = `<h2>${cartCount()} items</h2><div class="checkoutPrice">Â£${cartTotal().toFixed(2)}</div>`;
   }
 
   summaryArea.innerHTML = entries.map(([id,c])=>`
     <div class="summary-product">
       <img src="${c.item.image}">
       <div class="summary-info"><h4>${c.item.name}${c.qty>1 ? " x"+c.qty : ""}</h4><p>${c.item.name in categories.Godly ? "Godly" : ""}</p></div>
-      <div class="summary-price">£${(c.item.price*c.qty).toFixed(2)}</div>
+      <div class="summary-price">Â£${(c.item.price*c.qty).toFixed(2)}</div>
     </div>`).join("");
 
   basePrice = cartTotal();
   currentTotal = basePrice;
   document.getElementById("promo").value = "";
-  document.getElementById("discountAmount").textContent = "- £0.00";
-  document.getElementById("subtotalPrice").textContent = "£"+basePrice.toFixed(2);
-  document.getElementById("totalPrice").textContent = "£"+basePrice.toFixed(2);
+  document.getElementById("discountAmount").textContent = "- Â£0.00";
+  document.getElementById("subtotalPrice").textContent = "Â£"+basePrice.toFixed(2);
+  document.getElementById("totalPrice").textContent = "Â£"+basePrice.toFixed(2);
 
   document.getElementById("productView").style.display = "none";
   document.getElementById("productDetailView").style.display = "none";
@@ -1198,26 +1225,8 @@ function showProduct(){
   window.scrollTo(0,0);
 }
 
-/* ==========================================================
-   PAYMENT / ORDER FLOW — read this before changing anything
-   ==========================================================
-   This checkout does NOT verify payment itself. Clicking
-   "Continue to Payment" only opens the customer's PayPal/Revolut
-   tab with the amount filled in, then shows an "Awaiting
-   Verification" screen with an order number. It never marks an
-   order as paid, never claims payment was received, and never
-   notifies staff on its own — EXCEPT for the Discord webhook
-   below, which just posts the order details into a staff channel
-   so a human knows to go check for the payment. The webhook does
-   not, and cannot, confirm that money actually arrived.
-
-   Marking an order as paid — and telling staff to deliver — should
-   only happen after a real person checks the account and matches a
-   payment to an order number. That confirmation step belongs in a
-   separate, staff-only tool. Wire that up before promising delivery.
-   ========================================================== */
-const PAYPAL_ME = "https://www.paypal.me/EliteSocietyDiscord"; // replace with your real handle
-const REVOLUT_ME = "https://revolut.me/veloramm2"; // replace with your real handle
+const PAYPAL_ME = "https://www.paypal.me/EliteSocietyDiscord";
+const REVOLUT_ME = "https://revolut.me/veloramm2";
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1412509659373240341/D28LiaEPfuqhyOF1qXkChcs8Z7-5NBV0fyZMHprSZ8K4A5rePktoNFCp0ji1SMYBLuP8";
 
 let selectedPayment = "paypal";
@@ -1235,14 +1244,28 @@ function showNotification(message,type){
   note.className = "notification show " + type;
   setTimeout(()=>{ note.classList.remove("show"); }, 2800);
 }
+function launchConfetti(pieceCount){
+  const count = typeof pieceCount === "number" ? pieceCount : 40;
+  const colors = ["#ff4da6","#ff8bc8","#ffb5dd","#ff6fb8"];
+  for(let i=0;i<count;i++){
+    const piece = document.createElement("div");
+    piece.className = "confetti-piece";
+    const size = (Math.random()*8)+6;
+    piece.style.width = size + "px";
+    piece.style.height = size + "px";
+    piece.style.left = (Math.random()*100) + "vw";
+    piece.style.background = colors[Math.floor(Math.random()*colors.length)];
+    piece.style.animationDuration = (Math.random()*1.5+2) + "s";
+    document.body.appendChild(piece);
+    setTimeout(function(){ piece.remove(); }, 3600);
+  }
+}
 function selectPayment(type, element){
   selectedPayment = type;
   document.querySelectorAll(".payment-option").forEach(card=>card.classList.remove("active"));
   element.classList.add("active");
 }
 
-/* Builds a readable "item ordered" string from the current basket,
-   e.g. "Shadow x2, Ghost" or "Vintage Bundle — All 5 Knives" */
 function describeOrderItems(){
   return Object.values(cart)
     .map(c => c.item.name + (c.qty > 1 ? " x" + c.qty : ""))
@@ -1251,7 +1274,7 @@ function describeOrderItems(){
 
 function sendDiscordWebhook(orderData){
   const embed = {
-    title: "📦 New Order Received",
+    title: "ðŸ“¦ New Order Received",
     color: 16718286,
     fields: [
       { name:"Order Number", value:orderData.orderNumber, inline:true },
@@ -1260,7 +1283,7 @@ function sendDiscordWebhook(orderData){
       { name:"Roblox Username", value:orderData.roblox, inline:true },
       { name:"Discord Username", value:orderData.discord, inline:true },
       { name:"Item Ordered", value:orderData.itemName, inline:false },
-      { name:"Price", value:"£"+orderData.price, inline:true },
+      { name:"Price", value:"Â£"+orderData.price, inline:true },
       { name:"Payment Method", value:orderData.paymentMethod, inline:true }
     ],
     footer:{ text:"VeloraMM2 Store" },
@@ -1305,6 +1328,28 @@ function checkout(){
     paymentMethod: methodNameForWebhook
   });
 
+  if(typeof emailjs!=="undefined" && window.emailjsReady){
+    try{
+      emailjs.send("service_5uvd9ds","template_vud4ahe",{
+        to_email:email,
+        roblox_username:roblox,
+        discord_username:discord,
+        payment_method:methodNameForWebhook,
+        order_total:amount,
+        product_name:describeOrderItems(),
+        order_number:orderNumber
+      }).then(function(){
+        console.log("Receipt sent to " + email);
+      }).catch(function(error){
+        console.error("EmailJS error:", error);
+      });
+    }catch(error){
+      console.error("EmailJS failed to run:", error);
+    }
+  }else{
+    console.warn("EmailJS library not ready yet - skipping receipt email this time.");
+  }
+
   document.getElementById("loadingScreen").style.display = "flex";
 
   const isRevolut = selectedPayment === "revolut";
@@ -1321,6 +1366,8 @@ function checkout(){
     document.getElementById("pendingAmount").textContent = amount;
     document.getElementById("pendingMethodName").textContent = methodName;
     document.getElementById("pendingScreen").style.display = "flex";
+    launchConfetti(54);
+    setTimeout(function(){ launchConfetti(28); }, 450);
 
     window.open(payUrl, "_blank", "noopener,noreferrer");
   }, 900);
@@ -1330,21 +1377,20 @@ function applyPromo(){
   const code = document.getElementById("promo").value.trim().toUpperCase();
   if(code === "") return;
 
-  // Discounts are capped below 100% so an order can never reach £0.
   const knownCodes = { "VELORA10": 0.10, "WELCOME5": 0.05 };
   if(!(code in knownCodes)){ showNotification("Invalid promo code.","invalid"); return; }
 
-  const discountRate = Math.min(knownCodes[code], 0.5); // hard cap 50% off
+  const discountRate = Math.min(knownCodes[code], 0.5);
   const amount = basePrice * discountRate;
-  const finalPrice = Math.max(basePrice - amount, 0.01); // never free
+  const finalPrice = Math.max(basePrice - amount, 0.01);
   currentTotal = finalPrice;
 
-  document.getElementById("discountAmount").textContent = "- £" + amount.toFixed(2);
-  document.getElementById("totalPrice").textContent = "£" + finalPrice.toFixed(2);
-  showNotification("Saved £" + amount.toFixed(2), "valid");
+  document.getElementById("discountAmount").textContent = "- Â£" + amount.toFixed(2);
+  document.getElementById("totalPrice").textContent = "Â£" + finalPrice.toFixed(2);
+  showNotification("Saved Â£" + amount.toFixed(2), "valid");
+  launchConfetti(42);
 }
 
-/* ============ INIT ============ */
 render();
 updateCartUI();
 </script>
