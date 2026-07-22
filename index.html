@@ -355,10 +355,8 @@ img{max-width:100%;display:block;}
 #checkoutView{ display:none; }
 .checkoutInner{
   background:
-    radial-gradient(circle at top left,#ffd4eb 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#ffd1ff 0%,transparent 30%),
-    #fafafa;
-  padding:40px;min-height:calc(100vh - 60px);
+    linear-gradient(180deg,#fff7fc 0%,#fafafa 42%,#fff 100%);
+  padding:34px 24px 44px;min-height:calc(100vh - 60px);
   display:flex;justify-content:center;align-items:flex-start;
 }
 
@@ -392,17 +390,17 @@ img{max-width:100%;display:block;}
 .petals span:nth-child(8){ left:96%; animation-duration:14s; }
 @keyframes fall{ 0%{ transform:translateY(-120px) rotate(0deg); } 100%{ transform:translateY(120vh) rotate(720deg); } }
 
-.wrapper{width:100%;max-width:1150px;display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:start;}
+.wrapper{width:100%;max-width:1120px;display:grid;grid-template-columns:390px 1fr;gap:28px;align-items:start;}
 
 .ckCard{
-  position:relative;overflow:hidden;background:rgba(255,255,255,.92);
-  backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.7);
-  box-shadow:0 20px 60px rgba(0,0,0,.08);transition:.35s;
+  position:relative;overflow:hidden;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(14px);border:1px solid #f1dce8;border-radius:18px;
+  box-shadow:0 18px 45px rgba(28,18,24,.08);transition:.25s;
 }
-.ckCard:hover{transform:translateY(-5px);box-shadow:0 35px 80px rgba(0,0,0,.12);}
+.ckCard:hover{box-shadow:0 24px 54px rgba(28,18,24,.11);}
 
-.checkoutLeft{padding:35px;position:sticky;top:40px;}
-.checkoutLogo{text-align:center;margin-bottom:28px;}
+.checkoutLeft{padding:28px;position:sticky;top:30px;}
+.checkoutLogo{text-align:center;margin-bottom:22px;}
 .pinkEmoji{filter:grayscale(1) sepia(1) saturate(6) hue-rotate(300deg) brightness(1.05);display:inline-block;}
 .storeLogoImg{max-width:220px;width:100%;height:auto;}
 .cartTitle{
@@ -415,59 +413,61 @@ img{max-width:100%;display:block;}
 
 .checkoutProduct{
   background:linear-gradient(180deg,#fff,#fff9fd);border:1px solid #f4d8e9;
-  border-radius:22px;padding:25px;text-align:center;
+  border-radius:12px;padding:22px;text-align:center;
 }
-.checkoutProduct img{width:180px;transition:.35s;margin:0 auto;border-radius:0;}
+.checkoutProduct img{width:160px;transition:.35s;margin:0 auto;border-radius:0;}
 .checkoutProduct img:hover{transform:scale(1.05);}
-.checkoutProduct h2{font-size:26px;font-weight:800;margin-top:15px;}
-.checkoutPrice{margin-top:10px;font-size:22px;font-weight:700;color:var(--pink);}
+.checkoutProduct h2{font-size:22px;font-weight:800;margin-top:14px;}
+.checkoutPrice{margin-top:8px;font-size:22px;font-weight:800;color:var(--pink);}
 
-.secure{margin-top:28px;padding:20px;border-radius:18px;background:#fafafa;border:1px solid var(--border);}
+.secure{margin-top:22px;padding:18px;border-radius:12px;background:#fff;border:1px solid #f0e3ea;}
 .secure h3{font-size:17px;margin-bottom:10px;}
 .secure p{font-size:14px;color:var(--sub);line-height:1.7;}
 
-.checkoutRight{padding:40px;}
+.checkoutRight{padding:32px;}
 .backLink{display:inline-block;margin-bottom:16px;font-size:14px;font-weight:700;color:var(--pink);cursor:pointer;text-decoration:none;}
 .backLink:hover{text-decoration:underline;}
-.checkoutTitle{font-size:34px;font-weight:800;margin-bottom:5px;}
-.checkoutSubtitle{color:var(--sub);margin-bottom:35px;}
+.checkoutTitle{font-size:30px;font-weight:800;margin-bottom:6px;}
+.checkoutSubtitle{color:var(--sub);margin-bottom:28px;}
 
-.section{margin-bottom:35px;}
-.section h3{font-size:20px;margin-bottom:18px;}
+.section{margin-bottom:28px;}
+.section h3{font-size:18px;margin-bottom:14px;}
 
-.input{margin-bottom:18px;}
-.input label{display:block;font-size:14px;font-weight:700;margin-bottom:8px;}
+.input{margin-bottom:16px;}
+.input label{display:block;font-size:13px;font-weight:800;margin-bottom:7px;color:#2b2b2b;}
 .input input{
-  width:100%;height:56px;padding:0 18px;font-size:16px;border-radius:14px;
+  width:100%;height:50px;padding:0 16px;font-size:15px;border-radius:10px;
   border:1px solid #ddd;outline:none;transition:.2s;
 }
 .input input:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,77,166,.12);}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .discount{display:flex;gap:12px;}
 .discount input{flex:1;}
-.apply{width:120px;border:none;border-radius:14px;background:black;color:white;font-weight:700;cursor:pointer;transition:.2s;}
+.apply{width:112px;border:none;border-radius:10px;background:#161616;color:white;font-weight:800;cursor:pointer;transition:.2s;}
 .apply:hover{background:#2c2c2c;}
 
-.summary-card{padding:22px;border:1px solid #ececec;border-radius:20px;background:#fff;}
-.summary-product{display:flex;align-items:center;gap:18px;margin-bottom:14px;}
+.summary-card{padding:20px;border:1px solid #f0dce8;border-radius:12px;background:#fff;box-shadow:0 12px 28px rgba(28,18,24,.04);}
+.summary-product{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
 .summary-product img{width:56px;height:56px;object-fit:cover;border-radius:0;}
 .summary-info{flex:1;}
 .summary-info h4{font-size:16px;margin-bottom:2px;}
 .summary-info p{font-size:13px;color:#888;}
 .summary-price{font-size:16px;font-weight:700;color:#ff4da6;}
-.summary-row{display:flex;justify-content:space-between;margin:16px 0;font-size:15px;}
-.summary-total{display:flex;justify-content:space-between;margin-top:20px;font-size:24px;font-weight:800;}
-.summary-card hr{border:none;height:1px;background:#ececec;margin:20px 0;}
+.summary-row{display:flex;justify-content:space-between;margin:13px 0;font-size:14px;color:#555;}
+.summary-row span:last-child{font-weight:700;color:#222;}
+.summary-total{display:flex;justify-content:space-between;margin-top:18px;font-size:22px;font-weight:800;}
+.summary-total span:last-child{color:var(--pink);}
+.summary-card hr{border:none;height:1px;background:#f0e2ea;margin:18px 0;}
 
-.payment-list{display:flex;flex-direction:column;gap:18px;}
+.payment-list{display:flex;flex-direction:column;gap:12px;}
 .payment-option{
-  display:flex;justify-content:space-between;align-items:center;padding:18px;
-  border:2px solid #ececec;border-radius:18px;cursor:pointer;transition:.25s;
+  display:flex;justify-content:space-between;align-items:center;padding:16px;
+  border:1px solid #ececec;border-radius:12px;cursor:pointer;transition:.2s;background:#fff;
 }
-.payment-option:hover{border-color:#ff8bc8;transform:translateY(-2px);box-shadow:0 12px 25px rgba(0,0,0,.08);}
-.payment-option.active{border-color:#ff4da6;background:#fff7fc;}
-.payment-left{display:flex;align-items:center;gap:18px;}
-.payment-logo{width:55px;height:55px;display:flex;justify-content:center;align-items:center;border-radius:14px;font-size:24px;}
+.payment-option:hover{border-color:#ff8bc8;box-shadow:0 10px 20px rgba(255,77,166,.08);}
+.payment-option.active{border-color:#ff4da6;background:#fff7fc;box-shadow:0 0 0 3px rgba(255,77,166,.08);}
+.payment-left{display:flex;align-items:center;gap:14px;}
+.payment-logo{width:46px;height:46px;display:flex;justify-content:center;align-items:center;border-radius:10px;font-size:22px;}
 .cardLogo{background:#e8f1ff;}
 .paypalLogo{background:#fff2cc;}
 .payment-option h4{margin-bottom:4px;}
@@ -476,13 +476,13 @@ img{max-width:100%;display:block;}
 .payment-option.active .radio{background:#ff4da6;box-shadow:inset 0 0 0 5px white;}
 
 .checkoutButton{
-  position:relative;overflow:hidden;margin-top:30px;width:100%;height:64px;border:none;
-  border-radius:18px;cursor:pointer;font-size:18px;font-weight:700;color:white;
+  position:relative;overflow:hidden;margin-top:24px;width:100%;height:58px;border:none;
+  border-radius:12px;cursor:pointer;font-size:17px;font-weight:800;color:white;
   background:linear-gradient(90deg,#ffb5dd,#ff4da6,#ff8cc9,#ff4da6);
   background-size:300%;animation:gradientMove 8s linear infinite;
   box-shadow:0 15px 35px rgba(255,77,166,.30);transition:.25s;
 }
-.checkoutButton:hover{transform:translateY(-4px);box-shadow:0 25px 50px rgba(255,77,166,.45);}
+.checkoutButton:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(255,77,166,.42);}
 .checkoutButton::before{
   content:"";position:absolute;top:0;left:-120%;width:70%;height:100%;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
@@ -491,10 +491,10 @@ img{max-width:100%;display:block;}
 @keyframes shine{ 0%{left:-120%;} 100%{left:180%;} }
 .checkoutButton:disabled{opacity:.55;cursor:not-allowed;animation:none;}
 
-.trustSection{margin-top:40px;padding:28px;border-radius:22px;background:#fafafa;border:1px solid #ececec;}
+.trustSection{margin-top:28px;padding:22px;border-radius:12px;background:#fff;border:1px solid #f0e3ea;}
 .trustGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .trustSection .trustItem{display:flex;align-items:flex-start;gap:14px;}
-.trustIcon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:22px;border-radius:14px;background:#fff0f8;}
+.trustIcon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:20px;border-radius:10px;background:#fff0f8;}
 .trustSection .trustItem h4{font-size:16px;margin-bottom:4px;}
 .trustSection .trustItem p{font-size:13px;line-height:1.5;color:#777;}
 
@@ -591,8 +591,8 @@ img{max-width:100%;display:block;}
   <div class="topbar">
     <div class="brand"><img src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2"></div>
     <div class="navLinks">
-      <a onclick="showProduct()" class="active">Home</a>
-      <a onclick="showProduct();activeCategory='Godly';render();">Knives</a>
+      <a onclick="showProduct()">Home</a>
+      <a onclick="showProduct();activeCategory='All';render();" class="active">Knives</a>
       <a href="#">Guns</a>
       <a href="#">Sets</a>
       <a href="#">Claiming</a>
@@ -615,7 +615,7 @@ img{max-width:100%;display:block;}
 
   <div class="toolbar">
     <div class="searchBox">
-      <span class="searchIcon">⌕</span>
+      <span class="searchIcon">🔍︎</span>
       <input id="searchInput" type="text" placeholder="Search weapons..." oninput="render()">
     </div>
     <select class="sortSelect" id="sortSelect" onchange="render()">
@@ -636,6 +636,7 @@ img{max-width:100%;display:block;}
       </div>
       <div class="pageFooterCol">
         <h4>Shop</h4>
+        <a href="#" onclick="event.preventDefault();showProduct();activeCategory='All';render();">All</a>
         <a href="#" onclick="event.preventDefault();showProduct();activeCategory='Godly';render();">Godly</a>
         <a href="#" onclick="event.preventDefault();showProduct();activeCategory='Vintage';render();">Vintage</a>
         <a href="#" onclick="event.preventDefault();showProduct();activeCategory='Chroma';render();">Chroma</a>
@@ -665,7 +666,7 @@ img{max-width:100%;display:block;}
     <div class="brand"><img src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2"></div>
     <div class="navLinks">
       <a onclick="showProduct()">Home</a>
-      <a onclick="showProduct();activeCategory='Godly';render();" class="active">Knives</a>
+      <a onclick="showProduct();activeCategory='All';render();" class="active">Knives</a>
       <a href="#">Guns</a>
       <a href="#">Sets</a>
       <a href="#">Claiming</a>
@@ -716,8 +717,8 @@ img{max-width:100%;display:block;}
 
       <div class="trustRow">
         <div class="trustItem">🌸 Fast Delivery</div>
-        <div class="trustItem">💗 Trusted Seller</div>
-        <div class="trustItem">👚 Secure Payment</div>
+        <div class="trustItem">💖 Trusted Seller</div>
+        <div class="trustItem">💷 Secure Payment</div>
         <div class="trustItem">🍷 24/7 Support</div>
       </div>
     </div>
@@ -783,7 +784,7 @@ img{max-width:100%;display:block;}
     <div class="brand"><img src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2"></div>
     <div class="navLinks">
       <a onclick="showProduct()">Home</a>
-      <a onclick="showProduct();activeCategory='Godly';render();">Knives</a>
+      <a onclick="showProduct();activeCategory='All';render();">Knives</a>
       <a href="#">Guns</a>
       <a href="#">Sets</a>
       <a href="#">Claiming</a>
@@ -808,7 +809,7 @@ img{max-width:100%;display:block;}
   <div class="wrapper">
 
     <div class="checkoutLeft ckCard">
-      <a class="backLink" onclick="showProduct()">← Back to shop</a>
+      <a class="backLink" onclick="showProduct()">⬅️ Back to shop</a>
 
       <div class="checkoutLogo">
         <div class="cartTitle">Your Basket</div>
@@ -817,7 +818,7 @@ img{max-width:100%;display:block;}
       <div class="checkoutProduct" id="checkoutProductArea"></div>
 
       <div class="secure">
-        <h3><span class="pinkEmoji">🔒</span> Secure Checkout</h3>
+        <h3><span class="pinkEmoji">🌸</span> Secure Checkout</h3>
         <p>
           Payment is made directly via PayPal or Card. Orders are marked <strong>Awaiting Verification</strong>
           until a staff member manually confirms your payment has arrived — this is not automatic,
@@ -868,7 +869,7 @@ img{max-width:100%;display:block;}
         <div class="payment-list">
           <div class="payment-option active" onclick="selectPayment('paypal',this)">
             <div class="payment-left">
-              <div class="payment-logo paypalLogo"><span class="pinkEmoji">🟦</span></div>
+              <div class="payment-logo paypalLogo"><span class="pinkEmoji">🌸</span></div>
               <div><h4>PayPal</h4><p>Send payment directly via PayPal</p></div>
             </div>
             <div class="radio"></div>
@@ -886,13 +887,13 @@ img{max-width:100%;display:block;}
 
       <div class="trustSection">
         <div class="trustGrid">
-          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">⚡</span></div>
+          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">✅</span></div>
             <div><h4>Fast Verification</h4><p>Most payments are checked and delivered same-day.</p></div></div>
-          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">🛡️</span></div>
+          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">⚡</span></div>
             <div><h4>Trusted Seller</h4><p>Fast support through Discord.</p></div></div>
-          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">🔒</span></div>
+          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">🌸</span></div>
             <div><h4>Manual Verification</h4><p>A real person checks every payment before delivery.</p></div></div>
-          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">💬</span></div>
+          <div class="trustItem"><div class="trustIcon"><span class="pinkEmoji">🌸</span></div>
             <div><h4>24/7 Support</h4><p>Need help? Open a support ticket.</p></div></div>
         </div>
       </div>
@@ -924,8 +925,8 @@ img{max-width:100%;display:block;}
           <div class="playButtonOverlay">&#9654;</div>
         </div>
       </div>
-      <div class="pendingMediaCaption">How to claim your item � tap to watch</div>
-      <div class="pendingIcon"><span class="pinkEmoji">⏳</span></div>
+      <div class="pendingMediaCaption">How to claim your item - tap to watch</div>
+      <div class="pendingIcon"><span class="pinkEmoji">✅</span></div>
       <h2 class="confirmHeading">Order Created</h2>
       <p>Order #: <strong id="orderNumberText"></strong></p>
       <div class="pendingStatus">Status: <strong>Awaiting Verification</strong></div>
@@ -947,7 +948,7 @@ img{max-width:100%;display:block;}
 <div class="drawer" id="cartDrawer">
   <div class="drawerHead">
     <h3>Your Basket</h3>
-    <button class="drawerClose" onclick="closeCart()">✕</button>
+    <button class="drawerClose" onclick="closeCart()">?</button>
   </div>
   <div class="drawerItems" id="drawerItems"></div>
   <div class="drawerFooter">
@@ -973,57 +974,80 @@ const vintageBundle = {
   itemIds:["splitter","ghost","prince","shadow","blood"]
 };
 
+const seerBundle = {
+  id:"seer-bundle",
+  name:"Seer Bundle — All 6 Variants",
+  blurb:"Own the complete Seer Knive collection in one purchase — all six colourways, bundled at a reduced price.",
+  price:0.79,
+  original: 2.10,
+  itemIds:["redseer","seer","blueseer","purpleseer","yellowseer","orangeseer"]
+};
+
 const categories = {
   Vintage: {
     blurb: "Classic early-era weapons with a timeless look.",
     items: [
       { id:"shadow", name:"Shadow", price:0.20, original:0.34, rating:5, delivery:"Under 5 mins", dateAdded:"2024-01-10",
         image:"https://i.ibb.co/qF3zGkRB/Shadow.png",
-        desc:"A classic Vintage-tier knife known for its sleek black blade and timeless design. A long-time favourite among collectors and traders.",
+        desc:"Shadow is a vintage knife originally obtained from Murder Mystery 1, purchasable for 3,000 coins or 125 Robux at the time. It can now only be obtained by trading.",
         bundle: vintageBundle },
       { id:"ghost", name:"Ghost", price:0.20, original:0.34, rating:5, delivery:"Under 5 mins", dateAdded:"2024-03-22",
         image:"https://i.ibb.co/MDtxBxsX/Ghost-1.png",
-        desc:"A pale, ghostly colourway from the Vintage knife line, popular for its clean, understated look.",
+        desc:"Ghost is a vintage knife that was obtained originally from Murder Mystery 1. It is currently only obtainable by trading.",
         bundle: vintageBundle },
       { id:"prince", name:"Prince", price:0.20, original:0.34, rating:4, delivery:"Under 5 mins", dateAdded:"2024-02-14",
         image:"https://i.ibb.co/TBJ2WqGm/Prince-1.png",
-        desc:"An elegant, regal-themed variant from the Vintage knife collection.",
+        desc:"Prince is a vintage knife which originated from MM1, MM2's prequel.",
         bundle: vintageBundle },
       { id:"blood", name:"Blood", price:0.20, original:0.34, rating:5, delivery:"Under 5 mins", dateAdded:"2024-05-01",
         image:"https://i.ibb.co/C3YmZyrC/Blood-1.png",
-        desc:"A deep red colourway, one of the more sought-after Vintage knife skins.",
+        desc:"Blood is a vintage knife originally from Murder Mystery 1, Murder Mystery 2's prequel.",
         bundle: vintageBundle },
       { id:"splitter", name:"Splitter", price:0.20, original:0.34, rating:4, delivery:"Under 5 mins", dateAdded:"2023-11-30",
         image:"https://i.ibb.co/LXBM7cxX/Splitter-1.png",
-        desc:"A sharply detailed Vintage-tier knife with a distinctive split-blade design.",
+        desc:"Splitter is a vintage knife originally obtained from Murder Mystery 1. It can now only be obtained through trading.",
         bundle: vintageBundle },
     ]
   },
   Godly: {
     blurb: "High-tier weapons prized for their rarity and effects.",
     items: [
-      { id:"heartblade", name:"Heartblade", price:1.41, original:2.07, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
-        image:"https://i.ibb.co/qF3zGkRB/Shadow.png",
-        desc:"A Godly-tier sword with a heart-shaped hilt and shimmering pink blade. One of the most recognisable Godly weapons in MM2."
-        /* no bundle field — Godly items don't currently have a bundle */ },
-       { id:"heartbslade", name:"Heartbslade", price:1.41, original:2.07, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
-        image:"https://i.ibb.co/qF3zGkRB/Shadow.png",
-        desc:"A Godly-tier sword with a heart-shaped hilt and shimmering pink blade. One of the most recognisable Godly weapons in MM2."
-        /* no bundle field — Godly items don't currently have a bundle */ },
-       { id:"heartbzlade", name:"Heazrtblade", price:1.41, original:2.07, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
-        image:"https://i.ibb.co/qF3zGkRB/Shadow.png",
-        desc:"A Godly-tier sword with a heart-shaped hilt and shimmering pink blade. One of the most recognisable Godly weapons in MM2."
-        /* no bundle field — Godly items don't currently have a bundle */ },
+      { id:"redseer", name:"Red Seer", price:0.35, original:1.07, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
+        image:"https://i.ibb.co/QvsJ3y5S/Red-Seer-3.png",
+        desc:"Red Seer is a godly knife and the red reskin of Seer. It is obtainable (by chance) while crafting a Random Painted Seer, and through trading.",
+             bundle: seerBundle },
+     { id:"seer", name:"Seer", price:0.35, original:0.99, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
+        image:"https://i.ibb.co/chvnHLKn/Seer-2.png",
+        desc:"Seer is a godly knife, looking like an overseer. It is obtainable by crafting using Legendary Shards, and through trading.",
+       bundle: seerBundle },
+    { id:"yellowseer", name:"Yellow Seer", price:0.35, original:1.07, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
+        image:"https://i.ibb.co/1f2wS8XJ/Yellow-Seer-3.png",
+        desc:"Yellow Seer is a godly knife and the yellow reskin of Seer. It is obtainable (by chance) while crafting a Random Painted Seer, and through trading.",
+             bundle: seerBundle },
+     { id:"blueseer", name:"Blue Seer", price:0.35, original:0.99, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
+        image:"https://i.ibb.co/LzHMRpRq/Blue-Seer-4.png",
+        desc:"Blue Seer is a godly knife and the blue reskin of Seer. It is obtainable (by chance) while crafting a random painted seer, and through trading.",
+       bundle: seerBundle },
+      { id:"orangeseer", name:"Orange Seer", price:0.35, original:1.07, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
+        image:"https://i.ibb.co/vvLm333t/Orange-Seer-3.png",
+        desc:"Orange Seer is a godly knife and the orange reskin of Seer. It is obtainable (by chance) while crafting a Random Painted Seer, and through trading.",
+             bundle: seerBundle },
+     { id:"purpleseer", name:"Purple Seer", price:0.35, original:0.99, rating:5, delivery:"Under 5 mins", dateAdded:"2024-06-18",
+        image:"https://i.ibb.co/8LR514LR/Purple-Seer-3.png",
+        desc:"Purple Seer is a godly knife and the purple reskin of Seer. It is obtainable (by chance) while crafting a random painted seer, and through trading.",
+       bundle: seerBundle },
+       
     ]
   },
+  
   Chroma: { blurb: "Colour-shifting weapons with animated shine effects.", items: [] },
   Ancient: { blurb: "The rarest weapons in the game, from the earliest updates.", items: [] }
 };
 
-let activeCategory = "Godly";
+let activeCategory = "All";
 let cart = {}; // id -> {item, qty}
 let activeItemId = null;
-let currentDetailCategory = "Godly";
+let currentDetailCategory = "All";
 
 function findItem(id){
   for(const cat of Object.values(categories)){
@@ -1032,13 +1056,26 @@ function findItem(id){
   }
   return null;
 }
-function starString(rating){ return "★".repeat(rating) + "☆".repeat(5-rating); }
+function starString(rating){ return "?".repeat(rating) + "?".repeat(5-rating); }
+function categoryNames(){
+  return ["All", ...Object.keys(categories)];
+}
+function getCategoryItems(catName){
+  if(catName === "All"){
+    return Object.values(categories).flatMap(cat => cat.items);
+  }
+  return categories[catName] ? categories[catName].items : [];
+}
+function getCategoryBlurb(catName){
+  if(catName === "All") return "Browse every available MM2 knife in one place.";
+  return categories[catName] ? categories[catName].blurb : "";
+}
 
 /* ============ GRID / TABS ============ */
 function renderTabs(){
   const tabs = document.getElementById("tabs");
   tabs.innerHTML = "";
-  Object.keys(categories).forEach(cat=>{
+  categoryNames().forEach(cat=>{
     const btn = document.createElement("button");
     btn.className = "tab" + (cat===activeCategory ? " active" : "");
     btn.textContent = cat;
@@ -1048,16 +1085,15 @@ function renderTabs(){
 }
 function render(){
   renderTabs();
-  const cat = categories[activeCategory];
   document.getElementById("categoryLabel").textContent = activeCategory;
-  document.getElementById("categorySub").textContent = cat.blurb;
+  document.getElementById("categorySub").textContent = getCategoryBlurb(activeCategory);
 
   const searchInput = document.getElementById("searchInput");
   const sortSelect = document.getElementById("sortSelect");
   const query = searchInput ? searchInput.value.trim().toLowerCase() : "";
   const sortMode = sortSelect ? sortSelect.value : "relevance";
 
-  let items = cat.items.slice();
+  let items = getCategoryItems(activeCategory).slice();
   if(query){
     items = items.filter(it=>it.name.toLowerCase().includes(query));
   }
@@ -1119,7 +1155,7 @@ function openProductDetail(id){
 
   renderBundleSection(it);
 
-  showLoadingScreen("Opening item...", "Loading this item for you.", 1000, function(){
+  showLoadingScreen("Opening item...", "Loading this item for you.", 200, function(){
     document.getElementById("productView").style.display = "none";
     document.getElementById("checkoutView").style.display = "none";
     document.getElementById("productDetailView").style.display = "block";
@@ -1267,10 +1303,12 @@ function showCheckout(){
 
   basePrice = cartTotal();
   currentTotal = basePrice;
+  appliedPromoCode = "";
   document.getElementById("promo").value = "";
   document.getElementById("discountAmount").textContent = "- £0.00";
   document.getElementById("subtotalPrice").textContent = "£"+basePrice.toFixed(2);
   document.getElementById("totalPrice").textContent = "£"+basePrice.toFixed(2);
+  updateCheckoutMode();
 
   showLoadingScreen("Opening checkout...", "Getting your checkout ready.", 1000, function(){
     document.getElementById("productView").style.display = "none";
@@ -1311,6 +1349,7 @@ const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/141250965937324034
 let selectedPayment = "paypal";
 let basePrice = 0;
 let currentTotal = 0;
+let appliedPromoCode = "";
 
 function generateOrderNumber(){
   const ts = Date.now().toString().slice(-8);
@@ -1339,6 +1378,25 @@ function showLoadingScreen(title, text, duration, onDone){
       }, duration || 1000);
     });
   });
+}
+function updateCheckoutMode(){
+  const paymentSection = document.getElementById("paymentSection");
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  if(!paymentSection || !checkoutBtn) return;
+  const paymentHeading = paymentSection.querySelector("h3");
+  const paymentList = paymentSection.querySelector(".payment-list");
+
+  if(currentTotal <= 0){
+    paymentSection.style.display = "block";
+    if(paymentHeading) paymentHeading.style.display = "none";
+    if(paymentList) paymentList.style.display = "none";
+    checkoutBtn.textContent = "Claim Order";
+  }else{
+    paymentSection.style.display = "block";
+    if(paymentHeading) paymentHeading.style.display = "";
+    if(paymentList) paymentList.style.display = "";
+    checkoutBtn.textContent = "Continue to Payment";
+  }
 }
 function launchConfetti(pieceCount){
   const count = typeof pieceCount === "number" ? pieceCount : 40;
@@ -1385,7 +1443,8 @@ function sendDiscordWebhook(orderData){
       { name:"Discord Username", value:orderData.discord, inline:true },
       { name:"Item Ordered", value:orderData.itemName, inline:false },
       { name:"Price", value:"£"+orderData.price, inline:true },
-      { name:"Payment Method", value:orderData.paymentMethod, inline:true }
+      { name:"Payment Method", value:orderData.paymentMethod, inline:true },
+      { name:"Promo Code", value:orderData.promoCode, inline:true }
     ],
     footer:{ text:"VeloraMM2 Store" },
     timestamp:new Date().toISOString()
@@ -1417,7 +1476,9 @@ function checkout(){
 
   const orderNumber = generateOrderNumber();
   const amount = currentTotal.toFixed(2);
-  const methodNameForWebhook = selectedPayment === "revolut" ? "Card" : "PayPal";
+  const isFreeOrder = currentTotal <= 0;
+  const methodNameForWebhook = isFreeOrder ? "Free Claim" : (selectedPayment === "revolut" ? "Card" : "PayPal");
+  const promoCodeUsed = appliedPromoCode || "None";
 
   sendDiscordWebhook({
     orderNumber: orderNumber,
@@ -1426,7 +1487,8 @@ function checkout(){
     discord: discord,
     itemName: describeOrderItems(),
     price: amount,
-    paymentMethod: methodNameForWebhook
+    paymentMethod: methodNameForWebhook,
+    promoCode: promoCodeUsed
   });
 
   if(typeof emailjs!=="undefined" && window.emailjsReady){
@@ -1457,7 +1519,7 @@ function checkout(){
   const payUrl = isRevolut
     ? REVOLUT_ME + "?currency=GBP&amount=" + Math.round(currentTotal*100)
     : PAYPAL_ME + "/" + amount + "GBP";
-  const methodName = isRevolut ? "Card" : "PayPal";
+  const methodName = isFreeOrder ? "Free Claim" : (isRevolut ? "Card" : "PayPal");
 
   setTimeout(()=>{
     document.getElementById("loadingScreen").style.display = "none";
@@ -1470,7 +1532,9 @@ function checkout(){
     launchConfetti(54);
     setTimeout(function(){ launchConfetti(28); }, 450);
 
-    window.open(payUrl, "_blank", "noopener,noreferrer");
+    if(!isFreeOrder){
+      window.open(payUrl, "_blank", "noopener,noreferrer");
+    }
   }, 900);
 }
 
@@ -1486,9 +1550,11 @@ function applyPromo(){
   const amount = basePrice * discountRate;
   const finalPrice = Math.max(basePrice - amount, 0); 
   currentTotal = finalPrice;
+  appliedPromoCode = code;
 
   document.getElementById("discountAmount").textContent = "- £" + amount.toFixed(2);
   document.getElementById("totalPrice").textContent = "£" + finalPrice.toFixed(2);
+  updateCheckoutMode();
   showNotification("Saved £" + amount.toFixed(2), "valid");
   launchConfetti(42);
 }
@@ -1500,6 +1566,13 @@ updateCartUI();
 
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 
