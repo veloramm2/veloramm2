@@ -29,15 +29,19 @@
   --sub:#757575;
   --border:#ececec;
   --save:#ff4757;
+  --line:#f1dfe8;
+  --shadow-soft:0 18px 45px rgba(29,19,25,.06);
+  --shadow-strong:0 28px 60px rgba(29,19,25,.12);
 }
-body{background:#fff;color:var(--dark);}
+body{background:linear-gradient(180deg,#fff 0%,#fff9fc 100%);color:var(--dark);letter-spacing:-.01em;}
 img{max-width:100%;display:block;}
 
 
 /* ===================== PRODUCT MENU VIEW ===================== */
 .topbar{
   display:flex;align-items:center;justify-content:space-between;
-  padding:14px 24px;background:#171717;position:sticky;top:0;z-index:500;gap:20px;flex-wrap:wrap;
+  padding:16px 24px;background:rgba(16,16,16,.94);position:sticky;top:0;z-index:500;gap:20px;flex-wrap:wrap;
+  backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06);
 }
 .topbar .brand{color:#fff;font-weight:800;font-size:18px;}
 .topbar .brand img{height:32px;width:auto;display:block;}
@@ -45,10 +49,23 @@ img{max-width:100%;display:block;}
 .navLinks a{
   color:#e8e8e8;text-decoration:none;font-size:15px;font-weight:600;
   padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s;white-space:nowrap;cursor:pointer;
+  position:relative;
 }
-.navLinks a:hover{color:#fff;}
+.navLinks a:hover{color:#fff;transform:translateY(-1px);}
 .navLinks a.active{color:#fff;border-bottom:2px solid var(--pink);font-weight:800;letter-spacing:.2px;text-shadow:0 0 16px rgba(255,77,166,.18);}
 .navActions{display:flex;align-items:center;gap:16px;}
+.accountBtn{
+  background:#707078;color:transparent;border:1px solid #8f8f97;
+  width:40px;height:40px;border-radius:999px;font-weight:700;font-size:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;line-height:1;
+  position:relative;
+}
+.accountBtn::before{
+  content:"";width:18px;height:18px;display:block;
+  background-repeat:no-repeat;background-position:center;background-size:contain;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 12c2.76 0 5-2.69 5-6s-2.24-6-5-6-5 2.69-5 6 2.24 6 5 6Zm0 2c-4.42 0-8 2.69-8 6v2h16v-2c0-3.31-3.58-6-8-6Z'/%3E%3C/svg%3E");
+}
+.accountBtn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 20px rgba(255,77,166,.16);background:#64646c;border-color:#818189;}
 .shopNowBtn{
   background:linear-gradient(90deg,var(--pink2),var(--pink));color:white;border:none;
   padding:9px 18px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;
@@ -56,16 +73,18 @@ img{max-width:100%;display:block;}
 }
 .shopNowBtn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(255,77,166,.35);}
 
-.tabs{max-width:1150px;margin:0 auto;padding:28px 24px 0;display:flex;gap:10px;flex-wrap:wrap;}
+.tabs{max-width:1150px;margin:0 auto;padding:34px 24px 0;display:flex;gap:12px;flex-wrap:wrap;}
 .tab{
-  padding:10px 20px;border-radius:999px;border:1px solid var(--border);
-  background:#fff;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;color:var(--dark);
+  padding:11px 20px;border-radius:999px;border:1px solid var(--line);
+  background:rgba(255,255,255,.96);font-weight:700;font-size:14px;cursor:pointer;transition:.24s;color:var(--dark);
+  box-shadow:0 8px 18px rgba(255,77,166,.04);
 }
-.tab:hover{border-color:var(--pink2);}
+.tab:hover{border-color:var(--pink2);transform:translateY(-2px);}
 .tab.active{background:linear-gradient(90deg,var(--pink2),var(--pink));color:#fff;border-color:transparent;}
+.tab.searchTab{background:linear-gradient(180deg,#fff,#fff6fb);}
 
-.categoryLabel{max-width:1150px;margin:0 auto;padding:26px 24px 0;font-size:22px;font-weight:800;}
-.categorySub{max-width:1150px;margin:0 auto;padding:4px 24px 0;font-size:14px;color:var(--sub);}
+.categoryLabel{max-width:1150px;margin:0 auto;padding:30px 24px 0;font-size:26px;font-weight:800;}
+.categorySub{max-width:1150px;margin:0 auto;padding:8px 24px 0;font-size:14px;color:var(--sub);line-height:1.6;}
 
 .toolbar{
   max-width:1150px;margin:0 auto;padding:18px 24px 0;
@@ -98,37 +117,70 @@ img{max-width:100%;display:block;}
   max-width:1150px;margin:0 auto;padding:20px 24px 40px;
   display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:28px;
 }
+.grid.switching{
+  animation:gridCategorySwap .34s ease;
+}
+@keyframes gridCategorySwap{
+  0%{opacity:.22;transform:translateY(14px);}
+  100%{opacity:1;transform:translateY(0);}
+}
 .card{
   position:relative;border:1px solid #f0dce7;border-radius:0;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fffafc 100%);cursor:pointer;
   transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease, border-color .35s ease;
+  box-shadow:var(--shadow-soft);
+}
+.card::after{
+  content:"";position:absolute;top:0;left:-140%;width:70%;height:100%;
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.32),rgba(255,255,255,0));
+  transform:skewX(-20deg);pointer-events:none;opacity:0;
 }
 .card:hover{
   transform:translateY(-10px) scale(1.02) rotate(-.4deg);
   box-shadow:0 28px 55px rgba(255,77,166,.24), 0 8px 22px rgba(0,0,0,.08);
   border-color:var(--pink2);
 }
+.card:hover::after{
+  opacity:1;
+  animation:cardHoverShine .75s ease forwards;
+}
+@keyframes cardHoverShine{
+  0%{left:-140%;opacity:0;}
+  15%{opacity:1;}
+  100%{left:160%;opacity:1;}
+}
 .card:hover .cardImgWrap img{transform:scale(1.09);}
-.card:hover .cardQuickBtn{opacity:1;transform:translate(-50%,0);}
+.card:hover .cardHoverActions{opacity:1;transform:translate(-50%,0);}
 .cardImgWrap img{transition:transform .45s ease, filter .35s ease;}
 .cardImgWrap{position:relative;aspect-ratio:1/1;overflow:hidden;background:radial-gradient(circle at top,#fff 0%,#fff5fa 55%,#f8edf3 100%);border-radius:0;}
 .cardImgWrap img{width:100%;height:100%;object-fit:cover;}
 .card:hover .cardImgWrap img{filter:saturate(1.08) contrast(1.03);}
-.cardQuickBtn{
+.cardHoverActions{
   position:absolute;left:50%;bottom:14px;transform:translate(-50%,12px);
-  opacity:0;border:none;border-radius:999px;padding:11px 18px;
+  opacity:0;display:flex;gap:8px;transition:.28s;z-index:3;
+}
+.cardQuickBtn,.cardAddBtn{
+  border:none;border-radius:999px;height:32px;padding:0 12px;
+  font-size:12px;font-weight:800;letter-spacing:.15px;cursor:pointer;
+  box-shadow:0 14px 28px rgba(255,77,166,.24);transition:.2s;
+  white-space:nowrap;
+}
+.cardQuickBtn{
   background:linear-gradient(90deg,var(--pink2),var(--pink));color:#fff;
-  font-size:13px;font-weight:800;letter-spacing:.2px;cursor:pointer;
-  box-shadow:0 14px 28px rgba(255,77,166,.32);transition:.28s;z-index:3;
+}
+.cardAddBtn{
+  background:#dcdce1;color:#5a5a62;border:1px solid #c8c8cf;width:32px;min-width:32px;height:32px;padding:0;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
 }
 .cardQuickBtn:hover{filter:brightness(1.03);}
+.cardAddBtn:hover{transform:translateY(-1px);}
 .saveBadge{
   position:absolute;top:12px;left:12px;background:linear-gradient(90deg,#ff7b83,#ff5f84);color:#fff;
   font-size:12px;font-weight:800;padding:6px 12px;border-radius:999px;z-index:5;box-shadow:0 10px 20px rgba(255,95,132,.22);
 }
-.cardBody{padding:16px 16px 18px;}
-.cardName{font-size:16px;font-weight:800;color:#181818;}
-.cardPriceRow{margin-top:6px;display:flex;align-items:baseline;gap:8px;}
-.cardPrice{font-size:16px;font-weight:800;color:var(--pink);}
+.cardBody{padding:18px 18px 20px;}
+.cardName{font-size:17px;font-weight:800;color:#181818;line-height:1.35;}
+.cardPriceRow{margin-top:8px;display:flex;align-items:baseline;gap:8px;}
+.cardPrice{font-size:18px;font-weight:800;color:var(--pink);}
 .cardOldPrice{font-size:14px;color:var(--sub);text-decoration:line-through;}
 .empty{max-width:1150px;margin:0 auto;padding:60px 24px;text-align:center;color:var(--sub);}
 
@@ -167,15 +219,16 @@ img{max-width:100%;display:block;}
   background:transparent;border:none;
   padding:36px 20px 20px;display:flex;align-items:center;justify-content:center;
 }
-.productImageWrap img{width:100%;max-width:390px;filter:drop-shadow(0 20px 30px rgba(255,77,166,.16));}
+.productImageWrap img{width:100%;max-width:390px;filter:none;}
+.productImageWrap img{animation:premiumFloat 4.8s ease-in-out infinite;}
 .rarityBadge{
-  position:absolute;top:0;left:0;background:linear-gradient(90deg,var(--pink2),var(--pink));
+  position:absolute;top:10px;left:0;background:linear-gradient(90deg,var(--pink2),var(--pink));
   color:#fff;font-size:12px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
   padding:7px 16px;border-radius:999px;
 }
 
-.pdName{font-size:42px;font-weight:800;}
-.pdTagline{margin-top:6px;font-size:16px;color:var(--sub);font-weight:600;}
+.pdName{font-size:46px;font-weight:800;letter-spacing:-.02em;line-height:1.05;}
+.pdTagline{margin-top:10px;font-size:17px;color:var(--sub);font-weight:600;}
 .pdPriceRow{margin-top:22px;display:flex;align-items:baseline;gap:12px;}
 .pdPrice{font-size:36px;font-weight:800;color:var(--pink);}
 .pdOldPrice{font-size:20px;color:var(--sub);text-decoration:line-through;font-weight:600;}
@@ -210,9 +263,9 @@ img{max-width:100%;display:block;}
 .sectionHeading{font-size:18px;font-weight:800;margin-bottom:12px;}
 .pdDescription{font-size:15px;line-height:1.8;color:#4c3c45;}
 .pdInfoCard{
-  margin-top:24px;padding:26px;border:1px solid #f2dce8;border-radius:20px;
+  margin-top:24px;padding:28px;border:1px solid #f2dce8;border-radius:22px;
   background:linear-gradient(180deg,#fff,#fff8fc 100%);
-  box-shadow:0 18px 42px rgba(255,77,166,.08);
+  box-shadow:var(--shadow-soft);
 }
 .pdInfoCard .sectionHeading{margin-bottom:10px;}
 .pdAuthorityList{margin-top:18px;display:grid;grid-template-columns:1fr;gap:10px;}
@@ -240,8 +293,8 @@ img{max-width:100%;display:block;}
 /* ===== BUNDLE SECTION on product detail page ===== */
 .bundleSection{max-width:1150px;margin:0 auto;padding:0 24px 70px;}
 .bundleCard{
-  border:1px solid #f0dbe7;border-radius:24px;background:linear-gradient(180deg,#fff 0%,#fff8fc 100%);padding:38px;
-  box-shadow:0 22px 48px rgba(255,77,166,.10), 0 10px 24px rgba(0,0,0,.05);position:relative;overflow:hidden;
+  border:1px solid #f0dbe7;border-radius:24px;background:linear-gradient(180deg,#fff 0%,#fff8fc 100%);padding:40px;
+  box-shadow:var(--shadow-strong);position:relative;overflow:hidden;
 }
 .bundleCard::before{
   content:"";position:absolute;inset:-120px auto auto -120px;width:260px;height:260px;border-radius:50%;
@@ -354,6 +407,11 @@ img{max-width:100%;display:block;}
   0%{background:#ffe3f2;}
   100%{background:transparent;}
 }
+@keyframes premiumFloat{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+  100%{transform:translateY(0);}
+}
 .removeAllBtn{
   width:100%;padding:11px 0;margin-bottom:12px;border:1px solid #f1dce8;border-radius:14px;
   background:#fff;color:#8a6677;font-size:13px;font-weight:700;cursor:pointer;transition:.2s;
@@ -369,7 +427,7 @@ img{max-width:100%;display:block;}
 .drawerItem .info .p{color:var(--pink);font-weight:800;font-size:14px;margin-top:6px;}
 .qtyRow{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap;}
 .qtyRow button{width:30px;height:30px;border-radius:10px;border:1px solid #edd6e5;background:#fff;cursor:pointer;font-weight:800;box-shadow:0 4px 10px rgba(255,77,166,.05);}
-.removeBtn{background:#fff3f8;border:1px solid #f4d8e7;color:#a56c88;font-size:12px;cursor:pointer;text-decoration:none;padding:0 12px;width:auto;height:30px;border-radius:10px;}
+.removeBtn{background:#fff3f8;border:1px solid #f4d8e7;color:#a56c88;font-size:12px;cursor:pointer;text-decoration:none;padding:0 10px;min-width:74px;width:auto;height:30px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;line-height:1;white-space:nowrap;}
 .emptyCart{padding:40px 0;text-align:center;color:var(--sub);font-size:14px;}
 .drawerFooter{padding:22px 22px 24px;border-top:1px solid #f3e2ea;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,247,251,.92));}
 .drawerTotalRow{display:flex;justify-content:space-between;font-weight:800;font-size:21px;margin-bottom:14px;color:#171717;}
@@ -385,7 +443,99 @@ img{max-width:100%;display:block;}
 .drawerCheckoutBtn:hover::after{left:115%;transform:rotate(20deg);}
 .drawerCheckoutBtn:disabled{opacity:.5;cursor:not-allowed;}
 
-.pageFooter{background:linear-gradient(180deg,#171717 0%,#121212 100%);color:#cfcfcf;padding:44px 24px 24px;margin-top:20px;border-top:1px solid #2a2a2a;}
+.accountOverlay{
+  position:fixed;inset:0;background:rgba(15,15,15,.55);display:none;align-items:center;justify-content:center;z-index:1200;padding:24px;
+  backdrop-filter:blur(8px);
+}
+.accountCard{
+  width:100%;max-width:820px;background:linear-gradient(180deg,#fff 0%,#fff8fc 100%);border-radius:28px;padding:30px;box-shadow:0 30px 70px rgba(0,0,0,.18);
+  animation:accountCardIn .38s cubic-bezier(.16,1,.3,1);
+}
+.accountTop{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px;}
+.accountTop h2{font-size:30px;font-weight:800;}
+.accountClose{width:40px;height:40px;border:1px solid var(--border);background:#fff;border-radius:12px;cursor:pointer;font-size:20px;}
+.accountIntro{color:var(--sub);font-size:14px;line-height:1.6;margin-bottom:20px;}
+.accountGrid{display:grid;grid-template-columns:340px 1fr;gap:24px;}
+.accountPanel{
+  border:1px solid #f0dce7;padding:22px;border-radius:22px;background:rgba(255,255,255,.9);
+  box-shadow:0 16px 34px rgba(255,77,166,.08);transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.accountPanel:hover{transform:translateY(-4px);box-shadow:0 24px 42px rgba(255,77,166,.12);border-color:#efc9dd;}
+.accountPanel h3{font-size:18px;font-weight:800;margin-bottom:14px;}
+.accountField{margin-bottom:14px;}
+.accountField label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;}
+.accountField input{width:100%;height:48px;border:1px solid var(--border);border-radius:12px;padding:0 14px;font-size:14px;}
+.accountActionBtn,.accountGhostBtn,.accountSecondaryBtn,.accountResetBtn{
+  width:100%;height:48px;border:none;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;margin-top:10px;
+}
+.accountActionBtn{background:linear-gradient(90deg,var(--pink2),var(--pink));color:#fff;}
+.accountGhostBtn{background:#fff;border:1px solid #f0dce7;color:var(--dark);}
+.accountSecondaryBtn{background:#161616;color:#fff;}
+.accountResetBtn{background:#fff6fb;border:1px solid #f4d9e8;color:#9d4e78;}
+.accountStatus{margin-top:12px;font-size:13px;color:var(--sub);line-height:1.5;}
+.accountEmailTag{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;background:#fff3f9;border:1px solid #f4d9e8;border-radius:999px;font-size:13px;font-weight:800;color:#9b4d76;margin-bottom:14px;}
+.accountHint{margin-top:12px;font-size:12px;color:#8b7b84;line-height:1.55;}
+.historyList{display:flex;flex-direction:column;gap:12px;max-height:420px;overflow:auto;padding-right:4px;}
+.historyEmpty{padding:28px 16px;border:1px dashed #ecd9e4;border-radius:18px;text-align:center;color:var(--sub);background:#fff;}
+.historyItem{border:1px solid #f0dce7;border-radius:18px;padding:16px;background:linear-gradient(180deg,#fff,#fff9fc);}
+.historyMeta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;}
+.historyMeta strong{font-size:15px;}
+.historySub{font-size:13px;color:var(--sub);}
+.historyTotal{font-size:18px;font-weight:800;color:var(--pink);}
+.historyHead{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.historyItemsRow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 14px;}
+.historyProduct{
+  display:flex;align-items:center;gap:10px;border:1px solid #f2dce8;background:#fff;border-radius:14px;padding:8px 10px;min-width:180px;
+}
+.historyProduct img{width:46px;height:46px;object-fit:cover;border-radius:0;flex-shrink:0;}
+.historyProductName{font-size:13px;font-weight:800;color:#171717;line-height:1.3;}
+.historyProductQty{font-size:12px;color:var(--sub);margin-top:2px;}
+.historyInfoRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;}
+.historyInfoPill{
+  display:inline-flex;align-items:center;padding:7px 10px;border-radius:999px;background:#fff3f9;border:1px solid #f4d9e8;
+  font-size:12px;font-weight:800;color:#9b4d76;
+}
+.historyAccountBar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.accountInlineActions{display:flex;gap:10px;flex-wrap:wrap;}
+.accountGrid.signedIn{grid-template-columns:1fr;}
+@keyframes accountCardIn{
+  0%{opacity:0;transform:translateY(18px) scale(.98);}
+  100%{opacity:1;transform:translateY(0) scale(1);}
+}
+.staffBtn{
+  background:#fff;color:var(--dark);border:1px solid #2a2a2a;
+  padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;
+}
+.staffBtn:hover{transform:translateY(-1px);}
+.staffOverlay{
+  position:fixed;inset:0;background:rgba(15,15,15,.6);display:none;align-items:center;justify-content:center;z-index:1250;padding:24px;
+}
+.staffCard{
+  width:100%;max-width:880px;background:linear-gradient(180deg,#fff 0%,#fff8fc 100%);border-radius:28px;padding:30px;box-shadow:0 30px 70px rgba(0,0,0,.18);
+}
+.staffTop{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px;}
+.staffTop h2{font-size:30px;font-weight:800;}
+.staffIntro{color:var(--sub);font-size:14px;line-height:1.6;margin-bottom:18px;}
+.staffGrid{display:grid;grid-template-columns:320px 1fr;gap:24px;}
+.staffPanel{border:1px solid #f0dce7;padding:22px;border-radius:22px;background:rgba(255,255,255,.92);}
+.staffPanel h3{font-size:18px;font-weight:800;margin-bottom:14px;}
+.staffField{margin-bottom:14px;}
+.staffField label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;}
+.staffField input{width:100%;height:48px;border:1px solid var(--border);border-radius:12px;padding:0 14px;font-size:14px;}
+.staffActionBtn,.staffGhostBtn{
+  width:100%;height:48px;border:none;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;margin-top:10px;
+}
+.staffActionBtn{background:linear-gradient(90deg,var(--pink2),var(--pink));color:#fff;}
+.staffGhostBtn{background:#161616;color:#fff;}
+.staffStatus{margin-top:12px;font-size:13px;color:var(--sub);line-height:1.5;}
+.staffOrders{display:flex;flex-direction:column;gap:12px;max-height:440px;overflow:auto;padding-right:4px;}
+.staffOrderItem{border:1px solid #f0dce7;border-radius:18px;padding:16px;background:linear-gradient(180deg,#fff,#fff9fc);}
+.staffOrderRow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;}
+.staffOrderStatus{font-size:12px;font-weight:800;padding:7px 10px;border-radius:999px;background:#fff3f8;border:1px solid #f4d9e8;color:#9d4e78;}
+@media(max-width:820px){.staffGrid{grid-template-columns:1fr;}}
+@media(max-width:820px){.accountGrid{grid-template-columns:1fr;}}
+
+.pageFooter{background:linear-gradient(180deg,#151515 0%,#101010 100%);color:#cfcfcf;padding:52px 24px 28px;margin-top:28px;border-top:1px solid #2a2a2a;}
 .pageFooterInner{max-width:1150px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;}
 .pageFooterBrandLogo{height:34px;width:auto;display:block;margin-bottom:14px;}
 .pageFooterBrand h4{color:#fff;font-size:18px;font-weight:800;margin-bottom:10px;}
@@ -450,9 +600,9 @@ img{max-width:100%;display:block;}
 .ckCard{
   position:relative;overflow:hidden;background:rgba(255,255,255,.96);
   backdrop-filter:blur(14px);border:1px solid #f1dce8;border-radius:18px;
-  box-shadow:0 18px 45px rgba(28,18,24,.08);transition:.25s;
+  box-shadow:var(--shadow-soft);transition:.25s;
 }
-.ckCard:hover{box-shadow:0 24px 54px rgba(28,18,24,.11);}
+.ckCard:hover{box-shadow:var(--shadow-strong);}
 
 .checkoutLeft{padding:28px;position:sticky;top:30px;}
 .checkoutLogo{text-align:center;margin-bottom:22px;}
@@ -486,10 +636,10 @@ img{max-width:100%;display:block;}
 .checkoutRight{padding:32px;}
 .backLink{display:inline-block;margin-bottom:16px;font-size:14px;font-weight:700;color:var(--pink);cursor:pointer;text-decoration:none;}
 .backLink:hover{text-decoration:underline;}
-.checkoutTitle{font-size:30px;font-weight:800;margin-bottom:6px;}
-.checkoutSubtitle{color:var(--sub);margin-bottom:28px;}
+.checkoutTitle{font-size:32px;font-weight:800;margin-bottom:8px;letter-spacing:-.02em;}
+.checkoutSubtitle{color:var(--sub);margin-bottom:30px;line-height:1.6;}
 
-.section{margin-bottom:28px;}
+.section{margin-bottom:30px;}
 .section h3{font-size:18px;margin-bottom:14px;}
 
 .input{margin-bottom:16px;}
@@ -505,7 +655,7 @@ img{max-width:100%;display:block;}
 .apply{width:112px;border:none;border-radius:10px;background:#161616;color:white;font-weight:800;cursor:pointer;transition:.2s;}
 .apply:hover{background:#2c2c2c;}
 
-.summary-card{padding:20px;border:1px solid #ecdbe4;border-radius:12px;background:#fff;box-shadow:0 12px 28px rgba(28,18,24,.04);}
+.summary-card{padding:22px;border:1px solid #ecdbe4;border-radius:16px;background:#fff;box-shadow:var(--shadow-soft);}
 .summary-product{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
 .summary-product img{width:56px;height:56px;object-fit:cover;border-radius:0;}
 .summary-product.bundle-child{margin-left:14px;padding-left:12px;border-left:2px solid #ffd3e8;}
@@ -661,6 +811,8 @@ img{max-width:100%;display:block;}
       <a href="#">Support</a>
     </div>
     <div class="navActions">
+      <button class="accountBtn" onclick="openAccountModal()">👤</button>
+      <button class="staffBtn" onclick="openStaffModal()">Staff</button>
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();document.getElementById('grid').scrollIntoView({behavior:'smooth'});">Shop Now</a>
       <button class="cartToggle" onclick="openCart()">🛒<span class="cartCount" id="cartCount">0</span></button>
     </div>
@@ -745,6 +897,8 @@ img{max-width:100%;display:block;}
       <a href="#">Support</a>
     </div>
     <div class="navActions">
+      <button class="accountBtn" onclick="openAccountModal()">👤</button>
+      <button class="staffBtn" onclick="openStaffModal()">Staff</button>
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();showProduct();">Shop Now</a>
       <button class="cartToggle" onclick="openCart()">🛒<span class="cartCount" id="cartCountDetail">0</span></button>
     </div>
@@ -776,7 +930,7 @@ img{max-width:100%;display:block;}
       </div>
 
       <div class="pdBtnRow">
-        <button class="pdAddBtn" onclick="pdAddToCart()">Add to Basket</button>
+        <button class="pdAddBtn" onclick="event.stopPropagation();pdAddToCart()">Add to Basket</button>
         <button class="pdBuyBtn" onclick="pdBuyNow()">Buy Now</button>
       </div>
 
@@ -881,6 +1035,8 @@ img{max-width:100%;display:block;}
       <a href="#">Support</a>
     </div>
     <div class="navActions">
+      <button class="accountBtn" onclick="openAccountModal()">👤</button>
+      <button class="staffBtn" onclick="openStaffModal()">Staff</button>
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();showProduct();">Shop Now</a>
       <button class="cartToggle" onclick="openCart()">🛒<span class="cartCount" id="cartCountCheckout">0</span></button>
     </div>
@@ -1032,6 +1188,73 @@ img{max-width:100%;display:block;}
     </div>
   </div>
 
+</div>
+
+<div class="accountOverlay" id="accountOverlay">
+  <div class="accountCard">
+    <div class="accountTop">
+      <div>
+        <h2>Your Account</h2>
+        <div class="accountIntro">Create or sign into your local account to keep your email-linked order history neatly saved on this browser.</div>
+      </div>
+      <button class="accountClose" onclick="closeAccountModal()">×</button>
+    </div>
+    <div class="accountGrid">
+      <div class="accountPanel" id="accountAccessPanel">
+        <h3>Account Access</h3>
+        <div class="accountField">
+          <label>Email Address</label>
+          <input type="email" id="accountEmailInput" placeholder="you@example.com">
+        </div>
+        <div class="accountField">
+          <label>Password</label>
+          <input type="password" id="accountPasswordInput" placeholder="Enter your password">
+        </div>
+        <button class="accountActionBtn" onclick="createAccount()">Create Account</button>
+        <button class="accountSecondaryBtn" onclick="signInAccount()">Sign In</button>
+        <button class="accountResetBtn" onclick="resetAccountPassword()">Reset Password</button>
+        <button class="accountGhostBtn" onclick="logoutAccount()">Sign Out</button>
+        <div class="accountStatus" id="accountStatus">No account linked yet.</div>
+        <div class="accountHint">This account system is stored locally in the browser for this site version.</div>
+      </div>
+      <div class="accountPanel">
+        <div class="historyHead">
+          <h3>Order History</h3>
+          <div id="accountEmailTagWrap"></div>
+        </div>
+        <div id="historyAccountBar"></div>
+        <div class="historyList" id="accountHistoryList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="staffOverlay" id="staffOverlay">
+  <div class="staffCard">
+    <div class="staffTop">
+      <div>
+        <h2>Staff Order Control</h2>
+        <div class="staffIntro">Manually look up orders and update their status inside this site version.</div>
+      </div>
+      <button class="accountClose" onclick="closeStaffModal()">×</button>
+    </div>
+    <div class="staffGrid">
+      <div class="staffPanel">
+        <h3>Update Order</h3>
+        <div class="staffField">
+          <label>Order Number</label>
+          <input id="staffOrderNumberInput" placeholder="VLR-12345678-1234">
+        </div>
+        <button class="staffActionBtn" onclick="staffUpdateOrderStatus('Payment Verified')">Confirm Payment</button>
+        <button class="staffGhostBtn" onclick="staffUpdateOrderStatus('Order Delivered')">Confirm Delivery</button>
+        <div class="staffStatus" id="staffStatus">Enter an order number to update its status.</div>
+      </div>
+      <div class="staffPanel">
+        <h3>Recent Orders</h3>
+        <div class="staffOrders" id="staffOrdersList"></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ================= GLOBAL CART DRAWER (accessible from every view) ================= -->
@@ -1198,6 +1421,7 @@ let cart = {}; // id -> {item, qty}
 let activeItemId = null;
 let currentDetailCategory = "All";
 let selectedCurrency = "GBP";
+let lastRenderedCategory = "All";
 const currencyRates = { GBP: 1, EUR: 1.17, USD: 1.28};
 const currencySymbols = { GBP: "£", EUR: "€", USD: "$" };
 
@@ -1277,6 +1501,10 @@ function starString(rating){ return "?".repeat(rating) + "?".repeat(5-rating); }
 function categoryNames(){
   return ["All", ...Object.keys(categories)];
 }
+function getSearchQuery(){
+  const searchInput = document.getElementById("searchInput");
+  return searchInput ? searchInput.value.trim().toLowerCase() : "";
+}
 function getCategoryItems(catName){
   if(catName === "All"){
     return Object.values(categories)
@@ -1298,9 +1526,15 @@ function renderTabs(){
     const btn = document.createElement("button");
     btn.className = "tab" + (cat===activeCategory ? " active" : "");
     btn.textContent = cat;
-    btn.onclick = ()=>{ activeCategory = cat; render(); };
+    btn.onclick = ()=>{ activeCategory = cat; render({ animate:true }); };
     tabs.appendChild(btn);
   });
+  if(getSearchQuery()){
+    const searchBtn = document.createElement("button");
+    searchBtn.className = "tab searchTab active";
+    searchBtn.textContent = "Search";
+    tabs.appendChild(searchBtn);
+  }
 }
 function render(){
   renderTabs();
@@ -1417,7 +1651,10 @@ function pdBuyBundle(){
   updateCartUI();
   showCheckout();
 }
-function pdAddToCart(){ addToCart(activeItemId); }
+function pdAddToCart(){
+  addToCart(activeItemId);
+  openCart();
+}
 function pdBuyNow(){
   // Buy Now checks out just this item — clear anything already in the basket first.
   cart = {};
@@ -1470,7 +1707,7 @@ function updateCartUI(){
     if(el) el.textContent = count;
   });
   const wrap = document.getElementById("drawerItems");
-  const entries = Object.entries(cart);
+  const entries = Object.entries(cart).reverse();
   if(entries.length===0){
     wrap.innerHTML = `<div class="emptyCart">Your basket is empty.</div>`;
     document.getElementById("drawerCheckoutBtn").disabled = true;
@@ -1497,13 +1734,20 @@ function updateCartUI(){
 }
 function openCart(){ document.getElementById("cartDrawer").classList.add("open"); }
 function closeCart(){ document.getElementById("cartDrawer").classList.remove("open"); }
+document.addEventListener("click", function(event){
+  const drawer = document.getElementById("cartDrawer");
+  if(!drawer || !drawer.classList.contains("open")) return;
+  if(drawer.contains(event.target)) return;
+  if(event.target.closest(".cartToggle")) return;
+  closeCart();
+});
 
 /* ============ VIEW SWITCHING ============ */
 function showCheckout(){
   if(cartCount()===0) return;
   closeCart();
 
-  const entries = Object.entries(cart);
+  const entries = Object.entries(cart).reverse();
   const productArea = document.getElementById("checkoutProductArea");
   const summaryArea = document.getElementById("summaryItemsArea");
 
@@ -1608,6 +1852,295 @@ let selectedPayment = "paypal";
 let basePrice = 0;
 let currentTotal = 0;
 let appliedPromoCode = "";
+let currentAccountEmail = localStorage.getItem("velora_account_email") || "";
+const staffEmail = "support@veloramm2.com";
+const todayAccountDate = "July 23, 2026";
+
+function isStaffAccount(){
+  return String(currentAccountEmail || "").trim().toLowerCase() === staffEmail;
+}
+function updateStaffButtonVisibility(){
+  document.querySelectorAll(".staffBtn").forEach(btn=>{
+    btn.style.display = isStaffAccount() ? "inline-block" : "none";
+  });
+}
+
+function accountStorageKey(email){
+  return "velora_orders_" + String(email || "").trim().toLowerCase();
+}
+function accountUserKey(email){
+  return "velora_user_" + String(email || "").trim().toLowerCase();
+}
+function staffOrdersKey(){
+  return "velora_staff_orders";
+}
+function getStoredAccount(email){
+  if(!email) return null;
+  try{
+    return JSON.parse(localStorage.getItem(accountUserKey(email)) || "null");
+  }catch(e){
+    return null;
+  }
+}
+function saveStoredAccount(email, data){
+  localStorage.setItem(accountUserKey(email), JSON.stringify(data));
+}
+function getAccountOrders(email){
+  if(!email) return [];
+  try{
+    return JSON.parse(localStorage.getItem(accountStorageKey(email)) || "[]");
+  }catch(e){
+    return [];
+  }
+}
+function saveAccountOrders(email, orders){
+  localStorage.setItem(accountStorageKey(email), JSON.stringify(orders));
+}
+function saveOrderToAccount(email, order){
+  if(!email) return;
+  const orders = getAccountOrders(email);
+  orders.unshift(order);
+  saveAccountOrders(email, orders);
+}
+function getStaffOrders(){
+  try{
+    return JSON.parse(localStorage.getItem(staffOrdersKey()) || "[]");
+  }catch(e){
+    return [];
+  }
+}
+function saveStaffOrders(orders){
+  localStorage.setItem(staffOrdersKey(), JSON.stringify(orders));
+}
+function saveOrderToStaff(order){
+  const orders = getStaffOrders();
+  orders.unshift(order);
+  saveStaffOrders(orders);
+}
+function sendDeliveryConfirmationEmail(order){
+  if(typeof emailjs==="undefined" || !window.emailjsReady || !order || !order.email) return;
+  try{
+    emailjs.send("service_5uvd9ds","template_vud4ahe",{
+      to_email: order.email,
+      roblox_username: order.roblox || "",
+      discord_username: order.discord || "",
+      payment_method: order.paymentMethod || "Delivery Confirmation",
+      order_total: order.total || "",
+      product_name: order.items || "",
+      order_number: order.orderNumber || "",
+      delivery_status: "Order Delivered",
+      message_title: "Your VeloraMM2 order has been delivered",
+      custom_message: "Your order has now been marked as delivered. If anything looks wrong, please contact support."
+    }).catch(function(error){
+      console.error("Delivery email error:", error);
+    });
+  }catch(error){
+    console.error("Delivery email failed to run:", error);
+  }
+}
+function renderStaffOrders(){
+  const wrap = document.getElementById("staffOrdersList");
+  if(!wrap) return;
+  const orders = getStaffOrders();
+  if(!orders.length){
+    wrap.innerHTML = `<div class="historyEmpty">No staff orders saved yet.</div>`;
+    return;
+  }
+  wrap.innerHTML = orders.map(order => `
+    <div class="staffOrderItem">
+      <div class="staffOrderRow">
+        <strong>${order.orderNumber}</strong>
+        <div class="staffOrderStatus">${order.status}</div>
+      </div>
+      <div class="historySub">${order.email}</div>
+      <div class="historySub">${order.items}</div>
+      <div class="historySub">${order.total} • ${order.paymentMethod} • ${order.date}</div>
+    </div>
+  `).join("");
+}
+function openStaffModal(){
+  if(!isStaffAccount()) return;
+  const overlay = document.getElementById("staffOverlay");
+  const input = document.getElementById("staffOrderNumberInput");
+  const status = document.getElementById("staffStatus");
+  if(input) input.value = "";
+  if(status) status.textContent = "Enter an order number to update its status.";
+  renderStaffOrders();
+  if(overlay) overlay.style.display = "flex";
+}
+function closeStaffModal(){
+  const overlay = document.getElementById("staffOverlay");
+  if(overlay) overlay.style.display = "none";
+}
+function staffUpdateOrderStatus(nextStatus){
+  const input = document.getElementById("staffOrderNumberInput");
+  const status = document.getElementById("staffStatus");
+  if(!input || !status) return;
+  const orderNumber = input.value.trim();
+  if(!orderNumber){
+    status.textContent = "Enter an order number first.";
+    return;
+  }
+  const orders = getStaffOrders();
+  const match = orders.find(order => order.orderNumber === orderNumber);
+  if(!match){
+    status.textContent = "No order found with that order number.";
+    return;
+  }
+  if(nextStatus === "Order Delivered" && match.status !== "Payment Verified"){
+    status.textContent = "Confirm Payment first before confirming delivery.";
+    return;
+  }
+  match.status = nextStatus;
+  saveStaffOrders(orders);
+  const accountOrders = getAccountOrders(match.email);
+  const accountMatch = accountOrders.find(order => order.orderNumber === orderNumber);
+  if(accountMatch){
+    accountMatch.status = nextStatus;
+    saveAccountOrders(match.email, accountOrders);
+    if(nextStatus === "Order Delivered"){
+      sendDeliveryConfirmationEmail(accountMatch);
+    }
+  }else if(nextStatus === "Order Delivered"){
+    sendDeliveryConfirmationEmail(match);
+  }
+  status.textContent = orderNumber + " updated to " + nextStatus + ".";
+  if(currentAccountEmail === match.email) renderAccountHistory();
+  renderStaffOrders();
+}
+function renderAccountHistory(){
+  const wrap = document.getElementById("accountHistoryList");
+  const tagWrap = document.getElementById("accountEmailTagWrap");
+  const status = document.getElementById("accountStatus");
+  if(!wrap || !tagWrap || !status) return;
+  if(!currentAccountEmail){
+    tagWrap.innerHTML = "";
+    wrap.innerHTML = `<div class="historyEmpty">Create or sign into an account with your email to see saved orders here.</div>`;
+    status.textContent = "No account linked yet.";
+    updateStaffButtonVisibility();
+    return;
+  }
+  status.textContent = "Signed in as " + currentAccountEmail;
+  tagWrap.innerHTML = `<div class="accountEmailTag">${currentAccountEmail}</div>`;
+  updateStaffButtonVisibility();
+  const orders = getAccountOrders(currentAccountEmail);
+  if(!orders.length){
+    wrap.innerHTML = `<div class="historyEmpty">No orders saved yet for this email.</div>`;
+    return;
+  }
+  wrap.innerHTML = orders.map(order => `
+    <div class="historyItem">
+      <div class="historyMeta">
+        <div>
+          <strong>Order #${order.orderNumber}</strong>
+          <div class="historySub">${order.date}</div>
+        </div>
+        <div class="historyTotal">${order.total}</div>
+      </div>
+      <div class="historySub">${order.date} • ${order.status} • ${order.paymentMethod}</div>
+    </div>
+  `).join("");
+}
+function openAccountModal(){
+  const overlay = document.getElementById("accountOverlay");
+  const emailInput = document.getElementById("accountEmailInput");
+  const passwordInput = document.getElementById("accountPasswordInput");
+  if(emailInput) emailInput.value = currentAccountEmail;
+  if(passwordInput) passwordInput.value = "";
+  renderAccountHistory();
+  if(overlay) overlay.style.display = "flex";
+}
+function closeAccountModal(){
+  const overlay = document.getElementById("accountOverlay");
+  if(overlay) overlay.style.display = "none";
+}
+function createAccount(){
+  const emailInput = document.getElementById("accountEmailInput");
+  const passwordInput = document.getElementById("accountPasswordInput");
+  if(!emailInput || !passwordInput) return;
+  const email = emailInput.value.trim().toLowerCase();
+  const password = passwordInput.value;
+  if(!email || !password){
+    const status = document.getElementById("accountStatus");
+    if(status) status.textContent = "Enter both an email and password to create an account.";
+    return;
+  }
+  if(getStoredAccount(email)){
+    const status = document.getElementById("accountStatus");
+    if(status) status.textContent = "That account already exists. Use Sign In instead.";
+    return;
+  }
+  saveStoredAccount(email, { email: email, password: password, createdAt: todayAccountDate });
+  currentAccountEmail = email;
+  localStorage.setItem("velora_account_email", currentAccountEmail);
+  const checkoutEmail = document.getElementById("email");
+  if(checkoutEmail) checkoutEmail.value = currentAccountEmail;
+  const status = document.getElementById("accountStatus");
+  if(status) status.textContent = "Account created and signed in.";
+  renderAccountHistory();
+}
+function signInAccount(){
+  const emailInput = document.getElementById("accountEmailInput");
+  const passwordInput = document.getElementById("accountPasswordInput");
+  if(!emailInput || !passwordInput) return;
+  const email = emailInput.value.trim().toLowerCase();
+  const password = passwordInput.value;
+  const account = getStoredAccount(email);
+  const status = document.getElementById("accountStatus");
+  if(!account){
+    if(status) status.textContent = "No account found for that email yet.";
+    return;
+  }
+  if(account.password !== password){
+    if(status) status.textContent = "That password does not match this email.";
+    return;
+  }
+  currentAccountEmail = email;
+  localStorage.setItem("velora_account_email", currentAccountEmail);
+  const checkoutEmail = document.getElementById("email");
+  if(checkoutEmail) checkoutEmail.value = currentAccountEmail;
+  if(status) status.textContent = "Signed in successfully.";
+  renderAccountHistory();
+}
+function resetAccountPassword(){
+  const emailInput = document.getElementById("accountEmailInput");
+  const passwordInput = document.getElementById("accountPasswordInput");
+  const status = document.getElementById("accountStatus");
+  if(!emailInput || !passwordInput) return;
+  const email = emailInput.value.trim().toLowerCase();
+  const newPassword = passwordInput.value;
+  const account = getStoredAccount(email);
+  if(!email){
+    if(status) status.textContent = "Enter your email first to reset the password.";
+    return;
+  }
+  if(!account){
+    if(status) status.textContent = "No account exists for that email yet.";
+    return;
+  }
+  if(!newPassword){
+    if(status) status.textContent = "Enter a new password in the password field first.";
+    return;
+  }
+  account.password = newPassword;
+  account.updatedAt = "July 23, 2026";
+  saveStoredAccount(email, account);
+  currentAccountEmail = email;
+  localStorage.setItem("velora_account_email", currentAccountEmail);
+  const checkoutEmail = document.getElementById("email");
+  if(checkoutEmail) checkoutEmail.value = currentAccountEmail;
+  if(status) status.textContent = "Password reset successfully. You're now signed in.";
+  renderAccountHistory();
+}
+function logoutAccount(){
+  currentAccountEmail = "";
+  localStorage.removeItem("velora_account_email");
+  const emailInput = document.getElementById("accountEmailInput");
+  const passwordInput = document.getElementById("accountPasswordInput");
+  if(emailInput) emailInput.value = "";
+  if(passwordInput) passwordInput.value = "";
+  renderAccountHistory();
+}
 
 function generateOrderNumber(){
   const ts = Date.now().toString().slice(-8);
@@ -1865,7 +2398,7 @@ render = function(){
     const savings = it.original ? (it.original - it.price) : 0;
     const card = document.createElement("div");
     card.className = "card";
-    card.innerHTML = `<div class="cardImgWrap">${savings>0 ? `<div class="saveBadge">Save ${formatMoney(savings)}</div>` : ""}<img src="${it.image}" alt="${it.name}"><button class="cardQuickBtn" onclick="event.stopPropagation();openProductDetail('${it.id}')">View Item</button></div><div class="cardBody"><div class="cardName">${it.name}</div><div class="cardPriceRow"><span class="cardPrice">${formatMoney(it.price)}</span>${it.original ? `<span class="cardOldPrice">${formatMoney(it.original)}</span>` : ""}</div></div>`;
+    card.innerHTML = `<div class="cardImgWrap">${savings>0 ? `<div class="saveBadge">Save ${formatMoney(savings)}</div>` : ""}<img src="${it.image}" alt="${it.name}"><div class="cardHoverActions"><button class="cardAddBtn" onclick="event.stopPropagation();addToCart('${it.id}')" aria-label="Add to Basket">🛒</button><button class="cardQuickBtn" onclick="event.stopPropagation();openProductDetail('${it.id}')">View Item</button></div></div><div class="cardBody"><div class="cardName">${it.name}</div><div class="cardPriceRow"><span class="cardPrice">${formatMoney(it.price)}</span>${it.original ? `<span class="cardOldPrice">${formatMoney(it.original)}</span>` : ""}</div></div>`;
     card.addEventListener("click", ()=>openProductDetail(it.id));
     grid.appendChild(card);
   });
@@ -1913,7 +2446,7 @@ updateCartUI = function(){
   const count = cartCount();
   ["cartCount","cartCountDetail","cartCountCheckout"].forEach(elId=>{ const el = document.getElementById(elId); if(el) el.textContent = count; });
   const wrap = document.getElementById("drawerItems");
-  const entries = Object.entries(cart);
+  const entries = Object.entries(cart).reverse();
   if(entries.length===0){
     wrap.innerHTML = `<div class="emptyCart">Your basket is empty.</div>`;
     document.getElementById("drawerCheckoutBtn").disabled = true;
@@ -1994,7 +2527,29 @@ checkout = function(){
   const isFreeOrder = currentTotal <= 0;
   const methodNameForWebhook = isFreeOrder ? "Free Claim" : (selectedPayment === "revolut" ? "Card" : "PayPal");
   const promoCodeUsed = appliedPromoCode || "None";
+  currentAccountEmail = email.toLowerCase();
+  localStorage.setItem("velora_account_email", currentAccountEmail);
   sendDiscordWebhook({ orderNumber, email, roblox, discord, itemName: describeOrderItems(), price: amount, displayPrice: displayAmount, paymentMethod: methodNameForWebhook, promoCode: promoCodeUsed });
+  const savedOrder = {
+    orderNumber: orderNumber,
+    items: describeOrderItems(),
+    total: displayAmount,
+    email: currentAccountEmail,
+    roblox: roblox,
+    discord: discord,
+    promoCode: promoCodeUsed,
+    itemSummaries: Object.values(cart).map(c => ({
+      name: c.item.name,
+      image: c.item.image || "",
+      qty: c.qty
+    })),
+    paymentMethod: methodNameForWebhook,
+    status: "Awaiting Verification",
+    date: todayAccountDate
+  };
+  saveOrderToAccount(currentAccountEmail, savedOrder);
+  saveOrderToStaff(savedOrder);
+  renderAccountHistory();
   document.getElementById("loadingScreen").style.display = "flex";
   const isRevolut = selectedPayment === "revolut";
   const payUrl = isRevolut ? REVOLUT_ME + "?currency=GBP&amount=" + Math.round(currentTotal*100) : PAYPAL_ME + "/" + amount + "GBP";
@@ -2027,22 +2582,204 @@ applyPromo = function(){
   launchConfetti(42);
 };
 
+renderAccountHistory = function(){
+  const wrap = document.getElementById("accountHistoryList");
+  const tagWrap = document.getElementById("accountEmailTagWrap");
+  const status = document.getElementById("accountStatus");
+  const grid = document.querySelector(".accountGrid");
+  const accessPanel = document.getElementById("accountAccessPanel");
+  const historyAccountBar = document.getElementById("historyAccountBar");
+  if(!wrap || !tagWrap || !status || !grid || !accessPanel || !historyAccountBar) return;
+  if(!currentAccountEmail){
+    accessPanel.style.display = "";
+    grid.classList.remove("signedIn");
+    historyAccountBar.innerHTML = "";
+    tagWrap.innerHTML = "";
+    wrap.innerHTML = `<div class="historyEmpty">Create or sign into an account with your email to see saved orders here.</div>`;
+    status.textContent = "No account linked yet.";
+    updateStaffButtonVisibility();
+    return;
+  }
+  status.textContent = "Signed in as " + currentAccountEmail;
+  accessPanel.style.display = "none";
+  grid.classList.add("signedIn");
+  tagWrap.innerHTML = ``;
+  historyAccountBar.innerHTML = `
+    <div class="historyAccountBar">
+      <div class="accountEmailTag">${currentAccountEmail}</div>
+      <div class="accountInlineActions">
+        <button class="accountGhostBtn" style="margin-top:0;width:auto;padding:0 16px;" onclick="logoutAccount()">Sign Out</button>
+      </div>
+    </div>
+  `;
+  updateStaffButtonVisibility();
+  const orders = getAccountOrders(currentAccountEmail);
+  if(!orders.length){
+    wrap.innerHTML = `<div class="historyEmpty">No orders saved yet for this email.</div>`;
+    return;
+  }
+  wrap.innerHTML = orders.map(order => `
+    <div class="historyItem">
+      <div class="historyMeta">
+        <div>
+          <strong>Order #${order.orderNumber}</strong>
+          <div class="historySub">${order.date}</div>
+        </div>
+        <div class="historyTotal">${order.total}</div>
+      </div>
+      <div class="historyItemsRow">
+        ${(order.itemSummaries && order.itemSummaries.length ? order.itemSummaries : [{ image:"", name:order.items, qty:1 }]).map(item => `
+          <div class="historyProduct">
+            ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ``}
+            <div>
+              <div class="historyProductName">${item.name}</div>
+              <div class="historyProductQty">${item.qty > 1 ? `Quantity: ${item.qty}` : `Purchased item`}</div>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+      <div class="historyInfoRow">
+        <div class="historyInfoPill">Status: ${order.status}</div>
+        <div class="historyInfoPill">Promo: ${order.promoCode || "None"}</div>
+        <div class="historyInfoPill">Price: ${order.total}</div>
+      </div>
+      <div class="historySub" style="margin-top:10px;">${order.paymentMethod}</div>
+    </div>
+  `).join("");
+};
+
+let activeBrowseMode = "category";
+
+function getSearchQuery(){
+  const searchInput = document.getElementById("searchInput");
+  return searchInput ? searchInput.value.trim().toLowerCase() : "";
+}
+
+renderTabs = function(){
+  const tabs = document.getElementById("tabs");
+  if(!tabs) return;
+  tabs.innerHTML = "";
+  categoryNames().forEach(cat=>{
+    const btn = document.createElement("button");
+    btn.className = "tab" + (activeBrowseMode !== "search" && cat===activeCategory ? " active" : "");
+    btn.textContent = cat;
+    btn.onclick = ()=>{
+      activeBrowseMode = "category";
+      activeCategory = cat;
+      render({ animate:true, source:"category" });
+    };
+    tabs.appendChild(btn);
+  });
+  const searchBtn = document.createElement("button");
+  searchBtn.className = "tab searchTab" + (activeBrowseMode === "search" ? " active" : "");
+  searchBtn.textContent = "Search";
+  searchBtn.onclick = ()=>{
+    activeBrowseMode = "search";
+    const searchInput = document.getElementById("searchInput");
+    if(searchInput) searchInput.focus();
+    render({ animate:true, source:"search" });
+  };
+  tabs.appendChild(searchBtn);
+};
+
+render = function(options = {}){
+  renderTabs();
+  const effectiveQuery = getSearchQuery();
+  const isSearchView = activeBrowseMode === "search";
+  const effectiveCategory = isSearchView ? "Search" : activeCategory;
+  const categoryLabel = document.getElementById("categoryLabel");
+  const categorySub = document.getElementById("categorySub");
+  if(categoryLabel) categoryLabel.textContent = effectiveCategory;
+  if(categorySub) categorySub.textContent = isSearchView
+    ? (effectiveQuery ? `Showing results for "${effectiveQuery}"` : "Search across all available weapons.")
+    : getCategoryBlurb(activeCategory);
+  const sortSelect = document.getElementById("sortSelect");
+  const sortMode = sortSelect ? sortSelect.value : "relevance";
+  let items = isSearchView ? getCategoryItems("All").slice() : getCategoryItems(activeCategory).slice();
+  if(effectiveQuery) items = items.filter(it=>it.name.toLowerCase().includes(effectiveQuery));
+  if(sortMode === "price-asc") items.sort((a,b)=>a.price-b.price);
+  else if(sortMode === "price-desc") items.sort((a,b)=>b.price-a.price);
+  else if(sortMode === "save-desc") items.sort((a,b)=>savingsAmount(b)-savingsAmount(a));
+  else if(sortMode === "save-asc") items.sort((a,b)=>savingsAmount(a)-savingsAmount(b));
+  else if(sortMode === "newest") items.sort((a,b)=>new Date(b.dateAdded) - new Date(a.dateAdded));
+  const grid = document.getElementById("grid");
+  if(!grid) return;
+  const shouldAnimate = !!options.animate || effectiveCategory !== lastRenderedCategory;
+  if(shouldAnimate){
+    grid.classList.remove("switching");
+    void grid.offsetWidth;
+    grid.classList.add("switching");
+  }
+  grid.innerHTML = "";
+  if(items.length === 0){
+    grid.innerHTML = `<div class="empty">${isSearchView ? (effectiveQuery ? "No weapons match your search." : "Start typing to search all weapons.") : "No " + activeCategory + " items listed yet."}</div>`;
+    lastRenderedCategory = effectiveCategory;
+    return;
+  }
+  items.forEach(it=>{
+    const savings = it.original ? (it.original - it.price) : 0;
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<div class="cardImgWrap">${savings>0 ? `<div class="saveBadge">Save ${formatMoney(savings)}</div>` : ""}<img src="${it.image}" alt="${it.name}"><div class="cardHoverActions"><button class="cardAddBtn" onclick="event.stopPropagation();addToCart('${it.id}')" aria-label="Add to Basket">🛒</button><button class="cardQuickBtn" onclick="event.stopPropagation();openProductDetail('${it.id}')">View Item</button></div></div><div class="cardBody"><div class="cardName">${it.name}</div><div class="cardPriceRow"><span class="cardPrice">${formatMoney(it.price)}</span>${it.original ? `<span class="cardOldPrice">${formatMoney(it.original)}</span>` : ""}</div></div>`;
+    card.addEventListener("click", ()=>openProductDetail(it.id));
+    grid.appendChild(card);
+  });
+  lastRenderedCategory = effectiveCategory;
+};
+
+document.addEventListener("DOMContentLoaded", function(){
+  const searchInput = document.getElementById("searchInput");
+  if(searchInput){
+    searchInput.onfocus = function(){
+      activeBrowseMode = "search";
+      render({ animate:true, source:"search" });
+    };
+    searchInput.oninput = function(){
+      activeBrowseMode = "search";
+      render({ animate:true, source:"search" });
+    };
+  }
+});
+
 /* ============ INIT ============ */
-initCurrencyControl();
-render();
-updateCartUI();
+function bootStorefront(){
+  try{
+    initCurrencyControl();
+    render();
+    updateCartUI();
+    if(currentAccountEmail){
+      const checkoutEmail = document.getElementById("email");
+      if(checkoutEmail) checkoutEmail.value = currentAccountEmail;
+    }
+    renderAccountHistory();
+    updateStaffButtonVisibility();
+  }catch(error){
+    console.error("Velora boot error:", error);
+    try{
+      const label = document.getElementById("categoryLabel");
+      const sub = document.getElementById("categorySub");
+      const grid = document.getElementById("grid");
+      if(label) label.textContent = activeCategory || "All";
+      if(sub) sub.textContent = getCategoryBlurb(activeCategory || "All");
+      if(grid && !grid.children.length){
+        const fallbackItems = getCategoryItems(activeCategory || "All").slice(0, 12);
+        grid.innerHTML = fallbackItems.map(it=>{
+          const savings = it.original ? (it.original - it.price) : 0;
+          return `<div class="card" onclick="openProductDetail('${it.id}')"><div class="cardImgWrap">${savings>0 ? `<div class="saveBadge">Save ${formatMoney(savings)}</div>` : ""}<img src="${it.image}" alt="${it.name}"></div><div class="cardBody"><div class="cardName">${it.name}</div><div class="cardPriceRow"><span class="cardPrice">${formatMoney(it.price)}</span>${it.original ? `<span class="cardOldPrice">${formatMoney(it.original)}</span>` : ""}</div></div></div>`;
+        }).join("");
+      }
+    }catch(fallbackError){
+      console.error("Velora fallback render error:", fallbackError);
+    }
+  }
+}
+
+bootStorefront();
+document.addEventListener("DOMContentLoaded", bootStorefront);
+window.addEventListener("load", bootStorefront);
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
