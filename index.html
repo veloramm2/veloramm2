@@ -53,19 +53,17 @@ img{max-width:100%;display:block;}
 }
 .navLinks a:hover{color:#fff;transform:translateY(-1px);}
 .navLinks a.active{color:#fff;border-bottom:2px solid var(--pink);font-weight:800;letter-spacing:.2px;text-shadow:0 0 16px rgba(255,77,166,.18);}
-.navActions{display:flex;align-items:center;gap:16px;}
-.accountBtn{
-  background:#707078;color:transparent;border:1px solid #8f8f97;
-  width:40px;height:40px;border-radius:999px;font-weight:700;font-size:0;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;line-height:1;
-  position:relative;
+.navActions{display:flex;align-items:center;gap:14px;}
+.topIconBtn{
+  position:relative;width:34px;height:34px;padding:0;background:transparent;border:0;
+  color:transparent;font-size:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  transition:transform .2s ease,filter .2s ease;
 }
-.accountBtn::before{
-  content:"";width:18px;height:18px;display:block;
-  background-repeat:no-repeat;background-position:center;background-size:contain;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 12c2.76 0 5-2.69 5-6s-2.24-6-5-6-5 2.69-5 6 2.24 6 5 6Zm0 2c-4.42 0-8 2.69-8 6v2h16v-2c0-3.31-3.58-6-8-6Z'/%3E%3C/svg%3E");
-}
-.accountBtn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 20px rgba(255,77,166,.16);background:#64646c;border-color:#818189;}
+.topIconBtn::before{content:"";width:22px;height:22px;display:block;background-repeat:no-repeat;background-position:center;background-size:contain;}
+.topIconBtn:hover{transform:translateY(-2px) scale(1.08);filter:drop-shadow(0 5px 7px rgba(255,77,166,.32));}
+.searchTopBtn::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff4da6' stroke-width='2.25' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='m16 16 4 4'/%3E%3C/svg%3E");}
+.accountBtn::before{content:"";width:22px;height:22px;display:block;background-repeat:no-repeat;background-position:center;background-size:contain;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff4da6' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21c.8-4.1 3.6-6 8-6s7.2 1.9 8 6'/%3E%3C/svg%3E");}
+.cartToggle::before{content:"";width:22px;height:22px;display:block;background-repeat:no-repeat;background-position:center;background-size:contain;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff4da6' stroke-width='2.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H7'/%3E%3Ccircle cx='10' cy='20' r='1.2'/%3E%3Ccircle cx='17' cy='20' r='1.2'/%3E%3C/svg%3E");}
 .shopNowBtn{
   background:linear-gradient(90deg,var(--pink2),var(--pink));color:white;border:none;
   padding:9px 18px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer;
@@ -336,6 +334,13 @@ img{max-width:100%;display:block;}
 .bundleBuyBtn:hover{transform:translateY(-3px);filter:brightness(1.03);}
 
 .cartToggle{position:relative;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;transition:.2s;}
+.navActions .accountBtn,.navActions .cartToggle{
+  position:relative;width:34px;height:34px;padding:0;background:transparent;border:0;color:transparent;font-size:0;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s ease,filter .2s ease;
+}
+.navActions .accountBtn::before,.navActions .cartToggle::before{width:22px;height:22px;}
+.navActions .accountBtn:hover,.navActions .cartToggle:hover{transform:translateY(-2px) scale(1.08);filter:drop-shadow(0 5px 7px rgba(255,77,166,.32));box-shadow:none;}
+.navActions .shopNowBtn{display:none;}
 .cartToggle.bump{animation:cartBump .4s ease;}
 @keyframes cartBump{
   0%{transform:scale(1);}
@@ -397,6 +402,24 @@ img{max-width:100%;display:block;}
   z-index:600;display:flex;flex-direction:column;
 }
 .drawer.open{transform:translateX(0);}
+.searchDrawer{z-index:700;}
+.searchDrawerInner{display:flex;flex:1;min-height:0;flex-direction:column;padding:30px 26px 22px;}
+.searchDrawerTop{display:flex;align-items:center;gap:12px;border-bottom:2px solid #242424;padding-bottom:14px;}
+.searchDrawerInput{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#222;font-size:22px;font-weight:700;line-height:1.2;padding:4px 0;}
+.searchDrawerInput::placeholder{color:#9a9a9a;font-weight:500;}
+.searchClearBtn,.searchDrawerClose{border:0;background:transparent;color:#696969;font-size:14px;cursor:pointer;padding:7px 4px;font-weight:600;}
+.searchDrawerClose{font-size:26px;line-height:1;color:#282828;padding-left:5px;}
+.searchResultsTitle{font-size:24px;font-weight:800;color:#292929;padding:30px 0 18px;}
+.searchResults{overflow:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px;}
+.searchResult{width:100%;border:0;background:transparent;display:flex;align-items:center;gap:16px;padding:12px 8px;text-align:left;cursor:pointer;transition:background .2s ease,transform .2s ease;}
+.searchResult:hover{background:#fff3f9;transform:translateX(4px);}
+.searchResult img{width:76px;height:76px;object-fit:contain;flex:none;border-radius:0;}
+.searchResultInfo{min-width:0;flex:1;}
+.searchResultName{font-size:15px;font-weight:800;color:#252525;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.searchResultPrices{display:flex;align-items:center;gap:9px;margin-top:7px;font-size:14px;}
+.searchResultPrice{color:var(--pink);font-weight:800;}
+.searchResultOld{color:#747474;text-decoration:line-through;}
+.searchEmpty{color:#777;line-height:1.6;padding:24px 2px;font-size:14px;}
 .drawerItem{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;animation:itemSlideIn .35s ease;padding:16px;border:1px solid #f0dbe7;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,248,252,.94));box-shadow:0 16px 32px rgba(255,77,166,.08);}
 @keyframes itemSlideIn{
   from{opacity:0;transform:translateX(24px);}
@@ -811,6 +834,7 @@ img{max-width:100%;display:block;}
       <a href="#">Support</a>
     </div>
     <div class="navActions">
+      <button class="topIconBtn searchTopBtn" aria-label="Search products" onclick="openSearchDrawer()">Search</button>
       <button class="accountBtn" onclick="openAccountModal()">👤</button>
       <button class="staffBtn" onclick="openStaffModal()">Staff</button>
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();document.getElementById('grid').scrollIntoView({behavior:'smooth'});">Shop Now</a>
@@ -897,6 +921,7 @@ img{max-width:100%;display:block;}
       <a href="#">Support</a>
     </div>
     <div class="navActions">
+      <button class="topIconBtn searchTopBtn" aria-label="Search products" onclick="openSearchDrawer()">Search</button>
       <button class="accountBtn" onclick="openAccountModal()">👤</button>
       <button class="staffBtn" onclick="openStaffModal()">Staff</button>
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();showProduct();">Shop Now</a>
@@ -1035,6 +1060,7 @@ img{max-width:100%;display:block;}
       <a href="#">Support</a>
     </div>
     <div class="navActions">
+      <button class="topIconBtn searchTopBtn" aria-label="Search products" onclick="openSearchDrawer()">Search</button>
       <button class="accountBtn" onclick="openAccountModal()">👤</button>
       <button class="staffBtn" onclick="openStaffModal()">Staff</button>
       <a href="#" class="shopNowBtn" onclick="event.preventDefault();showProduct();">Shop Now</a>
@@ -1268,6 +1294,19 @@ img{max-width:100%;display:block;}
     <button class="removeAllBtn" id="removeAllBtn" onclick="removeAllFromCart()">Remove All</button>
     <div class="drawerTotalRow"><span>Total</span><span id="drawerTotal">£0.00</span></div>
     <button class="drawerCheckoutBtn" id="drawerCheckoutBtn" onclick="showCheckout()">Checkout</button>
+  </div>
+</div>
+
+<!-- ================= GLOBAL SEARCH DRAWER ================= -->
+<div class="drawer searchDrawer" id="searchDrawer" aria-hidden="true">
+  <div class="searchDrawerInner">
+    <div class="searchDrawerTop">
+      <input id="searchDrawerInput" class="searchDrawerInput" type="search" placeholder="Search products..." autocomplete="off" oninput="renderSearchDrawer()">
+      <button class="searchClearBtn" type="button" onclick="clearSearchDrawer()">Clear</button>
+      <button class="searchDrawerClose" type="button" aria-label="Close search" onclick="closeSearchDrawer()">×</button>
+    </div>
+    <div class="searchResultsTitle">Products</div>
+    <div class="searchResults" id="searchDrawerResults"></div>
   </div>
 </div>
 
@@ -1513,6 +1552,59 @@ function getCategoryItems(catName){
   }
   return categories[catName] ? categories[catName].items : [];
 }
+function getSearchDrawerItems(){
+  const unique = new Map();
+  Object.values(categories).flatMap(category => category.items).forEach(item => {
+    if(!unique.has(item.id)) unique.set(item.id, item);
+  });
+  return Array.from(unique.values());
+}
+function renderSearchDrawer(){
+  const input = document.getElementById("searchDrawerInput");
+  const results = document.getElementById("searchDrawerResults");
+  if(!results) return;
+  const query = input ? input.value.trim().toLowerCase() : "";
+  const matches = getSearchDrawerItems().filter(item => {
+    const searchable = `${item.name || ""} ${item.desc || ""}`.toLowerCase();
+    return !query || searchable.includes(query);
+  });
+  if(!matches.length){
+    results.innerHTML = `<div class="searchEmpty">No products match “${query}”. Try another search.</div>`;
+    return;
+  }
+  results.innerHTML = matches.map(item => `
+    <button class="searchResult" type="button" onclick="closeSearchDrawer();openProductDetail('${item.id}')">
+      <img src="${item.image}" alt="${item.name}">
+      <span class="searchResultInfo">
+        <span class="searchResultName">${item.name}</span>
+        <span class="searchResultPrices"><span class="searchResultPrice">${formatMoney(item.price)}</span>${item.original ? `<span class="searchResultOld">${formatMoney(item.original)}</span>` : ""}</span>
+      </span>
+    </button>`).join("");
+}
+function openSearchDrawer(){
+  const drawer = document.getElementById("searchDrawer");
+  if(!drawer) return;
+  closeCart();
+  drawer.classList.add("open");
+  drawer.setAttribute("aria-hidden", "false");
+  renderSearchDrawer();
+  setTimeout(function(){
+    const input = document.getElementById("searchDrawerInput");
+    if(input) input.focus();
+  }, 60);
+}
+function closeSearchDrawer(){
+  const drawer = document.getElementById("searchDrawer");
+  if(!drawer) return;
+  drawer.classList.remove("open");
+  drawer.setAttribute("aria-hidden", "true");
+}
+function clearSearchDrawer(){
+  const input = document.getElementById("searchDrawerInput");
+  if(input) input.value = "";
+  renderSearchDrawer();
+  if(input) input.focus();
+}
 function getCategoryBlurb(catName){
   if(catName === "All") return "Browse every available MM2 knife in one place.";
   return categories[catName] ? categories[catName].blurb : "";
@@ -1529,12 +1621,6 @@ function renderTabs(){
     btn.onclick = ()=>{ activeCategory = cat; render({ animate:true }); };
     tabs.appendChild(btn);
   });
-  if(getSearchQuery()){
-    const searchBtn = document.createElement("button");
-    searchBtn.className = "tab searchTab active";
-    searchBtn.textContent = "Search";
-    tabs.appendChild(searchBtn);
-  }
 }
 function render(){
   renderTabs();
@@ -1740,6 +1826,16 @@ document.addEventListener("click", function(event){
   if(drawer.contains(event.target)) return;
   if(event.target.closest(".cartToggle")) return;
   closeCart();
+});
+document.addEventListener("click", function(event){
+  const drawer = document.getElementById("searchDrawer");
+  if(!drawer || !drawer.classList.contains("open")) return;
+  if(drawer.contains(event.target)) return;
+  if(event.target.closest(".searchTopBtn")) return;
+  closeSearchDrawer();
+});
+document.addEventListener("keydown", function(event){
+  if(event.key === "Escape") closeSearchDrawer();
 });
 
 /* ============ VIEW SWITCHING ============ */
@@ -2670,16 +2766,6 @@ renderTabs = function(){
     };
     tabs.appendChild(btn);
   });
-  const searchBtn = document.createElement("button");
-  searchBtn.className = "tab searchTab" + (activeBrowseMode === "search" ? " active" : "");
-  searchBtn.textContent = "Search";
-  searchBtn.onclick = ()=>{
-    activeBrowseMode = "search";
-    const searchInput = document.getElementById("searchInput");
-    if(searchInput) searchInput.focus();
-    render({ animate:true, source:"search" });
-  };
-  tabs.appendChild(searchBtn);
 };
 
 render = function(options = {}){
