@@ -394,50 +394,45 @@ img{max-width:100%;display:block;}
   .statsGrid{grid-template-columns:1fr;}
 }
 
-/* ===== BUNDLE SECTION on product detail page ===== */
-.bundleSection{max-width:1150px;margin:0 auto;padding:0 24px 70px;}
+/* ===== CUSTOM BUNDLE BUILDER on product detail page ===== */
+.bundleSection{max-width:1180px;margin:0 auto;padding:0 24px 72px;}
 .bundleCard{
-  border:1px solid #f0dbe7;border-radius:24px;background:linear-gradient(180deg,#fff 0%,#fff8fc 100%);padding:40px;
-  box-shadow:var(--shadow-strong);position:relative;overflow:hidden;
+  border:1px solid #f2d8e7;border-radius:28px;background:linear-gradient(180deg,#fff 0%,#fff7fc 100%);padding:38px;
+  box-shadow:0 28px 70px rgba(255,77,166,.12);position:relative;overflow:hidden;
 }
 .bundleCard::before{
-  content:"";position:absolute;inset:-120px auto auto -120px;width:260px;height:260px;border-radius:50%;
-  background:radial-gradient(circle,rgba(255,182,220,.26) 0%,rgba(255,182,220,0) 72%);
-  pointer-events:none;
+  content:"";position:absolute;inset:-90px -90px auto auto;width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,77,166,.18) 0%,rgba(255,77,166,0) 72%);pointer-events:none;
 }
-.bundleEyebrow{
-  font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
-  color:var(--pink);margin-bottom:10px;
+.bundleBuilderTop{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:28px;margin-bottom:24px;}
+.bundleEyebrow{font-size:12px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:var(--pink);margin-bottom:8px;}
+.bundleTitle{font-size:clamp(30px,4.2vw,52px);line-height:1;font-weight:950;letter-spacing:-.045em;color:#15151a;text-transform:uppercase;}
+.bundleBlurb{margin-top:10px;color:#76616d;font-weight:600;max-width:650px;}
+.bundlePricePanel{text-align:center;min-width:210px;justify-self:end;padding:14px 18px 16px;border:1px solid #f4d8e7;border-radius:24px;background:rgba(255,255,255,.82);box-shadow:0 18px 42px rgba(255,77,166,.10);}
+.bundlePricePanel span{display:block;color:#7b6270;font-weight:700;font-size:13px;margin-bottom:5px;}
+.bundlePrice{font-size:30px;font-weight:950;color:var(--pink);}
+.bundleBuyBtn{margin-top:12px;min-width:178px;padding:15px 24px;border:none;border-radius:999px;background:linear-gradient(90deg,var(--pink2),var(--pink));color:#fff;font-size:17px;font-weight:900;cursor:pointer;transition:.22s;box-shadow:0 18px 36px rgba(255,77,166,.26);}
+.bundleBuyBtn:hover{transform:translateY(-3px) scale(1.02);filter:brightness(1.04);}
+.bundleVisualRow{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:22px 0 18px;border-top:1px solid #f2dce8;border-bottom:1px solid #f2dce8;}
+.bundleWeaponVisual{width:150px;min-height:130px;display:flex;align-items:center;justify-content:center;transition:.22s;}
+.bundleWeaponVisual.removed{opacity:.24;filter:grayscale(1);transform:scale(.92);}
+.bundleWeaponVisual img{max-width:150px;max-height:128px;object-fit:contain;border-radius:0;filter:drop-shadow(0 18px 22px rgba(255,77,166,.14));}
+.bundlePlus{font-size:26px;font-weight:800;color:#2a2228;opacity:.85;}
+.bundleChecks{margin-top:22px;display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
+.bundleCheckRow{display:inline-flex;align-items:center;gap:8px;font-size:16px;color:#20191d;font-weight:650;white-space:nowrap;}
+.bundleCheckRow input{width:16px;height:16px;accent-color:var(--pink);}
+.bundleCheckRow .mainBundleItem{font-weight:900;}
+.bundleCheckRow .bundleLinePrice{margin-left:4px;color:#1d1d1d;font-weight:750;}
+.bundleEmptyNote{padding:18px;border-radius:18px;background:#fff;border:1px solid #f0dce7;color:#8a6f7c;font-weight:700;}
+@media(max-width:720px){
+  .bundleCard{padding:24px;}
+  .bundleBuilderTop{grid-template-columns:1fr;}
+  .bundlePricePanel{text-align:center;width:100%;justify-self:stretch;}
+  .bundleVisualRow{gap:12px;justify-content:center;}
+  .bundleWeaponVisual{width:110px;min-height:104px;}
+  .bundleWeaponVisual img{max-width:110px;max-height:100px;}
+  .bundlePlus{display:none;}
 }
-.bundleHeadRow{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;}
-.bundleSaveBadge{
-  flex-shrink:0;background:linear-gradient(90deg,#fff2f8,#ffe6f2);color:var(--pink);font-size:12px;font-weight:800;
-  padding:8px 15px;border-radius:999px;white-space:nowrap;border:1px solid #f7dbe8;
-}
-.bundleDivider{margin:24px 0;height:1px;background:linear-gradient(90deg,rgba(255,77,166,0),rgba(255,77,166,.18),rgba(255,77,166,0));}
-.bundleIncludesLabel{
-  font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#8b6c7b;margin-bottom:14px;
-}
-.bundleGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;}
-.bundleItem{
-  text-align:center;background:transparent;
-  border:none;border-radius:0;padding:8px 8px 2px;transition:.25s;box-shadow:none;
-}
-.bundleItem:hover{transform:translateY(-4px);}
-.bundleItem img{width:100%;max-width:168px;height:136px;object-fit:contain;margin:0 auto 14px;border-radius:0;filter:drop-shadow(0 16px 24px rgba(255,77,166,.10));}
-.bundleItem span{display:block;font-size:18px;font-weight:800;color:#171717;}
-.bundleFooter{
-  margin-top:30px;padding-top:24px;border-top:1px solid #f0dce7;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
-}
-.bundlePriceBlock{display:flex;align-items:baseline;gap:10px;}
-.bundleOriginalPrice{font-size:18px;font-weight:600;color:var(--sub);text-decoration:line-through;}
-.bundlePrice{font-size:32px;font-weight:900;color:var(--pink);}
-.bundleBuyBtn{
-  flex:1;min-width:220px;padding:17px 0;border:none;border-radius:16px;
-  background:linear-gradient(90deg,var(--pink2),var(--pink));color:#fff;font-size:16px;font-weight:800;cursor:pointer;transition:.2s;box-shadow:0 18px 34px rgba(255,77,166,.24);
-}
-.bundleBuyBtn:hover{transform:translateY(-3px);filter:brightness(1.03);}
 
 .cartToggle{position:relative;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;transition:.2s;}
 .navActions .accountBtn,.navActions .cartToggle{
@@ -1067,16 +1062,35 @@ img{max-width:100%;display:block;}
   border-radius:50%;animation:spin 1s linear infinite;margin-bottom:25px;
 }
 @keyframes spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+#loadingScreen{
+  background:radial-gradient(circle at 20% 12%,rgba(255,77,166,.24),transparent 34%),radial-gradient(circle at 82% 20%,rgba(255,184,218,.24),transparent 32%),linear-gradient(135deg,rgba(255,247,252,.96),rgba(255,255,255,.94)) !important;
+  backdrop-filter:blur(14px);padding:22px;
+}
 .loaderCard{
-  background:linear-gradient(180deg,#fff,#fff6fb);border:1px solid #ffd3e8;border-radius:24px;
-  max-width:420px;width:100%;padding:34px 28px;text-align:center;
-  box-shadow:0 24px 60px rgba(255,77,166,.16);
+  position:relative;overflow:hidden;background:rgba(255,255,255,.92);border:1px solid rgba(255,205,231,.95);border-radius:30px;
+  max-width:460px;width:min(100%,460px);padding:38px 32px 34px;text-align:center;
+  box-shadow:0 34px 90px rgba(255,77,166,.18),0 12px 28px rgba(28,18,24,.08);
 }
-.loaderGif{
-  width:110px;height:110px;object-fit:contain;margin:0 auto 18px;filter:drop-shadow(0 10px 24px rgba(255,77,166,.18));
+.loaderCard::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--pink2),var(--pink),#ffd2e8,var(--pink2));background-size:220% 100%;animation:loaderSweep 1.4s ease-in-out infinite;
 }
-.loaderCard h2{font-size:28px;font-weight:800;color:var(--pink);margin-bottom:10px;}
-.loaderCard p{font-size:15px;line-height:1.6;color:#666;}
+.loaderCard::after{
+  content:"";position:absolute;inset:auto -80px -130px auto;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(255,77,166,.16),transparent 70%);pointer-events:none;
+}
+.loaderBrand{height:46px;width:auto;margin:0 auto 20px;display:block;filter:drop-shadow(0 12px 22px rgba(255,77,166,.18));}
+.loaderIconWrap{position:relative;width:118px;height:118px;margin:0 auto 20px;display:grid;place-items:center;}
+.loaderIconWrap::before,.loaderIconWrap::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,77,166,.22);animation:loaderPulse 1.35s ease-in-out infinite;}
+.loaderIconWrap::after{inset:13px;animation-delay:.18s;border-color:rgba(255,139,200,.34);}
+.loaderCore{position:relative;width:76px;height:76px;border-radius:24px;background:linear-gradient(135deg,var(--pink2),var(--pink));display:grid;place-items:center;color:#fff;font-size:34px;font-weight:900;box-shadow:0 20px 38px rgba(255,77,166,.30);animation:loaderFloat 1.4s ease-in-out infinite;}
+.loaderCard h2{font-size:30px;font-weight:950;color:#17171b;margin-bottom:9px;letter-spacing:-.035em;}
+.loaderCard p{font-size:15px;line-height:1.65;color:#76616d;font-weight:650;max-width:330px;margin:0 auto;}
+.loaderProgress{height:9px;width:min(280px,100%);margin:24px auto 0;border-radius:999px;background:#ffe5f2;overflow:hidden;border:1px solid #ffd0e6;}
+.loaderProgress span{display:block;height:100%;width:46%;border-radius:999px;background:linear-gradient(90deg,var(--pink2),var(--pink),#ffacd7);animation:loaderSlide 1s ease-in-out infinite;}
+@keyframes loaderPulse{0%,100%{transform:scale(.92);opacity:.55;}50%{transform:scale(1.08);opacity:1;}}
+@keyframes loaderFloat{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-5px) rotate(2deg);}}
+@keyframes loaderSlide{0%{transform:translateX(-120%);}100%{transform:translateX(230%);}}
+@keyframes loaderSweep{0%{background-position:0% 50%;}100%{background-position:220% 50%;}}
+@media(max-width:520px){.loaderCard{padding:32px 22px 28px;border-radius:24px}.loaderCard h2{font-size:26px}.loaderBrand{height:38px}.loaderIconWrap{width:104px;height:104px}.loaderCore{width:68px;height:68px;font-size:30px;border-radius:21px}}
 
 /* ===================== PREMIUM FULL SCREEN PENDING ORDER ===================== */
 #pendingScreen{align-items:stretch !important;justify-content:stretch !important;padding:0 !important;background:radial-gradient(circle at 12% 5%,rgba(255,77,166,.20),transparent 28%),radial-gradient(circle at 92% 10%,rgba(255,170,215,.22),transparent 30%),linear-gradient(135deg,#fff8fc 0%,#fff 42%,#fff3fa 100%) !important;overflow:auto;}
@@ -1464,9 +1478,9 @@ body{min-width:0 !important;}
     <div class="brand"><img src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2"></div>
     <div class="navLinks">
       <a onclick="showProduct()">Home</a>
-      <a onclick="showProduct();activeCategory='All';render();" class="active">Knives</a>
-      <a href="#">Guns</a>
-      <a href="#">Sets</a>
+      <a href="#" data-section="Knives" class="shopNavLink active" onclick="event.preventDefault();showProduct();showStoreSection('Knives','All');">Knives</a>
+      <a href="#" data-section="Guns" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Guns','All');">Guns</a>
+      <a href="#" data-section="Sets" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Sets','All');">Sets</a>
       <a href="#" class="claimNavLink" onclick="event.preventDefault();showClaimingPage();">Claiming</a>
       <a href="https://discord.gg/veloramm2" target="_blank">Support</a>
     </div>
@@ -1553,9 +1567,9 @@ body{min-width:0 !important;}
     <div class="brand"><img src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2"></div>
     <div class="navLinks">
       <a onclick="showProduct()">Home</a>
-      <a onclick="showProduct();activeCategory='All';render();" class="active">Knives</a>
-      <a href="#">Guns</a>
-      <a href="#">Sets</a>
+      <a href="#" data-section="Knives" class="shopNavLink active" onclick="event.preventDefault();showProduct();showStoreSection('Knives','All');">Knives</a>
+      <a href="#" data-section="Guns" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Guns','All');">Guns</a>
+      <a href="#" data-section="Sets" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Sets','All');">Sets</a>
       <a href="#" class="claimNavLink" onclick="event.preventDefault();showClaimingPage();">Claiming</a>
       <a href="https://discord.gg/veloramm2" target="_blank">Support</a>
     </div>
@@ -1648,27 +1662,20 @@ body{min-width:0 !important;}
 
   <div class="bundleSection" id="pdBundleSection" style="display:none;">
     <div class="bundleCard">
-      <div class="bundleHeadRow">
+      <div class="bundleBuilderTop">
         <div>
-          <div class="bundleEyebrow">Premium Bundle Collection</div>
-          <div class="sectionHeading" id="bundleTitle"></div>
+          <div class="bundleEyebrow">Build Your Own Deal</div>
+          <div class="bundleTitle">Your Customized Bundle Below!</div>
+          <p class="bundleBlurb" id="bundleBlurb">We picked a few random weapons to pair with this item. Untick anything you don?t want and the bundle updates instantly.</p>
         </div>
-        <div class="bundleSaveBadge" id="bundleSaveBadge"></div>
-      </div>
-
-      <p class="pdDescription" style="margin-top:10px;" id="bundleBlurb"></p>
-
-      <div class="bundleDivider"></div>
-      <div class="bundleIncludesLabel">Included In This Set</div>
-      <div class="bundleGrid" id="bundleGrid"></div>
-
-      <div class="bundleFooter">
-        <div class="bundlePriceBlock">
-          <div class="bundleOriginalPrice" id="bundleOriginalPrice"></div>
+        <div class="bundlePricePanel">
+          <span>Total price</span>
           <div class="bundlePrice" id="bundlePrice"></div>
+          <button class="bundleBuyBtn" onclick="pdBuyBundle()">Add to cart</button>
         </div>
-        <button class="bundleBuyBtn" onclick="pdBuyBundle()">Claim Bundle</button>
       </div>
+      <div class="bundleVisualRow" id="bundleVisualRow"></div>
+      <div class="bundleChecks" id="bundleChecks"></div>
     </div>
   </div>
 
@@ -1706,9 +1713,9 @@ body{min-width:0 !important;}
     <div class="brand"><img src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2"></div>
     <div class="navLinks">
       <a onclick="showProduct()">Home</a>
-      <a onclick="showProduct();activeCategory='All';render();">Knives</a>
-      <a href="#">Guns</a>
-      <a href="#">Sets</a>
+      <a href="#" data-section="Knives" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Knives','All');">Knives</a>
+      <a href="#" data-section="Guns" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Guns','All');">Guns</a>
+      <a href="#" data-section="Sets" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Sets','All');">Sets</a>
       <a href="#" class="claimNavLink active" onclick="event.preventDefault();showClaimingPage();">Claiming</a>
       <a href="https://discord.gg/veloramm2" target="_blank">Support</a>
     </div>
@@ -1766,9 +1773,9 @@ body{min-width:0 !important;}
     <div class="brand"><img src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2"></div>
     <div class="navLinks">
       <a onclick="showProduct()">Home</a>
-      <a onclick="showProduct();activeCategory='All';render();">Knives</a>
-      <a href="#">Guns</a>
-      <a href="#">Sets</a>
+      <a href="#" data-section="Knives" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Knives','All');">Knives</a>
+      <a href="#" data-section="Guns" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Guns','All');">Guns</a>
+      <a href="#" data-section="Sets" class="shopNavLink" onclick="event.preventDefault();showProduct();showStoreSection('Sets','All');">Sets</a>
       <a href="#" class="claimNavLink" onclick="event.preventDefault();showClaimingPage();">Claiming</a>
       <a href="https://discord.gg/veloramm2" target="_blank">Support</a>
     </div>
@@ -1905,10 +1912,14 @@ body{min-width:0 !important;}
   <!-- REDIRECT LOADER -->
   </div>
   <div id="loadingScreen" class="overlay" style="display:none;">
-    <div class="loaderCard">
-      <img class="loaderGif" src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-girls.gif" alt="Loading">
+    <div class="loaderCard" role="status" aria-live="polite">
+      <img class="loaderBrand" src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2">
+      <div class="loaderIconWrap" aria-hidden="true">
+        <div class="loaderCore">&#10022;</div>
+      </div>
       <h2 id="loadingTitle">Loading...</h2>
       <p id="loadingText">Please wait a moment.</p>
+      <div class="loaderProgress" aria-hidden="true"><span></span></div>
     </div>
   </div>
 
@@ -2551,13 +2562,260 @@ const categories = {
   }
 };
 
+const knifeCategories = categories;
+const gunCategories = {
+  Vintage: { blurb: "Browse available vintage MM2 guns.", items: [        
+      { id:"phaser", name:"Phaser", price:0.20, original:0.34, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/yn3jCWgN/Phaser-2.png",
+        desc:"Phaser is a vintage gun originally purchasable from the shop in Murder Mystery 1 for 2000 Points or 40 Cash . It is now only obtainable through trading.",
+       //no bundle
+       },
+       { id:"golden", name:"Golden", price:0.20, original:0.34, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/whsTXgrv/Golden.png",
+        desc:"Golden is a Vintage gun originally purchasable from the shop in Murder Mystery 1 for 3000 Points or 125 Cash . It is now only obtainable through trading.",
+       //no bundle
+       },
+       { id:"cowboy", name:"Cowboy", price:0.20, original:0.34, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/23PQWh4t/Cowboy-1.png",
+        desc:"Cowboy is a Vintage gun that was originally purchasable from the shop in Murder Mystery 1 for 800 Points or 5 Cash . It is currently only obtainable through trading.",
+       //no bundle
+       },
+       { id:"lazer", name:"Laser", price:0.20, original:0.34, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/BYM5S3p/Laser-5.png",
+        desc:"Laser is a vintage gun originally purchasable from the shop in Murder Mystery 1 for 1200 Points or 20 Cash MMC. It can now only be obtained from trading.",
+       //no bundle
+       },
+       { id:"america", name:"America", price:0.20, original:0.34, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/8ntdVbyS/America-1.png",
+        desc:"America is a vintage gun originally purchasable from the shop in Murder Mystery 1 for 25 Cash through July 4 - 6, 2014. It can now only be obtained through trading.",
+       //no bundle
+       },
+       ]
+      
+      
+  },
+  Godly: { blurb: "Browse available godly MM2 guns.", items:[
+      { id:"gingerluger", name:"Ginger Luger", price:0.49 , original:1.29, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/SXfj2MRP/Ginger-Luger-3.png",
+        desc:"Ginger Luger is a godly gun that was originally obtainable by crafting it during the 2018 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"elderwoodrevolver", name:"Elderwood Revolver", price:0.75, original:1.29, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/hFg475z1/Elderwood-Revolver-4.png",
+        desc:"Elderwood Revolver is a godly gun that was originally obtainable by unboxing it from the Halloween Box during the 2019 Halloween Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"spectre", name:"Spectre", price:1.09, original:1.97, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/7NdB7Cym/Spectre-2.png",
+        desc:"Spectre is a godly gun that was originally obtainable by purchasing it individually from the Spectre Gamepass for 1,699 Robux or from the Ghost Bundle for 3,399 Robux during the 2022 Halloween Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"swirlygun", name:"Swirly Gun", price:0.59, original:1.45, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/G3QNG3v4/Swirly-Gun-2.png",
+        desc:"Swirly Gun is a godly gun that was originally obtainable by unboxing it from the Christmas Box during the 2021 Christmas Event. It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"shark", name:"Shark", price:0.59, original:1.65, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/QvGYnY2Q/Shark-4.png",
+        desc:"Shark is a godly gun that is obtainable by unboxing it from Gun Box 2 or through trading.",
+       //no bundle
+       },
+        { id:"amerilaser", name:"Amerilaser", price:0.59, original:1.55, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/x8sgLVst/Amerilaser-3.png",
+        desc:"Amerilaser is a godly gun that was originally obtainable by purchasing the American Item Pack for 899 Robux. It is now only obtainable through trading as the gamepass has since gone offsale.",
+       //no bundle
+       },
+        { id:"greenluger", name:"Green Luger", price:0.59, original:1.54, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/9msGmLGZ/Green-Luger-3.png",
+        desc:"Green Luger is a godly gun that was originally obtainable by crafting a Luger and 75 Gifts together during the 2015 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"borealis", name:"Borealis", price:4.29, original:5.89, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/39Py2GhK/Borealis.png",
+        desc:"Borealis is a godly gun obtainable by purchasing it individually from the Borealis Gamepass for 1,699 Robux or from the Australis & Borealis Bundle for 3,399 Robux during the Christmas Event 2024 . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"sugar", name:"Sugar", price:0.75, original:2.19, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/nsVWNTgM/Sugar-3.png",
+        desc:"Sugar is a godly gun that was originally obtainable by unboxing it from the 2015 Christmas Gun Box during the 2015 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"gingermint", name:"Gingermint", price:0.49, original:1.29, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/609xw5Q9/Gingermint-2.png",
+        desc:"Gingermint is a godly gun that was originally obtainable by giving 100 Gifts (equivalent to a total of 100,000 Snow Tokens) to players during the 2022 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"jinglegun", name:"Jinglegun", price:0.40, original:0.79, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/0yFXtSF6/Jinglegun-3.png",
+        desc:"Jinglegun is a godly gun that was originally obtainable by giving 100 Gifts (equivalent to a total of 100,000 Snow Tokens ) to players during the 2020 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"lugercane", name:"Lugercane", price:0.49, original:0.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/99qT45tX/Lugercane-3.png",
+        desc:"Lugercane is a godly gun that was originally obtainable by giving 100 Gifts (equivalent to a total of 100,000 Snow Tokens ) to players during the 2019 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"laser", name:"Laser", price:0.50, original:1.19, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/YFQvYcFL/Laser-4.png",
+        desc:"Laser is a godly gun that is obtainable by unboxing it from Gun Box 3 or through trading.",
+       //no bundle
+       },
+        { id:"hallowgun", name:"Hallowgun", price:0.50, original:1.19, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/rGn8GBRB/Hallowgun-4.png",
+        desc:"Hallowgun is a godly gun that was originally obtainable by unboxing it from the Halloween Box during the 2020 Halloween Event. It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"lightbringer", name:"Lightbringer", price:0.69, original:2.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/yKK4yF7/Lightbringer-2.png",
+        desc:"Lightbringer is a godly gun that is obtainable by unboxing it from Mystery Box 2 or through trading.",
+       //no bundle
+       },
+        { id:"darkbringer", name:"Darkbringer", price:0.69, original:2.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/XryTJv0w/Darkbringer-2.png",
+        desc:"Darkbringer is a godly gun that is obtainable by unboxing it from Mystery Box 2 or through trading.",
+       //no bundle
+       },
+        { id:"blaster", name:"Blaster", price:0.59, original:1.29, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/p6NrtGBP/Blaster-3.png",
+       //no bundle
+       },
+        { id:"redluger", name:"Red Luger", price:0.75, original:1.69, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/278Z7XpL/Red-Luger-3.png",
+        desc:"Red Luger is a godly gun that was originally obtainable by crafting a Luger and 75 Gifts together during the 2015 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+        { id:"luger", name:"Luger", price:0.75, original:1.89, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/4gg6HNZK/Luger-3.png",
+        desc:"Luger is a godly gun that is obtainable by unboxing it from Gun Box 1 or through trading.",
+       //no bundle
+       },
+       ] 
+      
+  },
+  Chroma: { blurb: "Browse available chroma MM2 guns.", items: [  
+      { id:"chromawatergun", name:"Chroma Watergun", price:69.99, original:99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/0ynKfBHc/Chroma-Watergun.png",
+        desc:"Chroma Watergun is a chroma gun that was originally obtainable by unboxing it from the Summer Box in the Summer Event 2024 . It is now only obtainable through trading as the event has ended.",
+       //no bundle
+       },  
+      { id:"chromaswirlygun", name:"Chroma Swirly Gun", price:1.39, original:2.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/gLf66cFg/Chroma-Swirly-Gun.png",
+        desc:"Chroma Swirly Gun is a chroma gun that was originally obtainable by unboxing it from the Christmas Box during the 2021 Christmas Event. It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },  
+      { id:"chromalaser", name:"Chroma Laser", price:1.59, original:3.33, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/Lzhjh7GF/Chroma-Laser-2.png",
+        desc:"Chroma Laser is a chroma gun that is obtainable by unboxing it from Gun Box 3 or through trading.",
+       //no bundle
+       },  
+      { id:"chromaevergun", name:"Chroma Evergun", price:539.49, original:1299, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/vC4qYLKJ/Chroma-Evergun.png",
+        desc:"Chroma Evergun is a chroma gun that was originally obtainable by giving 100 Gifts during the 2023 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },  
+      { id:"chromashark", name:"Chroma Shark", price:1.39, original:2.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/zVGGDNzp/Chroma-Shark-2.png",
+        desc:"Chroma Shark is a chroma godly gun that can be obtained by unboxing it from the Gun Box 2.",
+       //no bundle
+       },  
+      { id:"chromaluger", name:"Chroma Luger", price:1.99, original:3.89, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/Y77BBD7T/Chroma-Luger-2.png",
+        desc:"Chroma Luger is a godly gun that is obtainable (by chance) from opening Gun Box 1. It is the Chroma version of Luger.",
+       //no bundle
+       },  
+      { id:"chromalightbringer", name:"Chroma Lightbringer", price:2.69, original:4.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/s9hVVw53/Chroma-Lightbringer-2.png",
+        desc:"Chroma Light bringer is a chroma godly gun that was released along with the Season 1 update. It is obtainable (by chance) by unboxing Mystery Box 2 or trading.",
+       //no bundle
+       },  
+      { id:"chromadarkbringer", name:"Chroma Darkbringer", price:2.69, original:4.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/spYc6gbN/Chroma-Darkbringer-2.png",
+        desc:"Chroma Dark bringer is a chroma godly gun that was released along with the Season 1 update. It is obtainable (by chance) by unboxing Mystery Box 2 or trading.",
+       //no bundle
+       },  
+      { id:"chromaconstellation", name:"Chroma Constellation", price:519.99, original:745.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/GvRg66J3/Chroma-Constellation.png",
+        desc:"Chroma Constellation is a godly gun that is obtainable by unboxing it from the 2024 Christmas Box in the Christmas Event 2024.",
+       //no bundle
+       },
+       ]
+  },
+  Ancient: { blurb: "Browse available ancient MM2 guns.", items: [      
+      { id:"gingerscope", name:"Gingerscope", price:339.99, original:999, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/N6WrJtrt/Gingerscope-2.png",
+        desc:"Gingerscope is an ancient gun that was originally obtainable by purchasing the 20th tier in the Battle Pass for 98,000 Snow Tokens during the 2023 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+      { id:"icepiercer", name:"Icepiercer", price:4.29, original:10.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/VcfwCtSL/Icepiercer-4.png",
+        desc:"Icepiercer is an ancient gun that was originally obtainable by purchasing the 20th tier in the Battle Pass for 75,000 Snow Tokens during the 2022 Christmas Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+      { id:"harvester", name:"Harvester", price:5.19, original:12.99, rating:5, delivery:"Under 1 day", dateAdded:"2025-05-22",
+        image:"https://i.ibb.co/355n8Jzt/Harvester-3.png",
+        desc:"Harvester is an ancient gun that was originally obtainable by purchasing the 30th tier in the Main Event for 80,000 Candies during the 2021 Halloween Event . It is now only obtainable through trading as the event has since ended.",
+       //no bundle
+       },
+       ]
+},
+};
+const setCategories = {
+  All: { blurb: "Browse available MM2 sets.", items: [
+      { id:"plasmaset", name:"Plasma Set", price:0.99, original:4.97, rating:4.5, delivery:"Under 1 day", dateAdded:"2024-06-18",
+        image:"https://i.ibb.co/FqdghB0J/Plasma-Bundle-3.png",
+        desc:"Discounted Plasma Set with Plasmabeam Gun and Plasmablade Knife.",
+       //no bundle
+       },
+      { id:"sweetset", name:"Sweet Set", price:0.99, original:4.97, rating:4.5, delivery:"Under 1 day", dateAdded:"2024-06-18",
+        image:"https://i.ibb.co/FqdghB0J/Plasma-Bundle-3.png",
+        desc:"Discounted Candy Bundle with Sugar and Candy (Candy Set).",
+       //no bundle
+       },
+       
+       ] }
+};
+const storeSections = {
+  Knives: knifeCategories,
+  Guns: gunCategories,
+  Sets: setCategories
+};
+let activeSection = "Knives";
+function getActiveCategories(){
+  return storeSections[activeSection] || knifeCategories;
+}
+function getAllStoreItems(){
+  const unique = new Map();
+  Object.values(storeSections).forEach(section => {
+    Object.values(section).forEach(cat => (cat.items || []).forEach(item => {
+      if(!unique.has(item.id)) unique.set(item.id, item);
+    }));
+  });
+  return Array.from(unique.values());
+}
+function updateShopSectionUI(){
+  document.querySelectorAll(".shopNavLink").forEach(link => {
+    link.classList.toggle("active", link.dataset.section === activeSection);
+  });
+  const banner = document.querySelector("#productView .bannerText");
+  if(banner) banner.textContent = activeSection;
+}
+function showStoreSection(section, category){
+  activeSection = storeSections[section] ? section : "Knives";
+  activeCategory = category || "All";
+  activeBrowseMode = "category";
+  const searchInput = document.getElementById("searchInput");
+  if(searchInput) searchInput.value = "";
+  updateShopSectionUI();
+  render({ animate:true, source:"section" });
+}
+
 let activeCategory = "All";
 let cart = {}; // id -> {item, qty}
 let activeItemId = null;
 let currentDetailCategory = "All";
 let selectedCurrency = "GBP";
 let lastRenderedCategory = "All";
-const currencyRates = { GBP: 1, EUR: 1.17, USD: 1.28};
+const currencyRates = { GBP: 1, EUR: 1.17, USD: 1.33};
 const currencySymbols = { GBP: "£", EUR: "€", USD: "$" };
 
 function convertPrice(amount){
@@ -2695,18 +2953,17 @@ function setCurrency(code){
 }
 
 function findItem(id){
-  for(const cat of Object.values(categories)){
-    const found = cat.items.find(i=>i.id===id);
-    if(found) return found;
-  }
-  return null;
+  return getAllStoreItems().find(i=>i.id===id) || null;
 }
 function savingsAmount(item){
   return item && item.original ? Math.max(item.original - item.price, 0) : 0;
 }
-function getItemCategory(itemId){
-  for(const [catName, cat] of Object.entries(categories)){
-    if(cat.items.some(item => item.id === itemId)) return catName;
+function getItemCategory(itemOrId){
+  const itemId = typeof itemOrId === "string" ? itemOrId : itemOrId && itemOrId.id;
+  for(const section of Object.values(storeSections)){
+    for(const [catName, cat] of Object.entries(section)){
+      if((cat.items || []).some(item => item.id === itemId)) return catName;
+    }
   }
   return "";
 }
@@ -2724,26 +2981,23 @@ function bundleItems(bundle){
 }
 function starString(rating){ return "?".repeat(rating) + "?".repeat(5-rating); }
 function categoryNames(){
-  return ["All", ...Object.keys(categories)];
+  return ["All", ...Object.keys(getActiveCategories()).filter(cat => cat !== "All")];
 }
 function getSearchQuery(){
   const searchInput = document.getElementById("searchInput");
   return searchInput ? searchInput.value.trim().toLowerCase() : "";
 }
 function getCategoryItems(catName){
+  const activeCategories = getActiveCategories();
   if(catName === "All"){
-    return Object.values(categories)
-      .flatMap(cat => cat.items)
+    return Object.values(activeCategories)
+      .flatMap(cat => cat.items || [])
       .sort(() => Math.random() - 0.5);
   }
-  return categories[catName] ? categories[catName].items : [];
+  return activeCategories[catName] ? activeCategories[catName].items : [];
 }
 function getSearchDrawerItems(){
-  const unique = new Map();
-  Object.values(categories).flatMap(category => category.items).forEach(item => {
-    if(!unique.has(item.id)) unique.set(item.id, item);
-  });
-  return Array.from(unique.values());
+  return getAllStoreItems();
 }
 function renderSearchDrawer(){
   const input = document.getElementById("searchDrawerInput");
@@ -2792,13 +3046,24 @@ function clearSearchDrawer(){
   if(input) input.focus();
 }
 function getCategoryBlurb(catName){
-  if(catName === "All") return "Browse every available MM2 knife in one place.";
-  return categories[catName] ? categories[catName].blurb : "";
+  if(catName === "All"){
+    if(activeSection === "Guns") return "Browse every available MM2 gun in one place.";
+    if(activeSection === "Sets") return "Browse every available MM2 set in one place.";
+    return "Browse every available MM2 knife in one place.";
+  }
+  const activeCategories = getActiveCategories();
+  return activeCategories[catName] ? activeCategories[catName].blurb : "";
 }
 
-function getItemCategory(item){
-  if(!item) return activeCategory || "All";
-  return Object.keys(categories).find(cat => categories[cat].items.some(catItem => catItem.id === item.id)) || activeCategory || "All";
+function getItemCategory(itemOrId){
+  if(!itemOrId) return activeCategory || "All";
+  const itemId = typeof itemOrId === "string" ? itemOrId : itemOrId.id;
+  for(const section of Object.values(storeSections)){
+    for(const [catName, cat] of Object.entries(section)){
+      if((cat.items || []).some(catItem => catItem.id === itemId)) return catName;
+    }
+  }
+  return activeCategory || "All";
 }
 
 function getProductAccent(item, categoryName){
@@ -2937,7 +3202,7 @@ function openProductDetail(id){
   const it = findItem(id);
   if(!it) return;
   activeItemId = id;
-  currentDetailCategory = Object.keys(categories).find(cat => categories[cat].items.some(item => item.id === id)) || activeCategory;
+  currentDetailCategory = getItemCategory(it) || activeCategory;
 
   document.getElementById("pdImg").src = it.image;
   document.getElementById("pdRarityBadge").textContent = currentDetailCategory;
@@ -3178,6 +3443,7 @@ function showProduct(){
   const claimingView = document.getElementById("claimingView");
   if(claimingView) claimingView.style.display = "none";
   setClaimNavActive(false);
+  updateShopSectionUI();
   document.getElementById("productView").style.display = "block";
   window.scrollTo(0,0);
 }
@@ -3838,7 +4104,7 @@ openProductDetail = function(id){
   if(!it) return;
   activeItemId = id;
   setDetailQty(1);
-  currentDetailCategory = Object.keys(categories).find(cat => categories[cat].items.some(item => item.id === id)) || activeCategory;
+  currentDetailCategory = getItemCategory(it) || activeCategory;
   document.getElementById("pdImg").src = it.image;
   document.getElementById("pdRarityBadge").textContent = currentDetailCategory;
   document.getElementById("pdBreadcrumbCat").textContent = currentDetailCategory;
@@ -3870,17 +4136,91 @@ openProductDetail = function(id){
   });
 };
 
+let customBundleState = null;
+
+function getAllWeaponItems(){
+  const unique = new Map();
+  Object.values(categories).forEach(cat => (cat.items || []).forEach(item => unique.set(item.id, item)));
+  return Array.from(unique.values());
+}
+function pickCustomBundleItems(baseItem){
+  const pool = getAllWeaponItems().filter(item => item && item.id !== baseItem.id);
+  for(let i = pool.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return [baseItem, ...pool.slice(0, 3)];
+}
+function customBundleSelectedItems(){
+  if(!customBundleState) return [];
+  return customBundleState.items.filter(item => customBundleState.selected[item.id]);
+}
+function customBundleTotal(){
+  return customBundleSelectedItems().reduce((sum, item) => sum + (Number(item.price) || 0), 0);
+}
+function updateCustomBundleUI(){
+  if(!customBundleState) return;
+  const visualRow = document.getElementById("bundleVisualRow");
+  const checks = document.getElementById("bundleChecks");
+  const price = document.getElementById("bundlePrice");
+  if(price) price.textContent = formatMoney(customBundleTotal());
+  if(visualRow){
+    visualRow.innerHTML = customBundleState.items.map((item, index) => `
+      ${index ? `<span class="bundlePlus">+</span>` : ""}
+      <div class="bundleWeaponVisual ${customBundleState.selected[item.id] ? "" : "removed"}">
+        <img src="${item.image}" alt="${item.name}">
+      </div>`).join("");
+  }
+  if(checks){
+    checks.innerHTML = customBundleState.items.map((item, index) => `
+      <label class="bundleCheckRow">
+        <input type="checkbox" ${customBundleState.selected[item.id] ? "checked" : ""} onchange="toggleCustomBundleItem('${item.id}', this.checked)">
+        <span class="${index === 0 ? "mainBundleItem" : ""}">${index === 0 ? "This item: " : ""}${item.name}</span>
+        <span class="bundleLinePrice">${formatMoney(item.price)}</span>
+      </label>`).join("");
+  }
+}
+function toggleCustomBundleItem(id, checked){
+  if(!customBundleState) return;
+  customBundleState.selected[id] = !!checked;
+  updateCustomBundleUI();
+}
+pdBuyBundle = function(){
+  const selected = customBundleSelectedItems();
+  if(!selected.length){
+    alert("Please select at least one item for your bundle.");
+    return;
+  }
+  const bundleKey = "bundle:custom-" + Date.now();
+  const bundle = {
+    id: bundleKey.replace("bundle:", ""),
+    name: "Customized Bundle",
+    blurb: selected.map(item => item.name).join(" + "),
+    price: customBundleTotal(),
+    original: selected.reduce((sum, item) => sum + (Number(item.original || item.price) || 0), 0),
+    itemIds: selected.map(item => item.id)
+  };
+  cart[bundleKey] = {
+    item: { id: bundleKey, name: bundle.name, price: bundle.price, image: selected[0].image, bundle: bundle },
+    qty: 1
+  };
+  updateCartUI();
+  openCart();
+};
 renderBundleSection = function(item){
   const section = document.getElementById("pdBundleSection");
-  const bundle = item.bundle;
-  if(!bundle){ section.style.display = "none"; return; }
+  if(!section || !item){ return; }
+  const candidates = pickCustomBundleItems(item);
+  if(!candidates.length){ section.style.display = "none"; return; }
+  customBundleState = {
+    baseId: item.id,
+    items: candidates,
+    selected: Object.fromEntries(candidates.map(bundleItem => [bundleItem.id, true]))
+  };
   section.style.display = "block";
-  document.getElementById("bundleTitle").textContent = bundle.name;
-  document.getElementById("bundleBlurb").textContent = bundle.blurb;
-  document.getElementById("bundleSaveBadge").textContent = "Save " + formatMoney(bundle.original - bundle.price);
-  document.getElementById("bundleOriginalPrice").textContent = formatMoney(bundle.original);
-  document.getElementById("bundlePrice").textContent = formatMoney(bundle.price);
-  document.getElementById("bundleGrid").innerHTML = bundle.itemIds.map(id=>{ const bit = findItem(id); return `<div class="bundleItem"><img src="${bit.image}" alt="${bit.name}"><span>${bit.name}</span></div>`; }).join("");
+  const blurb = document.getElementById("bundleBlurb");
+  if(blurb) blurb.textContent = "We picked random weapons to pair with " + item.name + ". Untick anything you don’t want and the total updates instantly.";
+  updateCustomBundleUI();
 };
 
 updateCartUI = function(){
@@ -4381,8 +4721,8 @@ function enhancePageFooters(){
           <h4>Sections</h4>
           <a href="#" onclick="event.preventDefault();showProduct();">Home</a>
           <a href="#" onclick="event.preventDefault();showProduct();activeCategory='Godly';render();">Buy Knives</a>
-          <a href="#">Buy Guns</a>
-          <a href="#">Buy Sets</a>
+          <a href="#" onclick="event.preventDefault();showProduct();showStoreSection('Guns','All');">Buy Guns</a>
+          <a href="#" onclick="event.preventDefault();showProduct();showStoreSection('Sets','All');">Buy Sets</a>
           <a href="#" onclick="event.preventDefault();showClaimingPage();">Claiming</a>
         </div>
         <div class="pageFooterCol">
