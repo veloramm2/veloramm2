@@ -2326,6 +2326,38 @@ button,a,.card,.tab,.drawer,.accountCard,.staffCard,.modalContent,.checkoutButto
 .aiChatSend:hover{background:linear-gradient(135deg,#ff4da6,#b85cff);transform:translateY(-1px);}
 @media(max-width:560px){.aiChatFab{right:16px;bottom:16px;width:56px;height:56px;}.aiChatPanel{right:10px;left:10px;bottom:82px;width:auto;height:min(620px,calc(100vh - 104px));border-radius:22px;}}
 
+
+
+/* ===================== FINAL FOOTER SOCIAL ICONS + POLISHED CONFIRMATION ===================== */
+.footerSocials{display:flex !important;align-items:center;gap:10px !important;margin-top:12px !important;}
+.footerSocials a{width:38px;height:38px;border-radius:12px;background:#111;color:#fff;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 12px 24px rgba(0,0,0,.12);transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s ease,background .22s ease;}
+.footerSocials a:hover{transform:translateY(-3px);background:linear-gradient(135deg,#ff4da6,#b85cff);box-shadow:0 18px 32px rgba(255,77,166,.25);}
+.footerSocials svg{width:19px;height:19px;fill:currentColor;display:block;}
+#pendingScreen{animation:pendingScreenFade .26s ease both;background:radial-gradient(circle at 14% 0%,rgba(255,77,166,.18),transparent 30%),linear-gradient(135deg,#fff8fc,#fff 42%,#fff4fa) !important;}
+#pendingScreen .pendingHero{padding:34px clamp(18px,5vw,72px) 38px !important;background:linear-gradient(135deg,#151015 0%,#251820 40%,#ff4da6 135%) !important;box-shadow:inset 0 -1px 0 rgba(255,255,255,.08);}
+#pendingScreen .pendingHero::before{background:radial-gradient(circle at 18% 18%,rgba(255,77,166,.36),transparent 34%),radial-gradient(circle at 88% 10%,rgba(255,255,255,.18),transparent 26%) !important;}
+#pendingScreen .pendingLogo{height:58px !important;}
+#pendingScreen .pendingSecurePill{background:rgba(255,255,255,.13) !important;border:1px solid rgba(255,255,255,.24) !important;box-shadow:0 14px 30px rgba(0,0,0,.16);}
+#pendingScreen .pendingEyebrow{background:#fff !important;color:#ff4da6 !important;border:0 !important;box-shadow:0 16px 36px rgba(0,0,0,.18);}
+#pendingScreen .pendingEyebrow::before{content:"?" !important;background:#ff4da6 !important;}
+#pendingScreen .confirmHeading{max-width:760px;text-shadow:0 18px 42px rgba(0,0,0,.28);}
+#pendingScreen .pendingLead{max-width:690px !important;color:rgba(255,255,255,.86) !important;}
+#pendingScreen .pendingStatus{background:#fff !important;color:#171717 !important;box-shadow:0 18px 42px rgba(0,0,0,.20) !important;}
+#pendingScreen .pendingMedia{border-radius:26px !important;box-shadow:0 30px 78px rgba(0,0,0,.30) !important;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s ease;}
+#pendingScreen .pendingMedia:hover{transform:translateY(-4px);box-shadow:0 36px 92px rgba(0,0,0,.34) !important;}
+#pendingScreen .pendingMediaCaption{font-weight:1000 !important;color:#9b4d76 !important;}
+#pendingScreen .pendingMainPanel,#pendingScreen .pendingSidePanel{border-radius:30px !important;background:rgba(255,255,255,.96) !important;box-shadow:0 24px 70px rgba(33,19,27,.08) !important;animation:pendingPanelIn .42s cubic-bezier(.16,1,.3,1) both;}
+#pendingScreen .pendingSidePanel{animation-delay:.05s;}
+#pendingScreen .pendingItem,#pendingScreen .pendingInfoBox,#pendingScreen .pendingTotals,#pendingScreen .pendingSteps{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+#pendingScreen .pendingItem:hover,#pendingScreen .pendingInfoBox:hover{transform:translateY(-2px);border-color:#ffc2df;box-shadow:0 18px 34px rgba(255,77,166,.10);}
+#pendingScreen .pendingActions a,#pendingScreen .pendingActions button{position:relative;overflow:hidden;}
+#pendingScreen .discordButton{background:linear-gradient(90deg,#5865F2,#ff4da6) !important;}
+#pendingScreen .backButton{background:#161616 !important;}
+#pendingScreen .discordButton::after,#pendingScreen .backButton::after{content:"";position:absolute;inset:0;transform:translateX(-120%) skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);transition:transform .55s ease;}
+#pendingScreen .discordButton:hover::after,#pendingScreen .backButton:hover::after{transform:translateX(120%) skewX(-18deg);}
+@keyframes pendingScreenFade{from{opacity:0;}to{opacity:1;}}
+@keyframes pendingPanelIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:560px){#pendingScreen .pendingLogo{height:48px !important;}#pendingScreen .pendingHero{padding-top:24px !important;}#pendingScreen .pendingMedia:hover{transform:none;}}
 </style>
 </head>
 <body>
@@ -2426,8 +2458,8 @@ button,a,.card,.tab,.drawer,.accountCard,.staffCard,.modalContent,.checkoutButto
           <p>VeloraMM2 is built around clear support, low prices, and manual verification.</p>
           <div class="cleanStats">
             <span><strong>200+</strong> Customers</span>
-            <span><strong>?4,000+</strong> Purchased</span>
-            <span><strong>5?</strong> Reviews</span>
+            <span><strong>£4,000+</strong> Purchased</span>
+            <span><strong>5⭐</strong> Reviews</span>
           </div>
         </div>
         <img src="https://i.ibb.co/Pz6gwsW6/Velora-MM2-Laptop-Decal.png" alt="VeloraMM2 laptop preview">
@@ -6194,7 +6226,11 @@ function enhancePageFooters(){
         <div class="pageFooterBrand">
           <img class="pageFooterBrandLogo" src="https://i.ibb.co/yGGBHMw/New-Project-2026-07-17-T192241-866.png" alt="VeloraMM2">
           <div class="footerCredit"><span>VeloraMM2 © 2026</span><span>•</span><span>Made by silent</span></div>
-          <div class="footerSocials"><span>T</span><span>▶</span><span>☻</span><span>◎</span></div>
+          <div class="footerSocials" aria-label="VeloraMM2 social links">
+            <a href="https://www.tiktok.com/@veloramm2" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.4 2.7 1.9 4.4 4.4 4.6v4.1c-1.7.1-3.2-.4-4.4-1.3v5.6c0 4.1-2.7 6.7-6.6 6.7-3.4 0-6-2.3-6-5.6 0-3.6 2.9-5.9 6.7-5.5v4.2c-1.5-.3-2.6.3-2.6 1.4 0 1 .8 1.6 1.8 1.6 1.3 0 2.1-.8 2.1-2.5V3h4.6z"/></svg></a>
+            <a href="https://www.youtube.com/@VeloraMM2" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2s-.2-1.7-.9-2.4c-.9-.9-1.9-.9-2.4-1C16.4 3.5 12 3.5 12 3.5s-4.4 0-7.7.3c-.5.1-1.5.1-2.4 1C1.2 5.5 1 7.2 1 7.2S.7 9.2.7 11.3v1.9c0 2.1.3 4.1.3 4.1s.2 1.7.9 2.4c.9.9 2.1.9 2.6 1 1.9.2 7.5.3 7.5.3s4.4 0 7.7-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.4.9-2.4s.3-2.1.3-4.1v-1.9c0-2.1-.3-4.1-.3-4.1zM9.9 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+            <a href="https://www.instagram.com/veloramm2/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 3A2.5 2.5 0 0 0 5 7.5v9A2.5 2.5 0 0 0 7.5 19h9a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 16.5 5h-9zm4.5 3.2A3.8 3.8 0 1 1 12 15.8 3.8 3.8 0 0 1 12 8.2zm0 2.5a1.3 1.3 0 1 0 0 2.6 1.3 1.3 0 0 0 0-2.6zM17.2 7a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/></svg></a>
+          </div>
         </div>
         <div class="pageFooterCol">
           <h4>Sections</h4>
@@ -6206,7 +6242,7 @@ function enhancePageFooters(){
         </div>
         <div class="pageFooterCol">
           <h4>Feedback</h4>
-          <a href="#">★ Trustpilot</a>
+          <a href="https://www.trustpilot.com/review/veloramm2.com">★ Trustpilot</a>
           <a href="https://discord.gg/veloramm2" target="_blank">Discord</a>
         </div>
         <div class="pageFooterCol">
