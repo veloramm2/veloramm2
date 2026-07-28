@@ -3215,18 +3215,26 @@ function loadVeloraTawk(){
   });
 }
 
-async function openVeloraLiveChat(){
+async function openVeloraLiveChat(fromMainButton){
   if(!isTawkConfigured()){
+    if(fromMainButton) openAiChat();
     addAiChatBubble("Live chat is designed in, but Tawk is not connected yet. Leave a message below and staff will still receive it in Discord.", "staff");
     showAiStaffForm();
     return;
   }
-  setAiChatStatus("Opening live chat...");
+  if(fromMainButton){
+    closeCart();
+    closeSearchDrawer();
+    closeAiChat();
+  }else{
+    setAiChatStatus("Opening live chat...");
+  }
   try{
     await loadVeloraTawk();
     closeAiChat();
     setTimeout(()=>window.Tawk_API?.maximize?.(), 350);
   }catch(error){
+    openAiChat();
     addAiChatBubble("Live chat could not open right now. Leave a message below and staff will still receive it in Discord.", "staff");
     showAiStaffForm();
   }finally{
@@ -3240,7 +3248,9 @@ function findPresetReply(text){
   if(best) return best;
   best = veloraPresetReplies.find(item => item.keywords.some(keyword => clean.includes(keyword)));
   return best || {
-    reply:"I can help with claiming, delivery, payment, promo codes, gift cards, and order status. If you need staff, type 'staff' or press Talk to staff."
+    unknown:true,
+    staff:true,
+    reply:"I?m not fully sure on that one, so I?ll open live staff chat for you now. If nobody is online, leave a message and staff will get back to you."
   };
 }
 
@@ -3251,7 +3261,7 @@ function askPresetQuestion(label){
   setTimeout(function(){
     addAiChatBubble(match.reply, match.staff ? "staff" : "bot");
     setAiChatStatus("");
-    if(match.staff) openVeloraLiveChat();
+    if(match.staff || match.unknown) openVeloraLiveChat();
   }, 260);
 }
 
@@ -3267,7 +3277,7 @@ function sendAiChatMessage(event){
   setTimeout(function(){
     addAiChatBubble(match.reply, match.staff ? "staff" : "bot");
     setAiChatStatus("");
-    if(match.staff) openVeloraLiveChat();
+    if(match.staff || match.unknown) openVeloraLiveChat();
   }, 260);
 }
 
