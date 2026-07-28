@@ -2227,6 +2227,105 @@ body.home-mode .cleanClaim{transform:translateX(155px) !important;}
 #pendingScreen .pendingBody{padding-bottom:90px !important;}
 @media(max-width:560px){#pendingScreen .pendingBody{padding-bottom:110px !important;}}
 
+
+
+/* ===================== FULL SITE MOBILE + SMOOTH MOTION PASS ===================== */
+html{scroll-behavior:smooth;}
+body{overflow-x:hidden;}
+*{min-width:0;}
+button,a,.card,.tab,.drawer,.accountCard,.staffCard,.modalContent,.checkoutButton,.homePillBtn,.categoryButton,.payment-card,.staffActionBtn,.staffGhostBtn{
+  transition-duration:.32s !important;
+  transition-timing-function:cubic-bezier(.16,1,.3,1) !important;
+}
+.card:hover,.categoryPhone:hover,.newCategoryCard:hover,.payment-card:hover{
+  transition-duration:.38s !important;
+}
+.drawer.open{transition-duration:.36s !important;}
+.uiBackdrop.show{transition-duration:.24s !important;}
+@media(max-width:760px){
+  .topbar{height:auto !important;min-height:68px !important;padding:10px 14px !important;gap:10px !important;flex-wrap:wrap !important;}
+  .brand img,.logo{max-width:120px !important;height:auto !important;}
+  .navLinks{order:3;width:100%;justify-content:flex-start !important;overflow-x:auto !important;gap:18px !important;padding:4px 2px 2px !important;-webkit-overflow-scrolling:touch;}
+  .navLinks a{font-size:13px !important;white-space:nowrap !important;}
+  .navActions{margin-left:auto !important;gap:10px !important;}
+  .shopNowBtn{display:none !important;}
+  .banner,.banner img{height:180px !important;}
+  .toolbar{padding:22px 14px 0 !important;gap:12px !important;}
+  .searchBox{max-width:none !important;width:100% !important;flex:1 1 100% !important;}
+  .sortWrap{width:100% !important;justify-content:space-between !important;gap:10px !important;}
+  .sortSelect,.currencySelect{flex:1 1 0 !important;min-width:0 !important;}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;padding:18px 14px 38px !important;gap:16px !important;}
+  .card{border-radius:16px !important;}
+  .cardBody{padding:14px !important;}
+  .cardName{font-size:15px !important;}
+  .price{font-size:16px !important;}
+  .productSection{padding:20px 14px 44px !important;grid-template-columns:1fr !important;}
+  .productInfo h1{font-size:clamp(34px,11vw,48px) !important;line-height:1 !important;}
+  .detailActions{grid-template-columns:1fr !important;}
+  .detailMetaGrid,.bundleChecklist{grid-template-columns:1fr !important;}
+  .bundleSection{padding:0 14px 44px !important;}
+  .bundleImagesRow{gap:12px !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;}
+  .checkoutInner,.wrapper{display:block !important;padding:18px 14px 36px !important;}
+  .checkoutPanel,.checkoutSummary,.basketPanel{width:100% !important;margin-bottom:18px !important;}
+  .payment-list{grid-template-columns:1fr !important;}
+  .drawer{width:100vw !important;max-width:100vw !important;}
+  .accountOverlay,.staffOverlay{padding:12px !important;align-items:flex-start !important;overflow-y:auto !important;}
+  .accountCard,.staffCard{width:100% !important;max-width:100% !important;border-radius:22px !important;padding:20px !important;margin:10px 0 !important;}
+  .accountGrid,.staffGrid{grid-template-columns:1fr !important;}
+  .pageFooterInner{grid-template-columns:1fr 1fr !important;gap:22px !important;}
+  .footerBottom{flex-direction:column !important;align-items:flex-start !important;gap:14px !important;}
+}
+@media(max-width:430px){
+  .grid{grid-template-columns:1fr !important;}
+  .banner,.banner img{height:155px !important;}
+  .pageFooterInner{grid-template-columns:1fr !important;}
+  .promoTicker{height:30px !important;}
+  .promoTicker span{font-size:13px !important;}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+}
+
+/* ===================== VELORA AI CHAT ===================== */
+.aiChatFab{position:fixed;right:22px;bottom:22px;z-index:1350;width:62px;height:62px;border:0;border-radius:999px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;background:linear-gradient(135deg,#ff62b5,#ff4da6 55%,#b85cff);box-shadow:0 18px 42px rgba(255,77,166,.38);transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,filter .22s ease;}
+.aiChatFab:hover{transform:translateY(-4px) scale(1.04);filter:saturate(1.08);box-shadow:0 24px 54px rgba(255,77,166,.48);}
+.aiChatPanel{position:fixed;right:22px;bottom:96px;z-index:1360;width:min(410px,calc(100vw - 28px));height:min(620px,calc(100vh - 126px));background:rgba(255,255,255,.96);border:1px solid #f2cfe0;border-radius:26px;box-shadow:0 28px 80px rgba(25,15,20,.22);overflow:hidden;display:none;flex-direction:column;transform:translateY(18px) scale(.98);opacity:0;transition:transform .24s cubic-bezier(.2,.8,.2,1),opacity .2s ease;}
+.aiChatPanel.open{display:flex;transform:translateY(0) scale(1);opacity:1;}
+.aiChatHead{padding:18px 18px 16px;background:linear-gradient(135deg,#fff6fb,#fff);border-bottom:1px solid #f5dce9;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.aiChatBrand{display:flex;align-items:center;gap:12px;min-width:0;}
+.aiChatLogo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#ff4da6,#b85cff);display:grid;place-items:center;color:#fff;font-size:20px;box-shadow:0 12px 26px rgba(255,77,166,.22);}
+.aiChatTitle{font-size:17px;font-weight:900;color:#171717;line-height:1.1;}
+.aiChatSub{font-size:12px;color:#8b6b7d;font-weight:800;margin-top:3px;}
+.aiChatClose{width:38px;height:38px;border:1px solid #f0d7e4;background:#fff;border-radius:14px;cursor:pointer;font-size:20px;color:#171717;}
+.aiChatMessages{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:12px;-webkit-overflow-scrolling:touch;}
+.aiMsg{max-width:86%;padding:12px 14px;border-radius:18px;font-size:14px;line-height:1.45;box-shadow:0 10px 24px rgba(0,0,0,.04);}
+.aiMsg.bot{align-self:flex-start;background:#fff6fb;border:1px solid #f3d7e6;color:#2a2228;border-bottom-left-radius:6px;}
+.aiMsg.user{align-self:flex-end;background:linear-gradient(135deg,#ff62b5,#ff4da6);color:#fff;border-bottom-right-radius:6px;}
+.aiMsg.staff{align-self:flex-start;background:#171717;color:#fff;border:1px solid #171717;border-bottom-left-radius:6px;}
+.aiQuickReplies{padding:0 18px 12px;display:flex;gap:8px;flex-wrap:wrap;}
+.aiQuickReplies button{border:1px solid #f2cfe0;background:#fff6fb;color:#a34c78;border-radius:999px;padding:9px 12px;font-size:12px;font-weight:900;cursor:pointer;}
+.aiQuickReplies button:hover{background:linear-gradient(135deg,#ff62b5,#ff4da6);color:#fff;transform:translateY(-1px);box-shadow:0 10px 22px rgba(255,77,166,.18);}
+.aiStaffForm{display:none;margin:0 18px 12px;padding:14px;border:1px solid #f2cfe0;border-radius:18px;background:linear-gradient(180deg,#fff,#fff7fb);box-shadow:0 14px 28px rgba(255,77,166,.08);}
+.aiStaffForm.show{display:block;animation:aiStaffFormIn .22s cubic-bezier(.16,1,.3,1) both;}
+.aiStaffFormTitle{font-size:14px;font-weight:950;color:#171717;margin-bottom:4px;}
+.aiStaffFormHint{font-size:12px;line-height:1.45;color:#8b6b7d;font-weight:750;margin-bottom:10px;}
+.aiStaffForm input,.aiStaffForm textarea{width:100%;border:1px solid #ecd4e1;border-radius:13px;padding:10px 12px;font:inherit;font-size:13px;outline:none;margin-bottom:8px;background:#fff;}
+.aiStaffForm textarea{min-height:76px;resize:vertical;}
+.aiStaffForm input:focus,.aiStaffForm textarea:focus{border-color:#ff65b5;box-shadow:0 0 0 3px rgba(255,77,166,.11);}
+.aiStaffActions{display:flex;gap:8px;}
+.aiStaffSubmit,.aiStaffCancel{height:40px;border:0;border-radius:13px;font-weight:950;cursor:pointer;padding:0 13px;}
+.aiStaffSubmit{flex:1;background:linear-gradient(135deg,#ff62b5,#ff4da6);color:#fff;box-shadow:0 12px 24px rgba(255,77,166,.18);}
+.aiStaffCancel{background:#171717;color:#fff;}
+@keyframes aiStaffFormIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.aiChatStatus{padding:0 18px 10px;font-size:12px;color:#9a6a82;font-weight:800;min-height:18px;}
+.aiChatForm{padding:14px;border-top:1px solid #f5dce9;display:flex;gap:10px;background:#fff;}
+.aiChatInput{flex:1;height:48px;border:1px solid #ecd4e1;border-radius:16px;padding:0 14px;font-size:14px;outline:none;}
+.aiChatInput:focus{border-color:#ff65b5;box-shadow:0 0 0 4px rgba(255,77,166,.12);}
+.aiChatSend{height:48px;min-width:84px;border:0;border-radius:16px;background:#171717;color:#fff;font-weight:900;cursor:pointer;}
+.aiChatSend:hover{background:linear-gradient(135deg,#ff4da6,#b85cff);transform:translateY(-1px);}
+@media(max-width:560px){.aiChatFab{right:16px;bottom:16px;width:56px;height:56px;}.aiChatPanel{right:10px;left:10px;bottom:82px;width:auto;height:min(620px,calc(100vh - 104px));border-radius:22px;}}
+
 </style>
 </head>
 <body>
@@ -2839,7 +2938,7 @@ body.home-mode .cleanClaim{transform:translateX(155px) !important;}
   </div>
 
 </div>
-<div class="uiBackdrop" id="uiBackdrop" onclick="closeCart();closeSearchDrawer();closeAccountModal();"></div>
+<div class="uiBackdrop" id="uiBackdrop" onclick="closeCart();closeSearchDrawer();closeAccountModal();closeStaffModal();closeAiChat();"></div>
 
 <div class="accountOverlay" id="accountOverlay">
   <div class="accountCard">
@@ -2951,7 +3050,268 @@ body.home-mode .cleanClaim{transform:translateX(155px) !important;}
   </div>
 </div>
 
+<!-- ================= VELORA AI CHAT ================= -->
+<button class="aiChatFab" id="aiChatFab" type="button" aria-label="Chat with Velora AI" onclick="toggleAiChat()">✦</button>
+<section class="aiChatPanel" id="aiChatPanel" aria-hidden="true" aria-label="Velora AI chat">
+  <div class="aiChatHead">
+    <div class="aiChatBrand">
+      <div class="aiChatLogo">AI</div>
+      <div>
+        <div class="aiChatTitle">Velora Help</div>
+        <div class="aiChatSub">Instant answers + staff support</div>
+      </div>
+    </div>
+    <button class="aiChatClose" type="button" onclick="closeAiChat()">×</button>
+  </div>
+  <div class="aiChatMessages" id="aiChatMessages">
+    <div class="aiMsg bot">Hey! I’m Velora Help 💗 Pick a question below or type what you need.</div>
+  </div>
+  <div class="aiQuickReplies" id="aiQuickReplies"></div>
+  <form class="aiStaffForm" id="aiStaffForm" onsubmit="submitAiStaffMessage(event)">
+    <div class="aiStaffFormTitle">Leave a message for staff</div>
+    <div class="aiStaffFormHint">If staff are busy, send your details here. It posts straight into the staff Discord webhook.</div>
+    <input id="aiStaffEmail" type="email" placeholder="Email address" autocomplete="email">
+    <input id="aiStaffOrder" placeholder="Order number, if you have one">
+    <textarea id="aiStaffMessage" placeholder="What do you need help with?"></textarea>
+    <div class="aiStaffActions">
+      <button class="aiStaffSubmit" type="submit">Send to Staff</button>
+      <button class="aiStaffCancel" type="button" onclick="hideAiStaffForm()">Cancel</button>
+    </div>
+  </form>
+  <div class="aiChatStatus" id="aiChatStatus"></div>
+  <form class="aiChatForm" onsubmit="sendAiChatMessage(event)">
+    <input class="aiChatInput" id="aiChatInput" placeholder="Type your message..." autocomplete="off">
+    <button class="aiChatSend" type="submit">Send</button>
+  </form>
+</section>
+
 <script>
+/* ============ VELORA PRESET HELP + LIVE CHAT ============ */
+/* Create a free Tawk.to widget, then paste the two values below.
+   Example Tawk script URL: https://embed.tawk.to/PROPERTY_ID/WIDGET_ID */
+const VELORA_TAWK_PROPERTY_ID = "6a68f759536c401d48943b79";
+const VELORA_TAWK_WIDGET_ID = "1jul0ce1n";
+let veloraTawkLoading = false;
+
+const veloraPresetReplies = [
+  {
+    label:"How do I claim?",
+    keywords:["claim","claiming","video","receive","delivery","deliver"],
+    reply:"To claim your order, complete checkout, copy your order number, then join our Discord and open a ticket. Staff manually verify payment before delivery. ??"
+  },
+  {
+    label:"How long delivery?",
+    keywords:["long","time","delivery","fast","wait"],
+    reply:"Most orders are handled quickly, but delivery is manual after payment verification. Please keep your order number ready in Discord so staff can help faster."
+  },
+  {
+    label:"Payment help",
+    keywords:["pay","payment","paypal","revolut","card","send money"],
+    reply:"Choose your payment method at checkout and send the exact total shown. Once sent, join Discord with your order number so staff can confirm it."
+  },
+  {
+    label:"Promo/gift card",
+    keywords:["promo","coupon","discount","code","gift","giftcard","gift card"],
+    reply:"Enter your promo code or gift card at checkout, then press Apply. If the total becomes ?0.00, the button changes to Claim Order. Gift cards are one-time use."
+  },
+  {
+    label:"Order status",
+    keywords:["status","order id","order number","history","pending","verified","delivered"],
+    reply:"You can check your order in your account history or the Claiming page using your order number and email. If anything looks wrong, open a Discord ticket."
+  },
+  {
+    label:"Talk to staff",
+    keywords:["staff","human","person","support","discord","ticket","help","late","reply","respond","message","live chat","livechat"],
+    staff:true,
+    reply:"I?ll try to open live staff chat now. If live chat is not connected yet, you can leave a message here and it will still go to staff through Discord."
+  }
+];
+
+function renderAiQuickReplies(){
+  const wrap = document.getElementById("aiQuickReplies");
+  if(!wrap) return;
+  wrap.innerHTML = veloraPresetReplies.map(item => `<button type="button" onclick="askPresetQuestion('${item.label.replace(/'/g,"\\'")}')">${item.label}</button>`).join("");
+}
+
+function toggleAiChat(){
+  const panel = document.getElementById("aiChatPanel");
+  if(panel?.classList.contains("open")) closeAiChat();
+  else openAiChat();
+}
+
+function openAiChat(){
+  closeCart();
+  closeSearchDrawer();
+  const panel = document.getElementById("aiChatPanel");
+  if(!panel) return;
+  panel.classList.add("open");
+  panel.setAttribute("aria-hidden","false");
+  renderAiQuickReplies();
+  refreshUiBackdrop();
+  setTimeout(()=>document.getElementById("aiChatInput")?.focus(),80);
+}
+
+function closeAiChat(){
+  const panel = document.getElementById("aiChatPanel");
+  if(!panel) return;
+  panel.classList.remove("open");
+  panel.setAttribute("aria-hidden","true");
+  refreshUiBackdrop();
+}
+
+function addAiChatBubble(text, who){
+  const wrap = document.getElementById("aiChatMessages");
+  if(!wrap) return;
+  const bubble = document.createElement("div");
+  bubble.className = "aiMsg " + (who === "user" ? "user" : who === "staff" ? "staff" : "bot");
+  bubble.textContent = text;
+  wrap.appendChild(bubble);
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+function setAiChatStatus(text){
+  const status = document.getElementById("aiChatStatus");
+  if(status) status.textContent = text || "";
+}
+
+function showAiStaffForm(){
+  const form = document.getElementById("aiStaffForm");
+  if(!form) return;
+  form.classList.add("show");
+  setTimeout(()=>document.getElementById("aiStaffMessage")?.focus(),80);
+}
+
+function hideAiStaffForm(){
+  const form = document.getElementById("aiStaffForm");
+  if(form) form.classList.remove("show");
+}
+
+function isTawkConfigured(){
+  return !!(VELORA_TAWK_PROPERTY_ID && VELORA_TAWK_PROPERTY_ID.trim());
+}
+
+function loadVeloraTawk(){
+  return new Promise((resolve, reject)=>{
+    window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_LoadStart = window.Tawk_LoadStart || new Date();
+    if(window.Tawk_API.maximize) return resolve();
+    if(!isTawkConfigured()) return reject(new Error("Tawk IDs are not set"));
+    if(veloraTawkLoading){
+      const check = setInterval(()=>{
+        if(window.Tawk_API && window.Tawk_API.maximize){clearInterval(check);resolve();}
+      }, 250);
+      setTimeout(()=>{clearInterval(check);reject(new Error("Tawk timed out"));}, 8000);
+      return;
+    }
+    veloraTawkLoading = true;
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://embed.tawk.to/${VELORA_TAWK_PROPERTY_ID}/${VELORA_TAWK_WIDGET_ID || "default"}`;
+    script.charset = "UTF-8";
+    script.setAttribute("crossorigin","*");
+    script.onload = ()=>resolve();
+    script.onerror = ()=>reject(new Error("Tawk failed to load"));
+    document.head.appendChild(script);
+  });
+}
+
+async function openVeloraLiveChat(){
+  if(!isTawkConfigured()){
+    addAiChatBubble("Live chat is designed in, but Tawk is not connected yet. Leave a message below and staff will still receive it in Discord.", "staff");
+    showAiStaffForm();
+    return;
+  }
+  setAiChatStatus("Opening live chat...");
+  try{
+    await loadVeloraTawk();
+    closeAiChat();
+    setTimeout(()=>window.Tawk_API?.maximize?.(), 350);
+  }catch(error){
+    addAiChatBubble("Live chat could not open right now. Leave a message below and staff will still receive it in Discord.", "staff");
+    showAiStaffForm();
+  }finally{
+    setAiChatStatus("");
+  }
+}
+
+function findPresetReply(text){
+  const clean = String(text || "").toLowerCase();
+  let best = veloraPresetReplies.find(item => item.label.toLowerCase() === clean);
+  if(best) return best;
+  best = veloraPresetReplies.find(item => item.keywords.some(keyword => clean.includes(keyword)));
+  return best || {
+    reply:"I can help with claiming, delivery, payment, promo codes, gift cards, and order status. If you need staff, type 'staff' or press Talk to staff."
+  };
+}
+
+function askPresetQuestion(label){
+  addAiChatBubble(label, "user");
+  const match = findPresetReply(label);
+  setAiChatStatus("Velora Help is replying...");
+  setTimeout(function(){
+    addAiChatBubble(match.reply, match.staff ? "staff" : "bot");
+    setAiChatStatus("");
+    if(match.staff) openVeloraLiveChat();
+  }, 260);
+}
+
+function sendAiChatMessage(event){
+  event.preventDefault();
+  const input = document.getElementById("aiChatInput");
+  const text = (input?.value || "").trim();
+  if(!text) return;
+  if(input) input.value = "";
+  addAiChatBubble(text, "user");
+  const match = findPresetReply(text);
+  setAiChatStatus("Velora Help is replying...");
+  setTimeout(function(){
+    addAiChatBubble(match.reply, match.staff ? "staff" : "bot");
+    setAiChatStatus("");
+    if(match.staff) openVeloraLiveChat();
+  }, 260);
+}
+
+async function submitAiStaffMessage(event){
+  event.preventDefault();
+  const email = (document.getElementById("aiStaffEmail")?.value || "").trim();
+  const order = (document.getElementById("aiStaffOrder")?.value || "").trim();
+  const message = (document.getElementById("aiStaffMessage")?.value || "").trim();
+  if(!email || !message){
+    setAiChatStatus("Please add your email and message first.");
+    return;
+  }
+  setAiChatStatus("Sending your message to staff...");
+  const basketSummary = Object.values(cart || {}).map(entry => `${entry.item?.name || "Item"} x${entry.qty || 1}`).join(", ") || "No basket items";
+  const embed = {
+    title:"?? New Velora Help Message",
+    color:16731566,
+    fields:[
+      {name:"Email", value:email, inline:true},
+      {name:"Order Number", value:order || "Not provided", inline:true},
+      {name:"Basket", value:basketSummary.slice(0,1000), inline:false},
+      {name:"Message", value:message.slice(0,1000), inline:false}
+    ],
+    footer:{text:"Sent from Velora Help chat"},
+    timestamp:new Date().toISOString()
+  };
+  try{
+    await fetch(DISCORD_WEBHOOK_URL, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({embeds:[embed]})
+    });
+    addAiChatBubble("Your message has been sent to staff ? Please keep an eye on Discord/email and include your order number if staff ask for it.", "staff");
+    hideAiStaffForm();
+    document.getElementById("aiStaffEmail").value = "";
+    document.getElementById("aiStaffOrder").value = "";
+    document.getElementById("aiStaffMessage").value = "";
+  }catch(error){
+    addAiChatBubble("I could not send that to staff right now. Please join Discord directly: https://discord.gg/veloramm2", "staff");
+  }finally{
+    setAiChatStatus("");
+  }
+}
+
 /* ============ PRODUCT DATA ============ */
 /* Bundle data lives directly on each product that belongs to one — see e.g. "shadow" below. */
 function playClaimVideo(){
@@ -3793,6 +4153,7 @@ function showStoreSection(section, category){
   setHomeMode(false);
   updateShopSectionUI();
   render({ animate:true, source:"section" });
+  requestAnimationFrame(function(){ window.scrollTo({ top:0, left:0, behavior:"auto" }); });
 }
 
 let activeCategory = "All";
@@ -4334,10 +4695,13 @@ function refreshUiBackdrop(){
   const cartOpen = !!document.getElementById("cartDrawer")?.classList.contains("open");
   const searchOpen = !!document.getElementById("searchDrawer")?.classList.contains("open");
   const accountOpen = document.getElementById("accountOverlay")?.style.display === "flex";
-  backdrop.classList.toggle("show", cartOpen || searchOpen || accountOpen);
+  const staffOpen = document.getElementById("staffOverlay")?.style.display === "flex";
+  const aiOpen = !!document.getElementById("aiChatPanel")?.classList.contains("open");
+  backdrop.classList.toggle("show", cartOpen || searchOpen || accountOpen || staffOpen || aiOpen);
 }
 function openCart(){
   closeSearchDrawer();
+  closeAiChat();
   document.getElementById("cartDrawer").classList.add("open");
   refreshUiBackdrop();
 }
@@ -5884,9 +6248,13 @@ function bootStorefront(){
   }
 }
 
-bootStorefront();
-document.addEventListener("DOMContentLoaded", bootStorefront);
-window.addEventListener("load", bootStorefront);
+function bootStorefrontOnHome(){
+  bootStorefront();
+  if(typeof showHomePage === "function") showHomePage();
+}
+bootStorefrontOnHome();
+document.addEventListener("DOMContentLoaded", bootStorefrontOnHome);
+window.addEventListener("load", function(){ setTimeout(bootStorefrontOnHome, 0); });
 
 function initHomeScrollAnimations(){
   const targets = [
@@ -5921,7 +6289,6 @@ window.addEventListener("DOMContentLoaded", initHomeScrollAnimations);
 
 </body>
 </html>
-
 
 
 
