@@ -5050,7 +5050,7 @@ function applyPromo(){
   if(code === "") return;
 
 
-  const knownCodes = { "SILENT10": 0.1, "WELCOME5": 0.05, "AXEL5": 0.05, "DELY5": 0.05 };
+  const knownCodes = { "SILENT10": 0.1, "WELCOME5": 0.05, "AXEL10": 0.10, "DELY10": 0.10 };
   if(!(code in knownCodes)){ showNotification("Invalid promo code.","invalid"); return; }
 
   const discountRate = Math.min(knownCodes[code], 1);
@@ -5624,7 +5624,7 @@ checkout = function(){
 applyPromo = function(){
   const code = document.getElementById("promo").value.trim().toUpperCase();
   if(code === "") return;
-  const knownCodes = { "SILENT10": 0.1, "WELCOME5": 0.05, "AXEL5": 0.05, "DELY5": 0.05 };
+  const knownCodes = { "SILENT10": 0.1, "WELCOME5": 0.05, "AXEL10": 0.10, "DELY10": 0.10 };
   if(!(code in knownCodes)){ showNotification("Invalid promo code.","invalid"); return; }
   const discountRate = Math.min(knownCodes[code], 1);
   const amount = basePrice * discountRate;
